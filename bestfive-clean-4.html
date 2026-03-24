@@ -1,0 +1,2242 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bestfive Clean – Profesionální čištění</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #ff4d8d;
+    --pink-light: #ff80b0;
+    --pink-pale: #ffe0ed;
+    --black: #0a0a0a;
+    --dark: #111111;
+    --dark2: #1a1a1a;
+    --dark3: #222222;
+    --gray: #888;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    padding: 1.2rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,77,141,0.15);
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 900;
+    color: var(--pink);
+    letter-spacing: -0.5px;
+  }
+  .logo span { color: var(--white); font-weight: 300; }
+  nav ul { list-style: none; display: flex; gap: 2.5rem; }
+  nav ul a {
+    color: var(--gray); text-decoration: none;
+    font-size: 0.875rem; font-weight: 500;
+    transition: color 0.2s;
+    letter-spacing: 0.05em;
+  }
+  nav ul a:hover { color: var(--pink); }
+  .nav-btn {
+    background: var(--pink); color: var(--white);
+    border: none; padding: 0.65rem 1.5rem;
+    border-radius: 50px; font-size: 0.875rem; font-weight: 500;
+    cursor: pointer; transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .nav-btn:hover { background: var(--pink-light); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(255,77,141,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,77,141,0.12);
+    border: 1px solid rgba(255,77,141,0.3);
+    color: var(--pink); font-size: 0.75rem; font-weight: 500;
+    padding: 0.4rem 1.2rem; border-radius: 50px;
+    margin-bottom: 2rem; letter-spacing: 0.12em; text-transform: uppercase;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 900; line-height: 1.05;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero h1 .pink { color: var(--pink); }
+  .hero p {
+    font-size: 1.1rem; color: var(--gray);
+    max-width: 540px; line-height: 1.7;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-btns {
+    display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .btn-primary {
+    background: var(--pink); color: var(--white);
+    padding: 1rem 2.2rem; border-radius: 50px;
+    font-size: 1rem; font-weight: 500; cursor: pointer;
+    border: none; transition: all 0.25s;
+    font-family: 'DM Sans', sans-serif; text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--pink-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(255,77,141,0.35); }
+  .btn-outline {
+    background: transparent; color: var(--white);
+    padding: 1rem 2.2rem; border-radius: 50px;
+    font-size: 1rem; font-weight: 500; cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.2); transition: all 0.25s;
+    font-family: 'DM Sans', sans-serif; text-decoration: none;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--pink); color: var(--pink); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 4rem;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700; color: var(--pink);
+  }
+  .stat-label { font-size: 0.8rem; color: var(--gray); margin-top: 0.2rem; }
+
+  /* SERVICES */
+  section { padding: 6rem 4rem; }
+  .section-label {
+    font-size: 0.75rem; color: var(--pink); letter-spacing: 0.15em;
+    text-transform: uppercase; font-weight: 500; margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .section-sub { color: var(--gray); font-size: 1rem; max-width: 500px; line-height: 1.7; margin-bottom: 3rem; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: var(--dark2);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px; padding: 2rem;
+    transition: all 0.3s; cursor: default;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--pink), transparent);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .service-card:hover { border-color: rgba(255,77,141,0.2); transform: translateY(-4px); }
+  .service-card:hover::before { opacity: 1; }
+  .service-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+  .service-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .service-card p { color: var(--gray); font-size: 0.875rem; line-height: 1.6; }
+
+  /* CITY TABS */
+  .city-section { background: var(--dark); }
+  .tabs {
+    display: flex; gap: 0.5rem; margin-bottom: 2.5rem; flex-wrap: wrap;
+  }
+  .tab {
+    padding: 0.6rem 1.5rem; border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: transparent; color: var(--gray);
+    cursor: pointer; font-size: 0.875rem; font-weight: 500;
+    transition: all 0.2s; font-family: 'DM Sans', sans-serif;
+  }
+  .tab.active { background: var(--pink); color: var(--white); border-color: var(--pink); }
+  .tab:hover:not(.active) { border-color: var(--pink); color: var(--pink); }
+
+  .city-panel { display: none; }
+  .city-panel.active { display: block; }
+
+  /* PRICING */
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .plan-card {
+    background: var(--dark2);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 24px; padding: 2.5rem;
+    transition: all 0.3s; position: relative;
+  }
+  .plan-card.featured {
+    border-color: var(--pink);
+    background: linear-gradient(135deg, rgba(255,77,141,0.08), var(--dark2));
+  }
+  .plan-badge {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: var(--pink); color: var(--white);
+    font-size: 0.7rem; font-weight: 600; padding: 0.3rem 1rem;
+    border-radius: 50px; letter-spacing: 0.08em; text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .plan-type {
+    font-size: 0.7rem; color: var(--pink); letter-spacing: 0.12em;
+    text-transform: uppercase; font-weight: 600; margin-bottom: 0.5rem;
+  }
+  .plan-name { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; }
+  .plan-price {
+    margin-bottom: 1.5rem;
+    display: flex; align-items: baseline; gap: 0.3rem;
+  }
+  .price-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem; font-weight: 900; color: var(--pink);
+  }
+  .price-unit { color: var(--gray); font-size: 0.875rem; }
+  .plan-desc { color: var(--gray); font-size: 0.875rem; margin-bottom: 1.5rem; line-height: 1.6; }
+  .plan-features { list-style: none; margin-bottom: 2rem; }
+  .plan-features li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.875rem; display: flex; align-items: center; gap: 0.6rem;
+  }
+  .plan-features li:last-child { border-bottom: none; }
+  .plan-features li::before { content: '✓'; color: var(--pink); font-weight: 700; font-size: 0.8rem; }
+  .plan-btn {
+    width: 100%; padding: 0.9rem;
+    border-radius: 50px; border: none; cursor: pointer;
+    font-size: 0.9rem; font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.25s;
+  }
+  .plan-btn-primary { background: var(--pink); color: var(--white); }
+  .plan-btn-primary:hover { background: var(--pink-light); transform: translateY(-1px); }
+  .plan-btn-outline { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.15); }
+  .plan-btn-outline:hover { border-color: var(--pink); color: var(--pink); }
+
+  /* BOOKING FORM */
+  .booking-section { background: var(--dark); }
+  .booking-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+  }
+  .booking-info h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem; }
+  .booking-info p { color: var(--gray); line-height: 1.7; margin-bottom: 2rem; }
+  .contact-item {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 1rem; color: var(--gray); font-size: 0.9rem;
+  }
+  .contact-item .icon { font-size: 1.2rem; }
+  .contact-item a { color: var(--gray); text-decoration: none; transition: color 0.2s; }
+  .contact-item a:hover { color: var(--pink); }
+
+  .booking-form {
+    background: var(--dark2);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 24px; padding: 2.5rem;
+  }
+  .booking-form h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; margin-bottom: 2rem;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label {
+    display: block; font-size: 0.8rem; color: var(--gray);
+    margin-bottom: 0.4rem; font-weight: 500; letter-spacing: 0.05em;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px; padding: 0.85rem 1rem;
+    color: var(--white); font-size: 0.9rem;
+    font-family: 'DM Sans', sans-serif;
+    transition: border-color 0.2s; outline: none;
+    appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--pink); }
+  .form-group select option { background: var(--dark2); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    width: 100%; padding: 1rem;
+    background: var(--pink); color: var(--white);
+    border: none; border-radius: 50px;
+    font-size: 1rem; font-weight: 600; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.25s; margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--pink-light); transform: translateY(-1px); box-shadow: 0 8px 30px rgba(255,77,141,0.3); }
+
+  /* SUCCESS */
+  .success-msg {
+    display: none; text-align: center; padding: 2rem;
+  }
+  .success-msg .check { font-size: 3rem; margin-bottom: 1rem; }
+  .success-msg h4 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--pink); margin-bottom: 0.5rem; }
+  .success-msg p { color: var(--gray); }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 3rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--pink); font-weight: 700; }
+  .footer-note { color: var(--gray); font-size: 0.8rem; }
+  .footer-sub { color: var(--gray); font-size: 0.75rem; opacity: 0.6; }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--dark2); border: 1px solid rgba(255,77,141,0.2);
+    border-radius: 24px; padding: 2.5rem; max-width: 480px; width: 90%;
+    position: relative; animation: modalIn 0.3s ease;
+  }
+  .modal-close {
+    position: absolute; top: 1.2rem; right: 1.5rem;
+    background: none; border: none; color: var(--gray);
+    font-size: 1.4rem; cursor: pointer;
+  }
+  .modal h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 0.5rem; }
+  .modal .plan-info {
+    background: rgba(255,77,141,0.08); border-radius: 12px;
+    padding: 1rem 1.2rem; margin-bottom: 1.5rem;
+    border: 1px solid rgba(255,77,141,0.2);
+  }
+  .modal .plan-info p { font-size: 0.875rem; color: var(--pink-light); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .booking-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+    .hero-stats { gap: 1.5rem; }
+  }
+
+  /* ===== SPLASH SCREEN ===== */
+  #splash {
+    position: fixed; inset: 0; z-index: 1000;
+    background: var(--black);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  #splash.hiding {
+    opacity: 0; pointer-events: none; transform: scale(1.03);
+  }
+
+  /* Subtle bg glow */
+  #splash::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-60%);
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,77,141,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .splash-inner {
+    display: flex; flex-direction: column; align-items: center;
+    max-width: 520px; width: 90%; text-align: center;
+    position: relative; z-index: 1;
+    animation: splashFadeIn 0.5s ease both;
+  }
+  @keyframes splashFadeIn {
+    from { opacity:0; transform: translateY(16px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+
+  /* Big avatar circle */
+  .splash-avatar {
+    width: 110px; height: 110px; border-radius: 50%;
+    background: linear-gradient(135deg, #ff4d8d 0%, #c4005c 60%, #8b0040 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3.5rem; margin-bottom: 1.5rem;
+    position: relative;
+    box-shadow: 0 0 40px rgba(255,77,141,0.4), 0 0 80px rgba(255,77,141,0.15);
+    border: 3px solid rgba(255,77,141,0.35);
+  }
+  .splash-avatar.speaking::before {
+    content: '';
+    position: absolute; inset: -8px; border-radius: 50%;
+    border: 2px solid rgba(255,77,141,0.45);
+    animation: speakRing 1.1s ease-in-out infinite;
+  }
+  .splash-avatar.speaking::after {
+    content: '';
+    position: absolute; inset: -18px; border-radius: 50%;
+    border: 1px solid rgba(255,77,141,0.18);
+    animation: speakRing 1.1s 0.35s ease-in-out infinite;
+  }
+  @keyframes speakRing {
+    0%   { transform: scale(1); opacity: 0.9; }
+    100% { transform: scale(1.25); opacity: 0; }
+  }
+
+  .splash-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700; margin-bottom: 0.2rem;
+  }
+  .splash-role {
+    font-size: 0.78rem; color: var(--pink);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 1.8rem;
+  }
+
+  /* Speech box */
+  .splash-speech {
+    background: var(--dark2);
+    border: 1px solid rgba(255,77,141,0.2);
+    border-radius: 20px; padding: 1.4rem 1.6rem;
+    min-height: 90px; width: 100%;
+    font-size: 1rem; line-height: 1.7; color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem; position: relative;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  }
+  /* little triangle pointing up to avatar */
+  .splash-speech::before {
+    content: '';
+    position: absolute; top: -8px; left: 50%; transform: translateX(-50%);
+    width: 0; height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid rgba(255,77,141,0.2);
+  }
+
+  /* Typing dots */
+  .typing-dots { display: flex; gap: 5px; align-items: center; }
+  .typing-dots span {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--pink); display: inline-block;
+    animation: typingBounce 1.2s ease-in-out infinite;
+  }
+  .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typingBounce {
+    0%,60%,100% { transform: translateY(0); opacity: 0.35; }
+    30%          { transform: translateY(-7px); opacity: 1; }
+  }
+
+  /* Progress dots */
+  .splash-dots {
+    display: flex; gap: 6px; margin-bottom: 1.5rem;
+  }
+  .sp-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: rgba(255,255,255,0.15); transition: all 0.3s; cursor: pointer;
+  }
+  .sp-dot.active { background: var(--pink); width: 22px; border-radius: 4px; }
+  .sp-dot.done   { background: rgba(255,77,141,0.4); }
+
+  /* Buttons */
+  .splash-btns { display: flex; gap: 0.8rem; width: 100%; }
+  .sp-btn {
+    flex: 1; padding: 0.85rem 1rem;
+    border-radius: 50px; font-size: 0.9rem; font-weight: 600;
+    cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.25s;
+    border: none;
+  }
+  .sp-btn-primary { background: var(--pink); color: white; }
+  .sp-btn-primary:hover { background: var(--pink-light); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(255,77,141,0.35); }
+  .sp-btn-skip { background: transparent; color: var(--gray); border: 1px solid rgba(255,255,255,0.1); }
+  .sp-btn-skip:hover { color: white; border-color: rgba(255,255,255,0.3); }
+
+  /* Soundwave under name */
+  .soundwave {
+    display: flex; align-items: center; gap: 3px; height: 16px; margin-bottom: 1.5rem;
+  }
+  .soundwave span {
+    width: 3px; border-radius: 3px; background: var(--pink);
+    animation: wave 0.8s ease-in-out infinite;
+  }
+  .soundwave span:nth-child(1) { height: 5px;  animation-delay: 0s; }
+  .soundwave span:nth-child(2) { height: 12px; animation-delay: 0.1s; }
+  .soundwave span:nth-child(3) { height: 16px; animation-delay: 0.2s; }
+  .soundwave span:nth-child(4) { height: 9px;  animation-delay: 0.3s; }
+  .soundwave span:nth-child(5) { height: 14px; animation-delay: 0.15s; }
+  .soundwave span:nth-child(6) { height: 7px;  animation-delay: 0.25s; }
+  @keyframes wave {
+    0%,100% { transform: scaleY(0.4); opacity: 0.4; }
+    50%      { transform: scaleY(1);   opacity: 1; }
+  }
+  .soundwave.hidden span { animation: none; opacity: 0.2; transform: scaleY(0.3); }
+
+  /* SEGMENT */
+  .segment-btn {
+    padding: 1rem 2.5rem; border-radius: 16px;
+    border: 1.5px solid rgba(255,255,255,0.12);
+    background: var(--dark2); color: var(--gray);
+    cursor: pointer; font-size: 1rem; font-weight: 500;
+    font-family: 'DM Sans', sans-serif; transition: all 0.25s;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .segment-btn:hover { border-color: rgba(255,77,141,0.4); color: var(--white); }
+  .segment-btn.active {
+    background: linear-gradient(135deg, rgba(255,77,141,0.15), var(--dark2));
+    border-color: var(--pink); color: var(--white);
+    box-shadow: 0 4px 20px rgba(255,77,141,0.2);
+  }
+  .segment-panel { padding: 4rem; background: var(--dark); }
+  .seg-feature {
+    display: flex; align-items: center; gap: 0.7rem;
+    font-size: 0.9rem; color: var(--white);
+  }
+  .seg-feature span { color: var(--pink); font-weight: 700; font-size: 1rem; }
+  .seg-highlight-card {
+    background: var(--dark2);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 20px; padding: 2rem;
+  }
+  .seg-hl-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+  .seg-hl-title { font-size: 0.72rem; color: var(--pink); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; margin-bottom: 1rem; }
+  .seg-hl-item {
+    padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.9rem; color: var(--gray-light, #aaa);
+  }
+  .seg-hl-item:last-child { border-bottom: none; }
+  @media (max-width: 768px) {
+    .segment-panel { padding: 3rem 1.5rem; }
+    .segment-btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
+  }
+  /* NOVÝ CENÍK */
+  .counter-box { background: linear-gradient(135deg, rgba(255,77,141,0.12), rgba(255,77,141,0.05)); border: 1px solid rgba(255,77,141,0.3); border-radius: 20px; padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+  .counter-label { font-size: 0.85rem; font-weight: 600; color: var(--white); margin-bottom: 0.6rem; }
+  .counter-bar-wrap { height: 8px; background: rgba(255,255,255,0.1); border-radius: 50px; margin-bottom: 0.5rem; overflow: hidden; }
+  .counter-bar { height: 100%; background: linear-gradient(90deg, var(--pink), var(--pink-light)); border-radius: 50px; transition: width 0.5s ease; }
+  .counter-text { font-size: 0.8rem; color: var(--gray); }
+  .counter-text strong { color: var(--pink); }
+  .counter-left { flex: 1; min-width: 200px; }
+  .counter-badge { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--pink); white-space: nowrap; }
+  .step-section { display: flex; gap: 1.2rem; margin-bottom: 2rem; align-items: flex-start; }
+  .step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--pink); color: white; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+  .step-content { flex: 1; }
+  .step-title { font-size: 0.85rem; font-weight: 600; color: var(--gray); margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; }
+  .price-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .price-tab { padding: 0.55rem 1.2rem; border-radius: 50px; border: 1px solid rgba(255,255,255,0.12); background: transparent; color: var(--gray); cursor: pointer; font-size: 0.85rem; font-family: 'DM Sans', sans-serif; transition: all 0.2s; }
+  .price-tab:hover { border-color: rgba(255,77,141,0.4); color: var(--white); }
+  .price-tab.active { background: var(--pink); color: white; border-color: var(--pink); }
+  .billing-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+  .billing-card { background: var(--dark2); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 1.2rem; cursor: pointer; transition: all 0.2s; }
+  .billing-card:hover { border-color: rgba(255,77,141,0.3); }
+  .billing-card.active { border-color: var(--pink); background: rgba(255,77,141,0.08); }
+  .billing-card .bc-type { font-size: 0.72rem; color: var(--pink); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 0.4rem; }
+  .billing-card .bc-price { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: var(--white); }
+  .billing-card .bc-unit { font-size: 0.75rem; color: var(--gray); }
+  .billing-card .bc-annual { font-size: 0.72rem; color: var(--gray); margin-top: 0.3rem; }
+  .billing-card .bc-save { font-size: 0.72rem; color: #4ade80; margin-top: 0.2rem; }
+  .mix-box { background: var(--dark2); border: 1px solid rgba(255,255,255,0.07); border-radius: 20px; padding: 1.5rem; margin-bottom: 2rem; }
+  .mix-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem; }
+  .mix-items { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+  .mix-item { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 0.8rem 1.2rem; cursor: pointer; text-align: center; transition: all 0.2s; min-width: 90px; }
+  .mix-item:hover { border-color: rgba(255,77,141,0.4); }
+  .mix-item.active { border-color: var(--pink); background: rgba(255,77,141,0.1); }
+  .mix-item .mix-num { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--pink); }
+  .mix-item .mix-label { font-size: 0.7rem; color: var(--gray); }
+  .mix-item .mix-disc { font-size: 0.75rem; color: #4ade80; font-weight: 600; margin-top: 0.2rem; }
+  .mix-clear { color: var(--gray); font-size: 0.8rem; display: flex; align-items: center; justify-content: center; }
+  .result-box { background: linear-gradient(135deg, rgba(255,77,141,0.08), var(--dark2)); border: 1px solid rgba(255,77,141,0.25); border-radius: 20px; padding: 2rem; display: flex; gap: 2rem; flex-wrap: wrap; align-items: flex-start; }
+  .result-left { flex: 2; min-width: 200px; }
+  .result-right { flex: 1; min-width: 160px; text-align: right; }
+  .result-plan { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; }
+  .result-features { list-style: none; }
+  .result-features li { font-size: 0.85rem; color: var(--gray); padding: 0.3rem 0; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .result-features li::before { content: '✓'; color: var(--pink); font-weight: 700; }
+  .result-orig { font-size: 0.85rem; color: var(--gray); text-decoration: line-through; }
+  .result-price { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--pink); }
+  .result-sub { font-size: 0.78rem; color: var(--gray); margin-top: 0.3rem; }
+
+  @media(max-width:768px){ .voucher-grid { grid-template-columns:1fr !important; } }
+  .kc-section { margin-bottom: 1.8rem; }
+  .kc-title { font-size: 0.72rem; color: var(--pink); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .kc-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.7rem; flex-wrap: wrap; }
+  .kc-row label { font-size: 0.82rem; color: var(--gray); min-width: 220px; flex-shrink: 0; }
+  .kc-row input[type=range] { flex: 1; min-width: 120px; accent-color: var(--pink); }
+  .kc-val { font-size: 0.82rem; font-weight: 600; color: var(--white); min-width: 90px; text-align: right; }
+  .kc-city-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+  .kc-city-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 1.2rem; }
+  .kc-city-name { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.8rem; }
+  .kc-svc { padding: 0.45rem 1rem; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); background: transparent; color: var(--gray); cursor: pointer; font-size: 0.8rem; font-family: 'DM Sans', sans-serif; transition: all 0.2s; }
+  .kc-svc.active { background: var(--pink); color: white; border-color: var(--pink); }
+  .kc-ctab { padding: 0.5rem 1.2rem; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); background: transparent; color: var(--gray); cursor: pointer; font-size: 0.82rem; font-family: 'DM Sans', sans-serif; transition: all 0.2s; }
+  .kc-ctab.active { background: var(--pink); color: white; border-color: var(--pink); }
+  .kc-result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.8rem; margin-bottom: 1rem; }
+  .kc-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 1rem; }
+  .kc-card.pink { background: rgba(255,77,141,0.08); border-color: rgba(255,77,141,0.2); }
+  .kc-card .kc-clabel { font-size: 0.72rem; color: var(--gray); margin-bottom: 0.3rem; }
+  .kc-card .kc-cval { font-size: 1.1rem; font-weight: 700; color: var(--white); }
+  .kc-card.pink .kc-cval { color: var(--pink); }
+  .kc-card .kc-csub { font-size: 0.68rem; color: var(--gray); margin-top: 0.2rem; }
+  .kc-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-bottom: 1rem; }
+  .kc-table th { text-align: left; padding: 0.6rem 0.8rem; font-size: 0.72rem; color: var(--gray); border-bottom: 1px solid rgba(255,255,255,0.06); font-weight: 500; }
+  .kc-table td { padding: 0.6rem 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--white); }
+  .kc-table tr:last-child td { border-bottom: none; }
+  .kc-table .kpink { color: var(--pink); font-weight: 600; }
+  .kc-table .kgreen { color: #4ade80; font-size: 0.75rem; }
+  .kc-badge { display: inline-block; background: rgba(74,222,128,0.15); color: #4ade80; font-size: 0.68rem; font-weight: 600; padding: 0.15rem 0.5rem; border-radius: 50px; }
+  /* Bestfive logo top-left of splash */
+  .splash-logo {
+    position: absolute; top: 1.5rem; left: 50%; transform: translateX(-50%);
+    font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 900;
+    color: var(--pink); letter-spacing: -0.3px; white-space: nowrap;
+  }
+  .splash-logo span { color: rgba(255,255,255,0.4); font-weight: 300; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Bestfive<span> Clean</span></div>
+  <ul>
+    <li><a href="#sluzby">Služby</a></li>
+    <li><a href="#segment">Domácnosti & Firmy</a></li>
+    <li><a href="#predplatne">Předplatné</a></li>
+    <li><a href="#voucher">Voucher</a></li>
+    <li><a href="#objednavka">Objednávka</a></li>
+  </ul>
+  <button class="nav-btn" onclick="document.getElementById('objednavka').scrollIntoView({behavior:'smooth'})">Objednat</button>
+  <a href="tel:+420724232423" style="color:var(--pink);font-size:0.875rem;font-weight:600;text-decoration:none;margin-left:1rem">📞 +420 724 232 423</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Dceřiná společnost Bestfive s.r.o.</div>
+  <h1>Čistota, která<br><span class="pink">mluví za sebe</span></h1>
+  <p>Profesionální tepování, dezinfekce a čištění pro váš domov i vůz. Jednorázově nebo výhodně v předplatném.</p>
+  <div class="hero-btns">
+    <a href="#predplatne" class="btn-primary">Zobrazit předplatné</a>
+    <a href="#predplatne" class="btn-outline" onclick="setTimeout(()=>{document.querySelectorAll('#typeTabs .price-tab')[0].click();selectBilling('jed',document.querySelector('.billing-card:last-child'))},300)">Jednorázová objednávka</a>
+    <a href="tel:+420724232423" class="btn-outline" style="display:flex;align-items:center;gap:0.5rem">📞 Zavolejte nám</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num" id="happyCount">95+</div><div class="stat-label">Spokojených zákazníků</div></div>
+    <div class="stat"><div class="stat-num">5★</div><div class="stat-label">Průměrné hodnocení</div></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="sluzby">
+  <p class="section-label">Co nabízíme</p>
+  <h2 class="section-title">Naše služby</h2>
+  <p class="section-sub">Od tepování aut po dezinfekci ozonem — postaráme se o dokonalou čistotu.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🚗</div>
+      <h3>Tepování aut</h3>
+      <p>Hloubkové čištění sedaček, koberečků a kufru.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛋️</div>
+      <h3>Tepování pohovek</h3>
+      <p>Profesionální čištění čalouněného nábytku všech velikostí.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💧</div>
+      <h3>Tepování koberců</h3>
+      <p>Odstranění skvrn, prachu a alergenů z koberců a podlahových krytin.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛏️</div>
+      <h3>Tepování matrací</h3>
+      <p>Hygienické čištění matrací s likvidací roztočů a bakterií.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💨</div>
+      <h3>Dezinfekce ozonem</h3>
+      <p>Ekologická dezinfekce ozonem — eliminace bakterií, plísní i zápachu bez chemie.<br><strong style="color:var(--pink)">U předplatného tepování čištění ozonem zdarma.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO SEKCE -->
+<section style="background:var(--dark);padding:4rem">
+  <p class="section-label">Podívejte se sami</p>
+  <h2 class="section-title">Jak to u nás <span style="color:var(--pink)">funguje</span></h2>
+  <p class="section-sub">Nevěříte? Podívejte se na videa jak tepování a dezinfekce ozonem vypadá v praxi.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem">
+
+    <!-- Video 1 - Tepování -->
+    <div style="background:var(--dark2);border:1px solid rgba(255,255,255,0.06);border-radius:20px;overflow:hidden;transition:transform 0.2s" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+      <a href="https://www.youtube.com/watch?v=DOPLNIT_LINK" target="_blank" style="text-decoration:none;display:block">
+        <div style="background:linear-gradient(135deg,#1a0010,#2d0020);height:180px;display:flex;align-items:center;justify-content:center;position:relative">
+          <div style="width:64px;height:64px;border-radius:50%;background:var(--pink);display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(255,77,141,0.5)">
+            <span style="font-size:1.5rem;margin-left:4px">▶</span>
+          </div>
+          <div style="position:absolute;top:1rem;left:1rem;background:rgba(255,77,141,0.2);border:1px solid rgba(255,77,141,0.3);color:var(--pink);font-size:0.7rem;font-weight:600;padding:0.2rem 0.7rem;border-radius:50px">🚗 TEPOVÁNÍ</div>
+        </div>
+        <div style="padding:1.2rem">
+          <div style="font-size:1rem;font-weight:600;color:var(--white);margin-bottom:0.4rem">Chcete vidět jak tepování probíhá?</div>
+          <div style="font-size:0.82rem;color:var(--gray);line-height:1.6">Podívejte se jak vypadá hloubkové čištění sedaček, koberečků a kufru přímo u zákazníka.</div>
+          <div style="margin-top:0.8rem;color:var(--pink);font-size:0.82rem;font-weight:600">Přehrát video →</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Video 2 - Ozon -->
+    <div style="background:var(--dark2);border:1px solid rgba(255,255,255,0.06);border-radius:20px;overflow:hidden;transition:transform 0.2s" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+      <a href="https://www.youtube.com/watch?v=DOPLNIT_LINK" target="_blank" style="text-decoration:none;display:block">
+        <div style="background:linear-gradient(135deg,#001a0d,#002d1a);height:180px;display:flex;align-items:center;justify-content:center;position:relative">
+          <div style="width:64px;height:64px;border-radius:50%;background:var(--pink);display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(255,77,141,0.5)">
+            <span style="font-size:1.5rem;margin-left:4px">▶</span>
+          </div>
+          <div style="position:absolute;top:1rem;left:1rem;background:rgba(255,77,141,0.2);border:1px solid rgba(255,77,141,0.3);color:var(--pink);font-size:0.7rem;font-weight:600;padding:0.2rem 0.7rem;border-radius:50px">💨 OZON</div>
+        </div>
+        <div style="padding:1.2rem">
+          <div style="font-size:1rem;font-weight:600;color:var(--white);margin-bottom:0.4rem">Co je dezinfekce ozonem a jak funguje?</div>
+          <div style="font-size:0.82rem;color:var(--gray);line-height:1.6">Vysvětlím vám co ozon dělá, proč je bezpečný a jak probíhá dezinfekce bez chemie.</div>
+          <div style="margin-top:0.8rem;color:var(--pink);font-size:0.82rem;font-weight:600">Přehrát video →</div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</section>
+<section id="segment" style="background:var(--dark);padding-bottom:0">
+  <p class="section-label">Pro koho jsme tu</p>
+  <h2 class="section-title">Vyberte si váš typ</h2>
+  <p class="section-sub">Nabízíme řešení jak pro domácnosti, tak pro firmy a podnikatele. Každý má jiné potřeby.</p>
+
+  <div style="display:flex;gap:1rem;flex-wrap:wrap">
+    <button class="segment-btn active" id="seg-dom" onclick="switchSegment('domacnost',this)">🏠 Pro domácnosti</button>
+    <button class="segment-btn" id="seg-fir" onclick="switchSegment('firmy',this)">🏢 Pro firmy</button>
+  </div>
+</section>
+
+<!-- DOMÁCNOSTI -->
+<section id="panel-domacnost" class="segment-panel">
+  <div style="display:flex;align-items:flex-start;gap:3rem;flex-wrap:wrap;margin-bottom:3rem">
+    <div style="flex:1;min-width:280px">
+      <p class="section-label">Domácnosti</p>
+      <h2 class="section-title">Čisto doma,<br><span style="color:var(--pink)">bez starostí</span></h2>
+      <p style="color:var(--gray);line-height:1.7;margin-bottom:1.5rem">Postaráme se o vaše pohovky, koberce, matrace i auto. Pravidelně, spolehlivě a za výhodnou cenu s předplatným. Platíte až po první návštěvě.</p>
+      <div style="display:flex;flex-direction:column;gap:0.7rem">
+        <div class="seg-feature"><span>✓</span> Tepování pohovek, koberců a matrací</div>
+        <div class="seg-feature"><span>✓</span> Dezinfekce ozonem — bez chemie</div>
+        <div class="seg-feature"><span>✓</span> Předplatné — přijdeme automaticky každých 6 měsíců</div>
+        <div class="seg-feature"><span>✓</span> Platba hotově i kartou</div>
+        <div class="seg-feature"><span>✓</span> Platíte až po první návštěvě</div>
+        <div class="seg-feature"><span>✓</span> Objednání online bez telefonátů</div>
+      </div>
+    </div>
+    <div style="flex:1;min-width:280px">
+      <div class="seg-highlight-card">
+        <div class="seg-hl-icon">🏠</div>
+        <div class="seg-hl-title">Ideální pro</div>
+        <div class="seg-hl-items">
+          <div class="seg-hl-item">👨‍👩‍👧 Rodiny s dětmi</div>
+          <div class="seg-hl-item">🐾 Majitelé domácích zvířat</div>
+          <div class="seg-hl-item">🌿 Alergici a citliví jedinci</div>
+          <div class="seg-hl-item">🏡 Majitelé bytů a domů</div>
+          <div class="seg-hl-item">🚗 Majitelé aut</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIRMY -->
+<section id="panel-firmy" class="segment-panel" style="display:none">
+  <div style="display:flex;align-items:flex-start;gap:3rem;flex-wrap:wrap;margin-bottom:3rem">
+    <div style="flex:1;min-width:280px">
+      <p class="section-label">Firmy & podnikatelé</p>
+      <h2 class="section-title">Profesionální čistota<br><span style="color:var(--pink)">pro vaši firmu</span></h2>
+      <p style="color:var(--gray);line-height:1.7;margin-bottom:1.5rem">Nabízíme pravidelnou péči o firemní prostory, vozový park i kancelářské vybavení. Uzavřeme smlouvu na míru.</p>
+      <div style="display:flex;flex-direction:column;gap:0.7rem">
+        <div class="seg-feature"><span>✓</span> Čištění firemních vozidel</div>
+        <div class="seg-feature"><span>✓</span> Dezinfekce kanceláří, čekáren a provozoven</div>
+        <div class="seg-feature"><span>✓</span> Tepování sedacího nábytku v prostorách firmy</div>
+        <div class="seg-feature"><span>✓</span> Dezinfekce ozonem — hotely, penziony, Airbnb</div>
+        <div class="seg-feature"><span>✓</span> Individuální ceník pro větší objemy</div>
+        <div class="seg-feature"><span>✓</span> Pravidelný harmonogram dle vašich potřeb</div>
+      </div>
+    </div>
+    <div style="flex:1;min-width:280px">
+      <div class="seg-highlight-card" style="border-color:rgba(255,77,141,0.3)">
+        <div class="seg-hl-icon">🏢</div>
+        <div class="seg-hl-title">Ideální pro</div>
+        <div class="seg-hl-items">
+          <div class="seg-hl-item">🚐 Firmy s vozovým parkem</div>
+          <div class="seg-hl-item">🏨 Hotely a penziony</div>
+          <div class="seg-hl-item">🏥 Lékaři a ordinace</div>
+          <div class="seg-hl-item">🛍️ Obchody a provozovny</div>
+          <div class="seg-hl-item">🏗️ Stavební firmy</div>
+          <div class="seg-hl-item">💼 Kanceláře a coworkingy</div>
+        </div>
+        <div style="margin-top:1.2rem;padding-top:1rem;border-top:1px solid rgba(255,77,141,0.15)">
+          <div style="font-size:0.78rem;color:var(--gray);margin-bottom:0.8rem">Máte zájem o firemní spolupráci?</div>
+          <button class="plan-btn plan-btn-primary" style="width:100%" onclick="document.getElementById('objednavka').scrollIntoView({behavior:'smooth'})">Nezávazná poptávka →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firemní výhody -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:2rem">
+    <div class="service-card">
+      <div class="service-icon">📅</div>
+      <h3>Pravidelný harmonogram</h3>
+      <p>Přijdeme v dohodnuté dny tak, aby to co nejméně narušilo váš provoz.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📞</div>
+      <h3>Dedikovaný kontakt</h3>
+      <p>Firemní zákazníci mají přímý kontakt — bez čekání.</p>
+    </div>
+  </div>
+
+  <!-- Firemní předplatné -->
+  <div style="background:rgba(255,77,141,0.06);border:1px solid rgba(255,77,141,0.2);border-radius:20px;padding:1.5rem 2rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+    <span style="font-size:1.5rem">💡</span>
+    <div>
+      <div style="font-size:0.95rem;font-weight:600;color:var(--white);margin-bottom:0.3rem">Máte více než 5 předplatných?</div>
+      <div style="font-size:0.85rem;color:var(--gray)">Připravíme vám <strong style="color:var(--pink)">individuální nabídku na míru</strong>. Zavolejte nám a vše domluvíme.</div>
+    </div>
+    <a href="tel:+420724232423" class="btn-primary" style="margin-left:auto;white-space:nowrap;font-size:0.85rem;padding:0.7rem 1.5rem">📞 Zavolat</a>
+  </div>
+
+  <!-- Odkaz na předplatné -->
+  <div style="text-align:center;margin-bottom:1rem">
+    <a href="#predplatne" class="btn-primary" onclick="switchSegment('domacnost', document.getElementById('seg-dom'))">Zobrazit předplatné →</a>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="predplatne" class="city-section">
+  <p class="section-label">Výhodné předplatné</p>
+  <h2 class="section-title">Vyberte předplatné</h2>
+  <p class="section-sub">Vyberte město, typ čištění, velikost a způsob platby. Ceny přímo z ceníku.</p>
+
+  <!-- Počítadlo prvních 100 -->
+  <div class="counter-box">
+    <div class="counter-left">
+      <div class="counter-label">🔥 Akce pro prvních 100 zákazníků</div>
+      <div class="counter-bar-wrap">
+        <div class="counter-bar" id="counterBar" style="width:48%"></div>
+      </div>
+      <div class="counter-text">Již <strong id="counterNum">48</strong> z 100 lidí využilo slevu 25 % — zbývá jen <strong id="counterLeft">52</strong> míst!</div>
+    </div>
+    <div class="counter-badge">-25%</div>
+  </div>
+
+  <!-- KROK 1: Město -->
+  <div class="step-section">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <div class="step-title">Vyberte město</div>
+      <div class="price-tabs" id="cityTabs">
+        <button class="price-tab active" onclick="selectCity('praha',this)">Praha a okolí <span style="font-size:0.72rem;opacity:0.7">do 30 km</span></button>
+        <button class="price-tab" onclick="selectCity('brno',this)">Brno a okolí <span style="font-size:0.72rem;opacity:0.7">do 20 km</span></button>
+        <button class="price-tab" onclick="selectCity('jihlava',this)">Jihlava a okolí <span style="font-size:0.72rem;opacity:0.7">do 15 km</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- KROK 2: Typ -->
+  <div class="step-section">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <div class="step-title">Vyberte typ čištění</div>
+      <div class="price-tabs" id="typeTabs">
+        <button class="price-tab active" onclick="selectType('auto',this)">🚗 Auto</button>
+        <button class="price-tab" onclick="selectType('pohovka',this)">🛋️ Pohovka</button>
+        <button class="price-tab" onclick="selectType('koberec',this)">💧 Koberec</button>
+        <button class="price-tab" onclick="selectType('matrace',this)">🛏️ Matrace</button>
+        <button class="price-tab" onclick="selectType('ozon',this)">💨 Ozon</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- KROK 3: Varianta (dynamicky) -->
+  <div class="step-section" id="variantStep">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <div class="step-title" id="variantTitle">Vyberte velikost / počet</div>
+      <div class="price-tabs" id="variantTabs"></div>
+      <div id="sofaIllustrations" style="display:none;gap:1rem;margin-top:1rem;flex-wrap:wrap"></div>
+    </div>
+  </div>
+
+  <!-- KROK 4: Platba -->
+  <div class="step-section">
+    <div class="step-num">4</div>
+    <div class="step-content">
+      <div class="step-title">Vyberte způsob platby</div>
+      <div class="billing-cards" id="billingCards"></div>
+    </div>
+  </div>
+
+  <!-- Mix sleva -->
+  <div class="mix-box" id="mixBox">
+    <div class="mix-title">💡 Kupujete více předplatných? Ušetříte!</div>
+    <div class="mix-items">
+      <div class="mix-item" id="mix2" onclick="setMix(2)"><div class="mix-num">2</div><div class="mix-label">předplatná</div><div class="mix-disc">sleva 15 %</div></div>
+      <div class="mix-item" id="mix3" onclick="setMix(3)"><div class="mix-num">3</div><div class="mix-label">předplatná</div><div class="mix-disc">sleva 30 %</div></div>
+      <div class="mix-item" id="mix4" onclick="setMix(4)"><div class="mix-num">4+</div><div class="mix-label">předplatná</div><div class="mix-disc">sleva 45 %</div></div>
+      <div class="mix-item mix-clear" onclick="setMix(1)">✕ zrušit slevu</div>
+    </div>
+  </div>
+
+  <!-- Výsledná cena -->
+  <div class="result-box" id="resultBox">
+    <div class="result-left">
+      <div class="result-plan" id="resultPlan">—</div>
+      <div class="result-features" id="resultFeatures"></div>
+    </div>
+    <div class="result-right">
+      <div class="result-orig" id="resultOrig"></div>
+      <div class="result-price" id="resultPrice">—</div>
+      <div class="result-sub" id="resultSub"></div>
+      <div id="resultDisclaimer" style="display:none;margin-top:0.8rem;padding:0.8rem 1rem;background:rgba(255,200,0,0.08);border:1px solid rgba(255,200,0,0.25);border-radius:10px;font-size:0.78rem;color:#f5c842;line-height:1.6">
+        ⚠️ <strong>Čištění u vás doma:</strong> Zákazník musí zajistit prostor vhodný k tepování — se střechou, přístupem k vodě a elektřině.
+      </div>
+      <button class="btn-primary" style="margin-top:1rem;width:100%" onclick="orderCurrent()">Objednat →</button>
+    </div>
+  </div>
+
+</section>
+
+<!-- BOOKING -->
+<section id="objednavka" class="booking-section">
+  <div class="booking-grid">
+    <div class="booking-info">
+      <p class="section-label">Objednat online</p>
+      <h2 class="section-title">Rezervujte termín</h2>
+      <p>Vyplňte formulář a my se vám ozveme do 24 hodin s potvrzením termínu. Bez zbytečného volání.</p>
+      <div class="contact-item"><span class="icon">📞</span><a href="tel:+420724232423">+420 724 232 423</a></div>
+      <div class="contact-item"><span class="icon">📧</span><a href="/cdn-cgi/l/email-protection#61080f070e210304121507081704020d04000f4f021b"><span class="__cf_email__" data-cfemail="e1888f878ea18384929587889784828d84808fcf829b">[email&#160;protected]</span></a></div>
+      <div class="contact-item"><span class="icon">📍</span><span>Praha a okolí (do 30 km) · Brno a okolí (do 20 km) · Jihlava a okolí (do 15 km)</span></div>
+    </div>
+    <div class="booking-form">
+      <h3>Nová objednávka</h3>
+      <div id="form-content">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Jméno *</label>
+            <input type="text" id="name" placeholder="Jan">
+          </div>
+          <div class="form-group">
+            <label>Příjmení *</label>
+            <input type="text" id="surname" placeholder="Novák">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Telefon *</label>
+            <input type="tel" id="phone" placeholder="+420 724 232 423">
+          </div>
+          <div class="form-group">
+            <label>E-mail *</label>
+            <input type="email" id="email" placeholder="vas@email.cz">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>IČO <span style="color:var(--gray);font-size:0.78rem;font-weight:400">(nepovinné)</span></label>
+            <input type="text" id="ico" placeholder="12345678" maxlength="8">
+          </div>
+          <div class="form-group">
+            <label style="display:flex;align-items:center;gap:0.5rem">
+              SPZ vozidla <span style="color:var(--gray);font-size:0.78rem;font-weight:400">(nepovinné)</span>
+              <span style="position:relative;display:inline-block" id="spzTooltipWrap">
+                <span onclick="toggleTooltip()" style="width:18px;height:18px;border-radius:50%;background:rgba(255,77,141,0.2);border:1px solid rgba(255,77,141,0.4);color:var(--pink);font-size:0.7rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0">?</span>
+                <div id="spzTooltip" style="display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--dark2);border:1px solid rgba(255,77,141,0.3);border-radius:12px;padding:0.8rem 1rem;width:240px;font-size:0.78rem;color:var(--gray-light,#aaa);line-height:1.6;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,0.4)">
+                  <strong style="color:var(--white);display:block;margin-bottom:0.3rem">Proč SPZ?</strong>
+                  SPZ nám pomáhá identifikovat vaše vozidlo při opakovaných návštěvách a evidovat historii čištění. Usnadňuje fakturaci a zajišťuje, že vždy víme, o které auto se staráme.
+                </div>
+              </span>
+            </label>
+            <input type="text" id="spz" placeholder="1AB2345" maxlength="10" style="text-transform:uppercase" oninput="this.value=this.value.toUpperCase()">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Město *</label>
+            <select id="city">
+              <option value="">Vyberte město</option>
+              <option>Praha a okolí (do 30 km)</option>
+              <option>Brno a okolí (do 20 km)</option>
+              <option>Jihlava a okolí (do 15 km)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Kolikáté patro</label>
+            <select id="floor">
+              <option value="">Vyberte patro</option>
+              <option>Přízemí</option>
+              <option>1. patro</option>
+              <option>2. patro</option>
+              <option>3. patro</option>
+              <option>4. patro a výše</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Výtah</label>
+            <select id="lift">
+              <option value="">Vyberte</option>
+              <option>Ano, je výtah</option>
+              <option>Ne, pouze schody</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Parkování u objektu</label>
+            <select id="parking">
+              <option value="">Vyberte možnost</option>
+              <option>Volné parkování před domem</option>
+              <option>Placené / modrá zóna</option>
+              <option>Pouze na dvoře (nutno zavolat)</option>
+              <option>Garážové stání</option>
+              <option>Není parkování</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Preferované dny</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;margin-top:0.3rem">
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="day" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Pondělí</label>
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="day" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Úterý</label>
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="day" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Středa</label>
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="day" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Čtvrtek</label>
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="day" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Pátek</label>
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="day" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Sobota</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Preferovaný čas</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;margin-top:0.3rem">
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="time" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Ráno (8–10 h)</label>
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="time" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Dopoledne (10–12 h)</label>
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="time" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Odpoledne (12–15 h)</label>
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="time" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Je mi to jedno <span style="color:var(--pink);font-size:0.72rem;margin-left:0.3rem">→ sleva 200 Kč</span></label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Co chcete vyčistit *</label>
+          <textarea id="service" placeholder="Napište co chcete vyčistit — koberec (přibližně m²), pohovku (malá / střední / velká), auto (počet sedaček), matrace apod." style="min-height:90px"></textarea>
+        </div>
+        <button class="form-submit" onclick="submitForm()">Odeslat objednávku →</button>
+      </div>
+      <div class="success-msg" id="success">
+        <div class="check">✅</div>
+        <h4>Objednávka odeslána!</h4>
+        <p>Ozveme se vám do 24 hodin s potvrzením termínu.</p>
+        <div style="margin-top:1.5rem;padding:1.2rem;background:rgba(255,77,141,0.08);border:1px solid rgba(255,77,141,0.2);border-radius:14px;text-align:left">
+          <div style="font-size:0.85rem;font-weight:600;color:var(--white);margin-bottom:0.5rem">📅 Výběr termínu</div>
+          <div style="font-size:0.82rem;color:var(--gray);line-height:1.7">Po potvrzení vám zašleme odkaz na kalendář, kde si vyberete přesný den a čas. Měsíc před každým dalším čištěním vám přijde připomínka s novým odkazem na výběr termínu.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KALKULAČKA - pouze interní, skryto před zákazníky -->
+<section id="kalkulacka" style="background:var(--dark);display:none">
+  <p class="section-label">Spočítejte si sami</p>
+  <h2 class="section-title">Kalkulačka předplatného</h2>
+  <p class="section-sub">Zadejte své náklady a kalkulačka spočítá optimální ceny pro každé město zvlášť — včetně amortizace stroje, auta a dopravy.</p>
+
+  <div style="background:var(--dark2);border:1px solid rgba(255,255,255,0.06);border-radius:24px;padding:2.5rem;max-width:900px">
+
+    <!-- VZDÁLENOSTI -->
+    <div class="kc-section">
+      <div class="kc-title">Vzdálenosti měst (jedna cesta — počítá se tam i zpět)</div>
+      <div class="kc-city-grid">
+        <div class="kc-city-card">
+          <div class="kc-city-name">🌿 Jihlava</div>
+          <div class="kc-row"><label>km (1 cesta)</label><input type="range" min="5" max="80" step="1" value="30" id="k_km_jih" oninput="kcalc()"><span class="kc-val" id="kv_km_jih">30 km</span></div>
+          <div style="font-size:12px;color:var(--gray);margin-top:4px">Tam + zpět: <strong id="kv_jih_total" style="color:var(--white)">60 km</strong></div>
+        </div>
+        <div class="kc-city-card">
+          <div class="kc-city-name">🏛️ Brno</div>
+          <div class="kc-row"><label>km (1 cesta)</label><input type="range" min="30" max="200" step="5" value="100" id="k_km_brno" oninput="kcalc()"><span class="kc-val" id="kv_km_brno">100 km</span></div>
+          <div style="font-size:12px;color:var(--gray);margin-top:4px">Tam + zpět: <strong id="kv_brno_total" style="color:var(--white)">200 km</strong></div>
+        </div>
+        <div class="kc-city-card">
+          <div class="kc-city-name">🏙️ Praha</div>
+          <div class="kc-row"><label>km (1 cesta)</label><input type="range" min="50" max="300" step="5" value="150" id="k_km_pra" oninput="kcalc()"><span class="kc-val" id="kv_km_pra">150 km</span></div>
+          <div style="font-size:12px;color:var(--gray);margin-top:4px">Tam + zpět: <strong id="kv_pra_total" style="color:var(--white)">300 km</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STROJE -->
+    <div class="kc-section">
+      <div class="kc-title">Stroje a amortizace</div>
+      <div class="kc-row"><label>Cena Santo Emma Sabrina</label><input type="range" min="50000" max="200000" step="1000" value="80000" id="k_machine" oninput="kcalc()"><span class="kc-val" id="kv_machine">80 000 Kč</span></div>
+      <div class="kc-row"><label>Životnost stroje (roky)</label><input type="range" min="3" max="10" step="1" value="5" id="k_mlife" oninput="kcalc()"><span class="kc-val" id="kv_mlife">5 let</span></div>
+      <div class="kc-row"><label>Servis stroje / rok</label><input type="range" min="0" max="15000" step="500" value="3000" id="k_service" oninput="kcalc()"><span class="kc-val" id="kv_service">3 000 Kč</span></div>
+      <div class="kc-row"><label>Nové auto (plánovaná cena)</label><input type="range" min="100000" max="600000" step="5000" value="250000" id="k_car" oninput="kcalc()"><span class="kc-val" id="kv_car">250 000 Kč</span></div>
+      <div class="kc-row"><label>Životnost auta (roky)</label><input type="range" min="3" max="10" step="1" value="6" id="k_clife" oninput="kcalc()"><span class="kc-val" id="kv_clife">6 let</span></div>
+      <div class="kc-row"><label>Stávající auto — zůstatková hodnota</label><input type="range" min="0" max="100000" step="1000" value="20000" id="k_oldcar" oninput="kcalc()"><span class="kc-val" id="kv_oldcar">20 000 Kč</span></div>
+    </div>
+
+    <!-- PROVOZ -->
+    <div class="kc-section">
+      <div class="kc-title">Provozní náklady</div>
+      <div class="kc-row"><label>Cena paliva / km</label><input type="range" min="2" max="8" step="0.1" value="3.5" id="k_fuel" oninput="kcalc()"><span class="kc-val" id="kv_fuel">3,5 Kč</span></div>
+      <div class="kc-row"><label>Prostředky na jedno čištění</label><input type="range" min="50" max="500" step="10" value="150" id="k_chem" oninput="kcalc()"><span class="kc-val" id="kv_chem">150 Kč</span></div>
+      <div class="kc-row"><label>Mzdové náklady / hodina</label><input type="range" min="150" max="500" step="10" value="250" id="k_wage" oninput="kcalc()"><span class="kc-val" id="kv_wage">250 Kč</span></div>
+      <div class="kc-row"><label>Čas jednoho čištění (hod)</label><input type="range" min="0.5" max="4" step="0.5" value="2" id="k_time" oninput="kcalc()"><span class="kc-val" id="kv_time">2 hod</span></div>
+      <div class="kc-row"><label>Režie / měsíc</label><input type="range" min="0" max="15000" step="500" value="2000" id="k_overhead" oninput="kcalc()"><span class="kc-val" id="kv_overhead">2 000 Kč</span></div>
+    </div>
+
+    <!-- OBCHOD -->
+    <div class="kc-section">
+      <div class="kc-title">Obchodní nastavení</div>
+      <div class="kc-row"><label>Zákazníci celkem</label><input type="range" min="5" max="300" step="5" value="50" id="k_cust" oninput="kcalc()"><span class="kc-val" id="kv_cust">50</span></div>
+      <div class="kc-row"><label>Zisková marže (%)</label><input type="range" min="10" max="60" step="1" value="30" id="k_margin" oninput="kcalc()"><span class="kc-val" id="kv_margin">30 %</span></div>
+      <div class="kc-row"><label>Sleva pro prvních 100 zákazníků (%)</label><input type="range" min="0" max="30" step="1" value="15" id="k_disc" oninput="kcalc()"><span class="kc-val" id="kv_disc">15 %</span></div>
+      <div style="margin-top:0.5rem">
+        <div style="font-size:0.8rem;color:var(--gray);margin-bottom:0.6rem">Typ služby</div>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap" id="k_svcType">
+          <button class="kc-svc active" onclick="kSetSvc('pohovka',this)">Pohovka</button>
+          <button class="kc-svc" onclick="kSetSvc('auto',this)">Auto</button>
+          <button class="kc-svc" onclick="kSetSvc('koberec',this)">Koberec</button>
+          <button class="kc-svc" onclick="kSetSvc('matrace',this)">Matrace</button>
+          <button class="kc-svc" onclick="kSetSvc('ozon',this)">Ozon</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- VÝSLEDKY -->
+    <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:2rem;margin-top:0.5rem">
+      <div class="kc-title">Doporučené ceny předplatného dle města</div>
+
+      <!-- City tabs -->
+      <div style="display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap">
+        <button class="kc-ctab active" onclick="kShowCity('jih',this)">🌿 Jihlava</button>
+        <button class="kc-ctab" onclick="kShowCity('brno',this)">🏛️ Brno</button>
+        <button class="kc-ctab" onclick="kShowCity('pra',this)">🏙️ Praha</button>
+      </div>
+
+      <div id="kcc_jih"></div>
+      <div id="kcc_brno" style="display:none"></div>
+      <div id="kcc_pra" style="display:none"></div>
+
+      <div id="k_discNote" style="margin-top:1rem;padding:1rem;background:rgba(255,77,141,0.06);border:1px solid rgba(255,77,141,0.15);border-radius:12px;font-size:0.82rem;color:var(--gray);line-height:1.7"></div>
+      <div id="k_amortNote" style="margin-top:0.8rem;padding:1rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;font-size:0.82rem;color:var(--gray);line-height:1.7"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VOUCHER SEKCE -->
+<section id="voucher" style="background:var(--dark)">
+  <p class="section-label">Dárkový poukaz</p>
+  <h2 class="section-title">Voucher <span style="color:var(--pink)">jako dárek</span></h2>
+  <p class="section-sub">Darujte čistotu někomu blízkému. Vyberte předplatné, přidejte věnování a stáhněte krásný PDF voucher.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;max-width:900px" class="voucher-grid">
+
+    <!-- FORMULÁŘ -->
+    <div style="background:var(--dark2);border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:2rem">
+      <div class="kc-section">
+        <div class="kc-title">Vyberte předplatné</div>
+        <select id="voucherType" onchange="updateVoucher()" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:0.85rem 1rem;color:var(--white);font-size:0.9rem;font-family:'DM Sans',sans-serif;appearance:none;outline:none;margin-bottom:0.8rem">
+          <option value="auto_rok">🚗 Tepování auta — Roční (5 sedaček)</option>
+          <option value="auto_pol">🚗 Tepování auta — Pololetní (5 sedaček)</option>
+          <option value="pohovka_mala_rok">🛋️ Tepování pohovky malá — Roční</option>
+          <option value="pohovka_mala_pol">🛋️ Tepování pohovky malá — Pololetní</option>
+          <option value="pohovka_stredni_rok">🛋️ Tepování pohovky střední — Roční</option>
+          <option value="pohovka_velka_rok">🛋️ Tepování pohovky velká — Roční</option>
+          <option value="koberec_rok">💧 Tepování koberce do 20m² — Roční</option>
+          <option value="matrace_m2_rok">🛏️ Tepování matrace do 2 ks — Roční</option>
+          <option value="ozon_auto">💨 Dezinfekce ozonem — Auto</option>
+          <option value="ozon_m50">💨 Dezinfekce ozonem — Do 50 m²</option>
+          <option value="ozon_m100">💨 Dezinfekce ozonem — Do 100 m²</option>
+        </select>
+        <select id="voucherCity" onchange="updateVoucher()" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:0.85rem 1rem;color:var(--white);font-size:0.9rem;font-family:'DM Sans',sans-serif;appearance:none;outline:none">
+          <option value="praha">Praha a okolí</option>
+          <option value="brno">Brno a okolí</option>
+          <option value="jihlava">Jihlava a okolí</option>
+        </select>
+      </div>
+      <div class="kc-section">
+        <div class="kc-title">Věnování</div>
+        <div class="fg" style="margin-bottom:0.8rem">
+          <label style="font-size:0.78rem;color:var(--gray);display:block;margin-bottom:0.4rem">Pro koho</label>
+          <input type="text" id="voucherTo" placeholder="Mamince, Honzovi..." oninput="updateVoucher()" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:0.75rem 1rem;color:var(--white);font-size:0.9rem;font-family:'DM Sans',sans-serif;outline:none">
+        </div>
+        <div class="fg" style="margin-bottom:0.8rem">
+          <label style="font-size:0.78rem;color:var(--gray);display:block;margin-bottom:0.4rem">Od koho</label>
+          <input type="text" id="voucherFrom" placeholder="Jana, Rodina..." oninput="updateVoucher()" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:0.75rem 1rem;color:var(--white);font-size:0.9rem;font-family:'DM Sans',sans-serif;outline:none">
+        </div>
+        <div class="fg">
+          <label style="font-size:0.78rem;color:var(--gray);display:block;margin-bottom:0.4rem">Věnování</label>
+          <textarea id="voucherMsg" placeholder="Přeji ti krásný zážitek..." oninput="updateVoucher()" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:0.75rem 1rem;color:var(--white);font-size:0.9rem;font-family:'DM Sans',sans-serif;resize:none;min-height:70px;outline:none"></textarea>
+        </div>
+      </div>
+      <div style="background:rgba(255,77,141,0.06);border:1px solid rgba(255,77,141,0.15);border-radius:12px;padding:0.9rem 1rem;margin-bottom:1rem;font-size:0.82rem;color:var(--gray);line-height:1.6">
+        📅 Platnost voucheru: <strong style="color:var(--white)">1 rok od zakoupení</strong><br>
+        🔒 Každý voucher má unikátní QR kód — po použití se deaktivuje
+      </div>
+      <button class="btn-primary" style="width:100%" onclick="generateVoucher()">Stáhnout voucher PDF →</button>
+    </div>
+
+    <!-- NÁHLED VOUCHERU -->
+    <div>
+      <p style="font-size:0.75rem;color:var(--gray);margin-bottom:0.8rem;letter-spacing:0.1em;text-transform:uppercase">Náhled voucheru</p>
+      <canvas id="voucherCanvas" width="600" height="340" style="width:100%;border-radius:16px;border:1px solid rgba(255,77,141,0.2)"></canvas>
+      <p style="font-size:0.75rem;color:var(--gray);margin-top:0.6rem;text-align:center">QR kód bude vygenerován při stažení</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Bestfive Clean</div>
+  <div class="footer-note">Dceřiná společnost Bestfive s.r.o.</div>
+  <div style="display:flex;align-items:center;gap:0.8rem">
+    <a href="https://www.instagram.com/bestfiveclean" target="_blank" title="Instagram" style="width:38px;height:38px;border-radius:50%;background:rgba(255,77,141,0.1);border:1px solid rgba(255,77,141,0.3);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all 0.2s;font-size:1.1rem" onmouseover="this.style.background='rgba(255,77,141,0.25)'" onmouseout="this.style.background='rgba(255,77,141,0.1)'">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="6" stroke="#ff4d8d" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="#ff4d8d" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1" fill="#ff4d8d"/></svg>
+    </a>
+    <a href="https://www.facebook.com/bestfiveclean" target="_blank" title="Facebook" style="width:38px;height:38px;border-radius:50%;background:rgba(255,77,141,0.1);border:1px solid rgba(255,77,141,0.3);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all 0.2s;font-size:1.1rem" onmouseover="this.style.background='rgba(255,77,141,0.25)'" onmouseout="this.style.background='rgba(255,77,141,0.1)'">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="#ff4d8d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+  <a href="tel:+420724232423" style="color:var(--pink);font-size:0.9rem;font-weight:600;text-decoration:none">📞 +420 724 232 423</a>
+  <div class="footer-sub">© 2025 Bestfive Clean. Všechna práva vyhrazena.</div>
+</footer>
+
+<!-- FEEDBACK OVERLAY -->
+<div id="feedbackOverlay" style="display:none;position:fixed;inset:0;z-index:900;background:rgba(10,10,10,0.95);backdrop-filter:blur(16px);align-items:center;justify-content:center">
+  <div style="background:var(--dark2);border:1px solid rgba(255,77,141,0.25);border-radius:24px;padding:2.5rem;max-width:440px;width:90%;text-align:center;animation:splashFadeIn 0.4s ease">
+    <div style="font-size:2.5rem;margin-bottom:1rem">🌸</div>
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:0.5rem">Jak jsme dopadli?</h3>
+    <p style="color:var(--gray);font-size:0.9rem;line-height:1.6;margin-bottom:1.8rem">Vaše zpětná vazba nám pomáhá být lepší. Ohodnoťte prosím naši službu.</p>
+
+    <!-- Hvězdičky -->
+    <div style="display:flex;justify-content:center;gap:0.5rem;margin-bottom:1.5rem" id="starsRow">
+      <span class="fb-star" data-val="1" onclick="rateStar(1)" style="font-size:2.2rem;cursor:pointer;transition:transform 0.15s;opacity:0.3">★</span>
+      <span class="fb-star" data-val="2" onclick="rateStar(2)" style="font-size:2.2rem;cursor:pointer;transition:transform 0.15s;opacity:0.3">★</span>
+      <span class="fb-star" data-val="3" onclick="rateStar(3)" style="font-size:2.2rem;cursor:pointer;transition:transform 0.15s;opacity:0.3">★</span>
+      <span class="fb-star" data-val="4" onclick="rateStar(4)" style="font-size:2.2rem;cursor:pointer;transition:transform 0.15s;opacity:0.3">★</span>
+      <span class="fb-star" data-val="5" onclick="rateStar(5)" style="font-size:2.2rem;cursor:pointer;transition:transform 0.15s;opacity:0.3">★</span>
+    </div>
+    <div id="fbRatingText" style="font-size:0.82rem;color:var(--pink);min-height:1.2rem;margin-bottom:1rem"></div>
+
+    <!-- Komentář -->
+    <div id="fbCommentWrap" style="display:none;margin-bottom:1.2rem">
+      <textarea id="fbComment" placeholder="Chcete nám něco vzkázat? (nepovinné)" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:0.85rem 1rem;color:var(--white);font-size:0.88rem;font-family:'DM Sans',sans-serif;resize:none;min-height:80px;outline:none" onfocus="this.style.borderColor='var(--pink)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
+    </div>
+
+    <div style="display:flex;gap:0.8rem">
+      <button id="fbSubmitBtn" onclick="submitFeedback()" style="display:none;flex:1;padding:0.9rem;background:var(--pink);color:white;border:none;border-radius:50px;font-size:0.95rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s" onmouseover="this.style.background='var(--pink-light)'" onmouseout="this.style.background='var(--pink)'">Odeslat hodnocení →</button>
+      <button onclick="closeFeedback()" style="padding:0.9rem 1.2rem;background:transparent;color:var(--gray);border:1px solid rgba(255,255,255,0.1);border-radius:50px;font-size:0.9rem;cursor:pointer;font-family:'DM Sans',sans-serif">Přeskočit</button>
+    </div>
+
+    <!-- Success -->
+    <div id="fbSuccess" style="display:none;padding:1rem 0">
+      <div style="font-size:2.5rem;margin-bottom:0.8rem">🎉</div>
+      <div style="font-size:1rem;font-weight:600;color:var(--white);margin-bottom:0.4rem">Děkujeme za hodnocení!</div>
+      <div style="font-size:0.85rem;color:var(--gray)">Vaše zpětná vazba nám moc pomáhá.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SPLASH SCREEN -->
+<div id="splash">
+  <div class="splash-logo">Bestfive<span> Clean</span></div>
+  <div class="splash-inner">
+
+    <div class="splash-avatar" id="spFace">👩</div>
+
+    <div class="soundwave" id="spWave">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="splash-speech" id="spSpeech">
+      <div class="typing-dots" id="spDots"><span></span><span></span><span></span></div>
+      <span id="spText" style="display:none"></span>
+    </div>
+
+    <div class="splash-dots" id="spDotNav"></div>
+
+    <div class="splash-btns" id="spBtns">
+      <button class="sp-btn sp-btn-skip" onclick="splashSkip()">Přeskočit →</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3 id="modal-title">Objednat předplatné</h3>
+    <div class="plan-info">
+      <p id="modal-plan"></p>
+      <p id="modal-price" style="font-weight:600;color:var(--pink);margin-top:0.3rem;font-size:1rem;"></p>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Jméno *</label>
+        <input type="text" id="m-name" placeholder="Jan Novák">
+      </div>
+      <div class="form-group">
+        <label>Telefon *</label>
+        <input type="tel" id="m-phone" placeholder="+420...">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>E-mail *</label>
+      <input type="email" id="m-email" placeholder="vas@email.cz">
+    </div>
+    <div class="form-group">
+      <label>Poznámka</label>
+      <input type="text" id="m-note" placeholder="Adresa, preferovaný termín...">
+    </div>
+    <button class="form-submit" onclick="submitModal()">Potvrdit objednávku →</button>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Set min date for date input
+  // Set min date for date input - removed, date field no longer used
+
+  function switchCity(city, btn) {
+    document.querySelectorAll('.city-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('panel-' + city).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function openModal(plan, price, desc) {
+    document.getElementById('modal-title').textContent = plan;
+    document.getElementById('modal-plan').textContent = desc;
+    document.getElementById('modal-price').textContent = price;
+    document.getElementById('modal').classList.add('open');
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('open');
+  }
+
+  document.getElementById('modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  function submitModal() {
+    const name = document.getElementById('m-name').value;
+    const phone = document.getElementById('m-phone').value;
+    const email = document.getElementById('m-email').value;
+    if (!name || !phone || !email) { alert('Vyplňte prosím jméno, telefon a e-mail.'); return; }
+    closeModal();
+    alert('✅ Děkujeme! Vaše objednávka předplatného byla odeslána. Ozveme se do 24 hodin.');
+  }
+
+  // ===== ZPĚTNÁ VAZBA =====
+  let fbRating = 0;
+  let happyNum = 95;
+
+  function openFeedback() {
+    fbRating = 0;
+    document.getElementById('fbComment').value = '';
+    document.getElementById('fbCommentWrap').style.display = 'none';
+    document.getElementById('fbSubmitBtn').style.display = 'none';
+    document.getElementById('fbSuccess').style.display = 'none';
+    document.getElementById('fbRatingText').textContent = '';
+    document.querySelectorAll('.fb-star').forEach(s => { s.style.opacity = '0.3'; s.style.color = 'var(--gray)'; });
+    const el = document.getElementById('feedbackOverlay');
+    el.style.display = 'flex';
+  }
+
+  function closeFeedback() {
+    document.getElementById('feedbackOverlay').style.display = 'none';
+  }
+
+  function rateStar(val) {
+    fbRating = val;
+    const labels = ['', 'Mohlo být lepší 😕', 'Průměrné 😐', 'Dobré 🙂', 'Velmi dobré 😊', 'Skvělé! Děkujeme! 🌸'];
+    document.getElementById('fbRatingText').textContent = labels[val];
+    document.querySelectorAll('.fb-star').forEach(s => {
+      const v = parseInt(s.dataset.val);
+      s.style.opacity = v <= val ? '1' : '0.25';
+      s.style.color = v <= val ? '#ff4d8d' : 'var(--gray)';
+      s.style.transform = v === val ? 'scale(1.2)' : 'scale(1)';
+    });
+    document.getElementById('fbCommentWrap').style.display = 'block';
+    document.getElementById('fbSubmitBtn').style.display = 'block';
+  }
+
+  function submitFeedback() {
+    if (fbRating >= 4) {
+      happyNum++;
+      document.getElementById('happyCount').textContent = happyNum + '+';
+    }
+    document.getElementById('fbSubmitBtn').style.display = 'none';
+    document.getElementById('fbCommentWrap').style.display = 'none';
+    document.getElementById('fbRatingText').textContent = '';
+    document.getElementById('starsRow').style.display = 'none';
+    document.querySelector('#feedbackOverlay h3').style.display = 'none';
+    document.querySelector('#feedbackOverlay p').style.display = 'none';
+    document.getElementById('fbSuccess').style.display = 'block';
+    setTimeout(() => closeFeedback(), 2500);
+  }
+  // ===== END ZPĚTNÁ VAZBA =====
+
+  // ===== VOUCHER =====
+  const VOUCHER_PRICES = {
+    auto_rok:          { praha:8550, brno:7200, jihlava:4050, label:'Tepování auta (5 sedaček) — Roční předplatné' },
+    auto_pol:          { praha:4500, brno:3825, jihlava:2250, label:'Tepování auta (5 sedaček) — Pololetní předplatné' },
+    pohovka_mala_rok:  { praha:10450, brno:8800, jihlava:4950, label:'Tepování pohovky malá — Roční předplatné' },
+    pohovka_mala_pol:  { praha:5500, brno:4675, jihlava:2750, label:'Tepování pohovky malá — Pololetní předplatné' },
+    pohovka_stredni_rok:{ praha:12540, brno:10560, jihlava:5940, label:'Tepování pohovky střední — Roční předplatné' },
+    pohovka_velka_rok: { praha:15048, brno:12672, jihlava:7128, label:'Tepování pohovky velká — Roční předplatné' },
+    koberec_rok:       { praha:8075, brno:6800, jihlava:3825, label:'Tepování koberce do 20m² — Roční předplatné' },
+    matrace_m2_rok:    { praha:9500, brno:8000, jihlava:4500, label:'Tepování matrace do 2 ks — Roční předplatné' },
+    ozon_auto:         { praha:2500, brno:1000, jihlava:1000, label:'Dezinfekce ozonem — Auto / klimatizace' },
+    ozon_m50:          { praha:3300, brno:2000, jihlava:1800, label:'Dezinfekce ozonem — Do 50 m²' },
+    ozon_m100:         { praha:4300, brno:3000, jihlava:2800, label:'Dezinfekce ozonem — Do 100 m²' },
+  };
+
+  function genVoucherCode() {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let code = 'BFC-';
+    for (let i = 0; i < 12; i++) {
+      if (i > 0 && i % 4 === 0) code += '-';
+      code += chars[Math.floor(Math.random() * chars.length)];
+    }
+    return code;
+  }
+
+  let currentVoucherCode = genVoucherCode();
+
+  function updateVoucher() {
+    drawVoucherCanvas(currentVoucherCode);
+  }
+
+  function getVoucherData() {
+    const type = document.getElementById('voucherType').value;
+    const city = document.getElementById('voucherCity').value;
+    const to   = document.getElementById('voucherTo').value || '—';
+    const from = document.getElementById('voucherFrom').value || '—';
+    const msg  = document.getElementById('voucherMsg').value || '';
+    const priceData = VOUCHER_PRICES[type];
+    const price = priceData ? priceData[city] : 0;
+    const label = priceData ? priceData.label : '';
+    const cityLabel = { praha:'Praha a okolí', brno:'Brno a okolí', jihlava:'Jihlava a okolí' }[city];
+    const now = new Date();
+    const validTo = new Date(now); validTo.setFullYear(validTo.getFullYear() + 1);
+    const fmtDate = d => d.toLocaleDateString('cs-CZ');
+    return { type, city, cityLabel, to, from, msg, price, label, validTo: fmtDate(validTo), issued: fmtDate(now) };
+  }
+
+  function drawVoucherCanvas(code) {
+    const canvas = document.getElementById('voucherCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const W = 600, H = 340;
+    ctx.clearRect(0, 0, W, H);
+
+    // Background
+    ctx.fillStyle = '#0a0a0a';
+    ctx.fillRect(0, 0, W, H);
+
+    // Pink gradient left bar
+    const grad = ctx.createLinearGradient(0, 0, 0, H);
+    grad.addColorStop(0, '#ff4d8d');
+    grad.addColorStop(1, '#c4005c');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 6, H);
+
+    // Subtle pink glow top right
+    const glow = ctx.createRadialGradient(W, 0, 0, W, 0, 280);
+    glow.addColorStop(0, 'rgba(255,77,141,0.12)');
+    glow.addColorStop(1, 'rgba(255,77,141,0)');
+    ctx.fillStyle = glow;
+    ctx.fillRect(0, 0, W, H);
+
+    const d = getVoucherData();
+
+    // Logo
+    ctx.font = 'bold 22px Georgia, serif';
+    ctx.fillStyle = '#ff4d8d';
+    ctx.fillText('Bestfive', 30, 45);
+    ctx.font = '300 22px Georgia, serif';
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText(' Clean', 30 + ctx.measureText('Bestfive').width - 2, 45);
+
+    // VOUCHER label
+    ctx.font = 'bold 11px Arial';
+    ctx.fillStyle = 'rgba(255,77,141,0.7)';
+    ctx.letterSpacing = '3px';
+    ctx.fillText('DÁRKOVÝ VOUCHER', 30, 68);
+
+    // Divider
+    ctx.strokeStyle = 'rgba(255,77,141,0.2)';
+    ctx.lineWidth = 0.5;
+    ctx.beginPath(); ctx.moveTo(30, 78); ctx.lineTo(W - 30, 78); ctx.stroke();
+
+    // Service label
+    ctx.font = 'bold 15px Arial';
+    ctx.fillStyle = '#ffffff';
+    const maxW = 340;
+    const words = d.label.split(' ');
+    let line = '', y = 105;
+    for (const word of words) {
+      const test = line + word + ' ';
+      if (ctx.measureText(test).width > maxW && line) {
+        ctx.fillText(line.trim(), 30, y); y += 20; line = word + ' ';
+      } else line = test;
+    }
+    ctx.fillText(line.trim(), 30, y);
+
+    // City
+    ctx.font = '13px Arial';
+    ctx.fillStyle = '#ff4d8d';
+    ctx.fillText(d.cityLabel, 30, y + 22);
+
+    // Price
+    ctx.font = 'bold 32px Georgia, serif';
+    ctx.fillStyle = '#ff4d8d';
+    ctx.fillText(d.price.toLocaleString('cs-CZ') + ' Kč', 30, y + 60);
+
+    // To/From
+    ctx.font = '12px Arial';
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    ctx.fillText('Pro: ' + d.to, 30, y + 82);
+    ctx.fillText('Od: ' + d.from, 30, y + 98);
+
+    if (d.msg) {
+      ctx.font = 'italic 11px Arial';
+      ctx.fillStyle = 'rgba(255,255,255,0.35)';
+      ctx.fillText('"' + d.msg.slice(0, 55) + (d.msg.length > 55 ? '…' : '') + '"', 30, y + 114);
+    }
+
+    // Validity
+    ctx.font = '11px Arial';
+    ctx.fillStyle = 'rgba(255,255,255,0.3)';
+    ctx.fillText('Platí do: ' + d.validTo, 30, H - 20);
+
+    // QR placeholder (right side)
+    const qrX = W - 130, qrY = 90, qrS = 110;
+    ctx.fillStyle = 'rgba(255,255,255,0.06)';
+    ctx.beginPath();
+    ctx.roundRect ? ctx.roundRect(qrX, qrY, qrS, qrS, 8) : ctx.rect(qrX, qrY, qrS, qrS);
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(255,77,141,0.3)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    ctx.font = '10px Arial';
+    ctx.fillStyle = 'rgba(255,255,255,0.3)';
+    ctx.textAlign = 'center';
+    ctx.fillText('QR kód', qrX + qrS/2, qrY + qrS/2 - 6);
+    ctx.fillText('generován při', qrX + qrS/2, qrY + qrS/2 + 8);
+    ctx.fillText('stažení', qrX + qrS/2, qrY + qrS/2 + 22);
+    ctx.textAlign = 'left';
+
+    // Code
+    ctx.font = 'bold 12px monospace';
+    ctx.fillStyle = 'rgba(255,77,141,0.7)';
+    ctx.textAlign = 'center';
+    ctx.fillText(code, qrX + qrS/2, qrY + qrS + 18);
+    ctx.textAlign = 'left';
+  }
+
+  function generateVoucher() {
+    currentVoucherCode = genVoucherCode();
+    const d = getVoucherData();
+
+    // Load QR library and generate
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';
+    script.onload = () => {
+      const qrDiv = document.createElement('div');
+      qrDiv.style.display = 'none';
+      document.body.appendChild(qrDiv);
+
+      const verifyUrl = `https://bestfiveclean.cz/verify?code=${currentVoucherCode}`;
+      new QRCode(qrDiv, { text: verifyUrl, width: 200, height: 200, colorDark: '#ff4d8d', colorLight: '#0a0a0a' });
+
+      setTimeout(() => {
+        const qrCanvas = qrDiv.querySelector('canvas');
+        renderAndDownload(d, qrCanvas);
+        document.body.removeChild(qrDiv);
+      }, 300);
+    };
+    document.head.appendChild(script);
+  }
+
+  function renderAndDownload(d, qrCanvas) {
+    const canvas = document.createElement('canvas');
+    canvas.width = 1200; canvas.height = 680;
+    const ctx = canvas.getContext('2d');
+    const W = 1200, H = 680;
+
+    // Background
+    ctx.fillStyle = '#0a0a0a';
+    ctx.fillRect(0, 0, W, H);
+
+    // Pink left bar
+    const grad = ctx.createLinearGradient(0, 0, 0, H);
+    grad.addColorStop(0, '#ff4d8d');
+    grad.addColorStop(1, '#c4005c');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 12, H);
+
+    // Glow
+    const glow = ctx.createRadialGradient(W, 0, 0, W, 0, 560);
+    glow.addColorStop(0, 'rgba(255,77,141,0.1)');
+    glow.addColorStop(1, 'rgba(255,77,141,0)');
+    ctx.fillStyle = glow;
+    ctx.fillRect(0, 0, W, H);
+
+    // Logo
+    ctx.font = 'bold 44px Georgia, serif';
+    ctx.fillStyle = '#ff4d8d';
+    ctx.fillText('Bestfive', 60, 90);
+    ctx.font = '300 44px Georgia, serif';
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText(' Clean', 60 + ctx.measureText('Bestfive').width - 2, 90);
+
+    // VOUCHER
+    ctx.font = 'bold 13px Arial';
+    ctx.fillStyle = 'rgba(255,77,141,0.7)';
+    ctx.fillText('DÁRKOVÝ VOUCHER', 60, 122);
+
+    ctx.strokeStyle = 'rgba(255,77,141,0.2)';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(60, 140); ctx.lineTo(W - 60, 140); ctx.stroke();
+
+    // Service
+    ctx.font = 'bold 28px Arial';
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText(d.label, 60, 190);
+
+    ctx.font = '20px Arial';
+    ctx.fillStyle = '#ff4d8d';
+    ctx.fillText(d.cityLabel, 60, 222);
+
+    // Price
+    ctx.font = 'bold 56px Georgia, serif';
+    ctx.fillStyle = '#ff4d8d';
+    ctx.fillText(d.price.toLocaleString('cs-CZ') + ' Kč', 60, 300);
+
+    // To/From/Msg
+    ctx.font = '20px Arial';
+    ctx.fillStyle = 'rgba(255,255,255,0.6)';
+    ctx.fillText('Pro: ' + d.to, 60, 350);
+    ctx.fillText('Od: ' + d.from, 60, 378);
+    if (d.msg) {
+      ctx.font = 'italic 18px Arial';
+      ctx.fillStyle = 'rgba(255,255,255,0.4)';
+      ctx.fillText('"' + d.msg.slice(0, 80) + (d.msg.length > 80 ? '…' : '') + '"', 60, 410);
+    }
+
+    // Validity & issued
+    ctx.font = '16px Arial';
+    ctx.fillStyle = 'rgba(255,255,255,0.3)';
+    ctx.fillText('Vydáno: ' + d.issued + '  |  Platí do: ' + d.validTo, 60, H - 40);
+
+    // QR code
+    if (qrCanvas) {
+      const qrSize = 220;
+      const qrX = W - qrSize - 80;
+      const qrY = (H - qrSize) / 2 - 20;
+      ctx.drawImage(qrCanvas, qrX, qrY, qrSize, qrSize);
+      ctx.font = 'bold 14px monospace';
+      ctx.fillStyle = 'rgba(255,77,141,0.8)';
+      ctx.textAlign = 'center';
+      ctx.fillText(currentVoucherCode, qrX + qrSize/2, qrY + qrSize + 24);
+      ctx.textAlign = 'left';
+    }
+
+    // Download as PNG (PDF-like)
+    const link = document.createElement('a');
+    link.download = `Bestfive-Clean-Voucher-${currentVoucherCode}.png`;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+
+    // Also update preview
+    drawVoucherCanvas(currentVoucherCode);
+    alert('✅ Voucher stažen! Kód: ' + currentVoucherCode + '\n\nPošlete tento obrázek dárku — QR kód odkazuje na ověřovací stránku.\nPo použití kontaktujte zákazníka nebo označte kód jako použitý.');
+  }
+
+  // Init voucher preview
+  setTimeout(() => drawVoucherCanvas(currentVoucherCode), 500);
+  // ===== END VOUCHER =====
+
+  function toggleTooltip() {
+    const t = document.getElementById('spzTooltip');
+    t.style.display = t.style.display === 'none' ? 'block' : 'none';
+  }
+  document.addEventListener('click', function(e) {
+    if (!document.getElementById('spzTooltipWrap').contains(e.target)) {
+      document.getElementById('spzTooltip').style.display = 'none';
+    }
+  });
+
+  function switchSegment(seg, btn) {
+    document.querySelectorAll('.segment-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-domacnost').style.display = seg === 'domacnost' ? '' : 'none';
+    document.getElementById('panel-firmy').style.display = seg === 'firmy' ? '' : 'none';
+  }
+
+  // ===== CENÍK =====
+  const PRICES = {
+    auto: {
+      variants: [
+        { label: '5 sedaček', key: 's4' },
+        { label: '6 a více sedaček', key: 's6' }
+      ],
+      features: ['2× čištění sedaček, koberečků a kufru', 'Čistíme u vás doma nebo u nás — dle vašich potřeb', 'Jednou za půl roku', 'Včetně dopravy', 'Dezinfekce ozonem zdarma', 'Platíte až po 1. čištění'],
+      data: {
+        s4: { praha: {rok:8550,pol:4500,jed:4775}, brno: {rok:7200,pol:3825,jed:4100}, jihlava: {rok:4050,pol:2250,jed:2525} },
+        s6: { praha: {rok:9405,pol:4950,jed:5203}, brno: {rok:7920,pol:4208,jed:4460}, jihlava: {rok:4455,pol:2475,jed:2728} }
+      }
+    },
+    pohovka: {
+      variants: [
+        { label: 'Malá pohovka', key: 'mala' },
+        { label: 'Velká pohovka', key: 'velka' },
+        { label: 'Střední pohovka', key: 'stredni' }
+      ],
+      features: ['2× hloubkové čištění pohovky', 'Jednou za půl roku', 'Včetně dopravy', 'Dezinfekce ozonem zdarma', 'Platíte až po 1. čištění'],
+      data: {
+        mala:    { praha: {rok:10450,pol:5500,jed:5725}, brno: {rok:8800,pol:4675,jed:4900}, jihlava: {rok:4950,pol:2750,jed:2975} },
+        stredni: { praha: {rok:12540,pol:6600,jed:6770}, brno: {rok:10560,pol:5610,jed:5780}, jihlava: {rok:5940,pol:3300,jed:3470} },
+        velka:   { praha: {rok:15048,pol:7920,jed:8024}, brno: {rok:12672,pol:6732,jed:6836}, jihlava: {rok:7128,pol:3960,jed:3964} }
+      }
+    },
+    koberec: {
+      variants: [
+        { label: 'Do 20 m²', key: 'do20' }
+      ],
+      features: ['2× tepování koberce', 'Jednou za půl roku', 'Včetně dopravy', 'Dezinfekce ozonem zdarma', 'Nad 20 m² — zavolejte, domluvíme se', 'Platíte až po 1. čištění'],
+      data: {
+        do20: { praha: {rok:8075,pol:4250,jed:4538}, brno: {rok:6800,pol:3613,jed:3900}, jihlava: {rok:3825,pol:2125,jed:2413} }
+      }
+    },
+    matrace: {
+      variants: [
+        { label: 'Do 2 matrací', key: 'm2' },
+        { label: 'Do 4 matrací', key: 'm4' },
+        { label: 'Do 6 matrací', key: 'm6' }
+      ],
+      features: ['2× čištění matrace', 'Jednou za půl roku', 'Včetně dopravy', 'Likvidace roztočů a bakterií', 'Dezinfekce ozonem zdarma', 'Platíte až po 1. čištění'],
+      data: {
+        m2: { praha: {rok:9500,pol:5000,jed:5250}, brno: {rok:8000,pol:4250,jed:4500}, jihlava: {rok:4500,pol:2500,jed:2750} },
+        m4: { praha: {rok:13300,pol:7000,jed:7150}, brno: {rok:11200,pol:5950,jed:6100}, jihlava: {rok:6300,pol:3500,jed:3650} },
+        m6: { praha: {rok:18620,pol:9800,jed:9810}, brno: {rok:15680,pol:8330,jed:8340}, jihlava: {rok:8820,pol:4900,jed:4910} }
+      }
+    },
+    ozon: {
+      variants: [
+        { label: 'Auto / klimatizace', key: 'auto' },
+        { label: 'Do 50 m²', key: 'm50' },
+        { label: 'Do 80 m²', key: 'm80' },
+        { label: 'Do 100 m²', key: 'm100' },
+        { label: 'Nad 100 m²', key: 'velke' }
+      ],
+      features: ['Dezinfekce ozonem', '1× ročně', 'Eliminace bakterií, plísní a zápachu', 'Ekologicky — bez chemie', 'Včetně dopravy'],
+      data: {
+        auto:  { praha: {rok:2500,pol:2500}, brno: {rok:1000,pol:1000}, jihlava: {rok:1000,pol:1000} },
+        m50:   { praha: {rok:3300,pol:3300}, brno: {rok:2000,pol:2000}, jihlava: {rok:1800,pol:1800} },
+        m80:   { praha: {rok:3800,pol:3800}, brno: {rok:2500,pol:2500}, jihlava: {rok:2300,pol:2300} },
+        m100:  { praha: {rok:4300,pol:4300}, brno: {rok:3000,pol:3000}, jihlava: {rok:2800,pol:2800} },
+        velke: { praha: {rok:0,pol:0}, brno: {rok:0,pol:0}, jihlava: {rok:0,pol:0} }
+      }
+    }
+  };
+
+  const PROMO_SOLD = 48;
+  const PROMO_TOTAL = 100;
+  let pSold = PROMO_SOLD;
+
+  let pCity = 'praha', pType = 'auto', pVariant = 's4', pBilling = 'rok', pMix = 1;
+
+  function updateCounter() {
+    const left = PROMO_TOTAL - pSold;
+    const pct = (pSold / PROMO_TOTAL) * 100;
+    document.getElementById('counterNum').textContent = pSold;
+    document.getElementById('counterLeft').textContent = left;
+    document.getElementById('counterBar').style.width = pct + '%';
+  }
+
+  function selectCity(city, btn) {
+    pCity = city;
+    document.querySelectorAll('#cityTabs .price-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderBilling();
+  }
+
+  function selectType(type, btn) {
+    pType = type;
+    document.querySelectorAll('#typeTabs .price-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderVariants();
+    renderBilling();
+  }
+
+  function selectVariant(variant, btn) {
+    pVariant = variant;
+    document.querySelectorAll('#variantTabs .price-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderBilling();
+  }
+
+  function setMix(n) {
+    pMix = n;
+    document.querySelectorAll('.mix-item').forEach(m => m.classList.remove('active'));
+    if (n > 1) document.getElementById('mix' + n).classList.add('active');
+    renderBilling();
+  }
+
+  const SOFA_SVG = {
+    mala: `<svg width="80" height="50" viewBox="0 0 80 50" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="18" width="64" height="22" rx="8" fill="#ff4d8d" opacity="0.8"/><rect x="2" y="14" width="14" height="26" rx="6" fill="#c4005c"/><rect x="64" y="14" width="14" height="26" rx="6" fill="#c4005c"/><rect x="8" y="38" width="10" height="8" rx="2" fill="#8b0040"/><rect x="62" y="38" width="10" height="8" rx="2" fill="#8b0040"/><rect x="12" y="8" width="56" height="14" rx="6" fill="#ff80b0"/></svg>`,
+    stredni: `<svg width="110" height="50" viewBox="0 0 110 50" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="18" width="94" height="22" rx="8" fill="#ff4d8d" opacity="0.8"/><rect x="2" y="14" width="14" height="26" rx="6" fill="#c4005c"/><rect x="94" y="14" width="14" height="26" rx="6" fill="#c4005c"/><rect x="8" y="38" width="10" height="8" rx="2" fill="#8b0040"/><rect x="92" y="38" width="10" height="8" rx="2" fill="#8b0040"/><rect x="12" y="8" width="86" height="14" rx="6" fill="#ff80b0"/></svg>`,
+    velka: `<svg width="140" height="55" viewBox="0 0 140 55" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="20" width="60" height="22" rx="7" fill="#ff4d8d" opacity="0.8"/><rect x="72" y="20" width="60" height="22" rx="7" fill="#ff4d8d" opacity="0.8"/><rect x="2" y="14" width="12" height="28" rx="6" fill="#c4005c"/><rect x="66" y="14" width="12" height="28" rx="6" fill="#c4005c"/><rect x="126" y="14" width="12" height="28" rx="6" fill="#c4005c"/><rect x="8" y="40" width="10" height="10" rx="2" fill="#8b0040"/><rect x="122" y="40" width="10" height="10" rx="2" fill="#8b0040"/><rect x="12" y="8" width="116" height="14" rx="6" fill="#ff80b0"/><text x="38" y="35" font-size="8" fill="white" opacity="0.6" text-anchor="middle">U</text><text x="102" y="35" font-size="8" fill="white" opacity="0.6" text-anchor="middle">tvar</text></svg>`,
+  };
+
+  function renderVariants() {
+    const cfg = PRICES[pType];
+    const tabs = document.getElementById('variantTabs');
+    const title = document.getElementById('variantTitle');
+    if (cfg.variants.length <= 1) {
+      document.getElementById('variantStep').style.display = 'none';
+      pVariant = cfg.variants[0].key;
+      return;
+    }
+    document.getElementById('variantStep').style.display = 'flex';
+    pVariant = cfg.variants[0].key;
+    const typeLabels = { auto: 'Vyberte počet sedaček', pohovka: 'Vyberte velikost pohovky', matrace: 'Vyberte počet matrací', koberec: 'Vyberte plochu' };
+    title.textContent = typeLabels[pType] || 'Vyberte variantu';
+    tabs.innerHTML = cfg.variants.map((v, i) =>
+      `<button class="price-tab ${i===0?'active':''}" onclick="selectVariant('${v.key}',this)">${v.label}</button>`
+    ).join('');
+
+    // Pohovka illustrations
+    const ilEl = document.getElementById('sofaIllustrations');
+    if (pType === 'pohovka' && ilEl) {
+      ilEl.style.display = 'flex';
+      ilEl.innerHTML = [
+        { key:'mala', label:'Malá' },
+        { key:'stredni', label:'Střední' },
+        { key:'velka', label:'Velká (do U)' }
+      ].map(s => `
+        <div onclick="selectVariant('${s.key}', document.querySelector('[onclick*=\\'${s.key}\\']'))"
+          style="cursor:pointer;text-align:center;padding:0.6rem 0.8rem;border-radius:12px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);transition:all 0.2s"
+          onmouseover="this.style.borderColor='rgba(255,77,141,0.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'">
+          ${SOFA_SVG[s.key]}
+          <div style="font-size:0.72rem;color:var(--gray);margin-top:0.3rem">${s.label}</div>
+        </div>`
+      ).join('');
+    } else if (ilEl) {
+      ilEl.style.display = 'none';
+    }
+  }
+
+  function fmt(n) { return Math.round(n).toLocaleString('cs-CZ') + ' Kč'; }
+
+  function renderBilling() {
+    const cfg = PRICES[pType];
+    const d = cfg.data[pVariant]?.[pCity] || cfg.data[cfg.variants[0].key][pCity];
+    const isPromo = pSold < PROMO_TOTAL;
+    const promoDisc = isPromo ? 0.75 : 1;
+    const mixDisc = pMix === 2 ? 0.85 : pMix === 3 ? 0.70 : pMix >= 4 ? 0.55 : 1;
+    const totalDisc = promoDisc * mixDisc;
+
+    const billings = pType === 'ozon'
+      ? [{ key: 'rok', label: 'Jednorázově / ročně', price: d.rok, unit: 'Kč', save: 'Jednorázová platba' }]
+      : [
+          { key: 'rok', label: 'Roční předplatné', price: d.rok, unit: 'Kč / rok', save: 'Nejlepší cena — platíte jednou ročně' },
+          { key: 'pol', label: 'Pololetní předplatné', price: d.pol, unit: 'Kč / půl roku', save: `celkem ${fmt(d.pol * 2)} / rok` },
+          { key: 'jed', label: 'Jednorázové čištění', price: d.jed, unit: 'Kč', save: '1× čištění, ozon zdarma' },
+        ];
+
+    document.getElementById('billingCards').innerHTML = billings.map(b => {
+      const promoPrice = Math.round(b.price * 0.75);
+      const mixPrice = Math.round(b.price * (pMix===2?0.85:pMix===3?0.70:pMix>=4?0.55:1));
+      const finalPrice = Math.round(b.price * totalDisc);
+      const annualFull = b.key === 'pol' ? b.price * 2 : b.price;
+      const annualFinal = b.key === 'pol' ? finalPrice * 2 : finalPrice;
+      return `<div class="billing-card ${pBilling===b.key?'active':''}" onclick="selectBilling('${b.key}',this)">
+        <div class="bc-type">${b.label}</div>
+        ${isPromo || pMix > 1 ? `
+          <div style="text-decoration:line-through;color:var(--gray);font-size:0.85rem;line-height:1.2">${fmt(b.price)}</div>
+          <div class="bc-price" style="color:var(--pink);line-height:1.1">${fmt(finalPrice)}</div>
+          <div class="bc-unit" style="display:flex;align-items:center;gap:6px">${b.unit}
+            ${isPromo ? `<span style="background:rgba(255,77,141,0.2);color:var(--pink);font-size:0.65rem;padding:2px 7px;border-radius:50px;font-weight:700">-25%</span>` : ''}
+            ${pMix>1 ? `<span style="background:rgba(74,222,128,0.15);color:#4ade80;font-size:0.65rem;padding:2px 7px;border-radius:50px;font-weight:700">mix -${pMix===2?15:pMix===3?30:45}%</span>` : ''}
+          </div>
+          <div class="bc-annual">celkem ${fmt(annualFinal)} / rok</div>
+          <div class="bc-save">ušetříte ${fmt(annualFull - annualFinal)} / rok</div>
+        ` : `
+          <div class="bc-price">${fmt(b.price)}</div>
+          <div class="bc-unit">${b.unit}</div>
+          <div class="bc-annual">${b.save}</div>
+        `}
+      </div>`;
+    }).join('');
+
+    renderResult(d, totalDisc);
+  }
+
+  function selectBilling(billing, btn) {
+    pBilling = billing;
+    document.querySelectorAll('.billing-card').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cfg = PRICES[pType];
+    const d = cfg.data[pVariant]?.[pCity] || cfg.data[cfg.variants[0].key][pCity];
+    const promoDisc = pSold < PROMO_TOTAL ? 0.75 : 1;
+    const mixDisc = pMix === 2 ? 0.85 : pMix === 3 ? 0.70 : pMix >= 4 ? 0.55 : 1;
+    renderResult(d, promoDisc * mixDisc);
+  }
+
+  function renderResult(d, totalDisc) {
+    const cfg = PRICES[pType];
+    const variantLabel = cfg.variants.find(v => v.key === pVariant)?.label || '';
+    const cityLabel = { praha: 'Praha a okolí', brno: 'Brno a okolí', jihlava: 'Jihlava a okolí' }[pCity];
+    const typeLabel = { auto: 'Tepování auta', pohovka: 'Tepování pohovky', koberec: 'Tepování koberce', matrace: 'Tepování matrace', ozon: 'Dezinfekce ozonem' }[pType];
+    const billingLabel = { rok: 'ročně', pol: 'pololetně', jed: 'jednorázově' }[pBilling];
+    const basePrice = d[pBilling] || d.rok;
+    const finalPrice = Math.round(basePrice * totalDisc);
+
+    const jedFeatures = {
+      auto: ['1× čištění sedaček, koberečků a kufru', 'Čistíme u vás doma nebo u nás', 'Dezinfekce ozonem zdarma', 'Včetně dopravy', 'Platba online nebo hotově'],
+      pohovka: ['1× hloubkové čištění pohovky', 'Dezinfekce ozonem zdarma', 'Včetně dopravy', 'Platba online nebo hotově'],
+      koberec: ['1× tepování koberce', 'Dezinfekce ozonem zdarma', 'Nad 20 m² — zavolejte', 'Včetně dopravy', 'Platba online nebo hotově'],
+      matrace: ['1× čištění matrace', 'Likvidace roztočů a bakterií', 'Dezinfekce ozonem zdarma', 'Včetně dopravy', 'Platba online nebo hotově'],
+    };
+    const displayFeatures = pBilling === 'jed' && jedFeatures[pType] ? jedFeatures[pType] : cfg.features;
+
+    document.getElementById('resultPlan').textContent = `${typeLabel} — ${variantLabel} — ${cityLabel}`;
+    const ul = document.getElementById('resultFeatures');
+
+    if (pType === 'ozon' && pVariant === 'velke') {
+      ul.innerHTML = '<li>Napište nám nebo zavolejte pro individuální nabídku</li>';
+      document.getElementById('resultOrig').textContent = '';
+      document.getElementById('resultPrice').textContent = 'Individuální';
+      document.getElementById('resultSub').textContent = 'Pro prostory nad 100 m² připravíme nabídku na míru';
+      document.getElementById('resultDisclaimer').style.display = 'none';
+      return;
+    }
+
+    ul.innerHTML = displayFeatures.map(f => `<li>${f}</li>`).join('');
+
+    if (totalDisc < 1) {
+      document.getElementById('resultOrig').textContent = fmt(basePrice);
+    } else {
+      document.getElementById('resultOrig').textContent = '';
+    }
+    document.getElementById('resultPrice').textContent = fmt(finalPrice);
+
+    let subText = `Platba ${billingLabel}`;
+    if (pSold < PROMO_TOTAL) subText += ` · sleva 25 % (prvních 100 zákazníků)`;
+    if (pMix > 1) subText += ` · sleva za kombinaci ${pMix === 2 ? '15' : pMix === 3 ? '30' : '45'} %`;
+    document.getElementById('resultSub').textContent = subText;
+
+    const disc = document.getElementById('resultDisclaimer');
+    if (pType === 'auto') {
+      disc.style.display = 'block';
+    } else {
+      disc.style.display = 'none';
+    }
+  }
+
+  function orderCurrent() {
+    pSold = Math.min(pSold + 1, PROMO_TOTAL);
+    updateCounter();
+    document.getElementById('objednavka').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Init
+  updateCounter();
+  renderVariants();
+  renderBilling();
+  // ===== END CENÍK =====
+
+  // ===== KALKULAČKA =====
+  let kSvcMult = 1.0;
+  let kActiveCity = 'jih';
+
+  function kSetSvc(type, btn) {
+    document.querySelectorAll('#k_svcType .kc-svc').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    kSvcMult = {pohovka:1.0,auto:1.1,koberec:0.85,matrace:0.9,ozon:0.75}[type];
+    kcalc();
+  }
+
+  function kShowCity(city, btn) {
+    kActiveCity = city;
+    document.querySelectorAll('.kc-ctab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    ['jih','brno','pra'].forEach(c => {
+      document.getElementById('kcc_'+c).style.display = c===city ? '' : 'none';
+    });
+  }
+
+  function kfmt(n) { return Math.round(n).toLocaleString('cs-CZ') + ' Kč'; }
+  function kr50(v) { return Math.round(v / 50) * 50; }
+
+  function kCostCards(city, transport, mA, cA, chem, labor, ovhd, total, price) {
+    return `<div class="kc-result-grid">
+      <div class="kc-card"><div class="kc-clabel">Doprava (tam+zpět)</div><div class="kc-cval">${kfmt(transport)}</div></div>
+      <div class="kc-card"><div class="kc-clabel">Amortizace stroje</div><div class="kc-cval">${kfmt(mA)}</div></div>
+      <div class="kc-card"><div class="kc-clabel">Amortizace auta</div><div class="kc-cval">${kfmt(cA)}</div></div>
+      <div class="kc-card"><div class="kc-clabel">Prostředky</div><div class="kc-cval">${kfmt(chem)}</div></div>
+      <div class="kc-card"><div class="kc-clabel">Práce</div><div class="kc-cval">${kfmt(labor)}</div></div>
+      <div class="kc-card"><div class="kc-clabel">Režie</div><div class="kc-cval">${kfmt(ovhd)}</div></div>
+      <div class="kc-card pink"><div class="kc-clabel">Náklad celkem</div><div class="kc-cval">${kfmt(total)}</div><div class="kc-csub">s marží: ${kfmt(price)} / čištění</div></div>
+    </div>
+    <table class="kc-table">
+      <thead><tr><th>Typ předplatného</th><th>Běžná cena</th><th>Prvních 100 zákazníků</th><th>Úspora zákazníka</th></tr></thead>
+      <tbody id="ktbody_${city}"></tbody>
+    </table>`;
+  }
+
+  function kTableRows(price, disc) {
+    const cleanings = 3;
+    const annual = price * cleanings;
+    const quarterly = annual / 4 * 1.05;
+    const monthly = annual / 12 * 1.10;
+    const a=kr50(annual), q=kr50(quarterly), m=kr50(monthly);
+    const ad=kr50(annual*(1-disc)), qd=kr50(quarterly*(1-disc)), md=kr50(monthly*(1-disc));
+    const pct = Math.round(disc*100);
+    return { rows: `
+      <tr><td class="kpink">Roční platba</td><td>${kfmt(a)}</td><td>${kfmt(ad)} <span class="kc-badge">-${pct}%</span></td><td class="kgreen">ušetří ${kfmt(a-ad)}</td></tr>
+      <tr><td class="kpink">Čtvrtletní platba</td><td>${kfmt(q)} / čtvrt.</td><td>${kfmt(qd)} / čtvrt. <span class="kc-badge">-${pct}%</span></td><td class="kgreen">ušetří ${kfmt((q-qd)*4)} / rok</td></tr>
+      <tr><td class="kpink">Měsíční platba</td><td>${kfmt(m)} / měs.</td><td>${kfmt(md)} / měs. <span class="kc-badge">-${pct}%</span></td><td class="kgreen">ušetří ${kfmt((m-md)*12)} / rok</td></tr>
+    `, annual: a };
+  }
+
+  function kcalc() {
+    const machine = +document.getElementById('k_machine').value;
+    const mlife   = +document.getElementById('k_mlife').value;
+    const service = +document.getElementById('k_service').value;
+    const car     = +document.getElementById('k_car').value;
+    const clife   = +document.getElementById('k_clife').value;
+    const oldcar  = +document.getElementById('k_oldcar').value;
+    const fuel    = +document.getElementById('k_fuel').value;
+    const chem    = +document.getElementById('k_chem').value;
+    const wage    = +document.getElementById('k_wage').value;
+    const time    = +document.getElementById('k_time').value;
+    const overhead= +document.getElementById('k_overhead').value;
+    const cust    = +document.getElementById('k_cust').value;
+    const margin  = +document.getElementById('k_margin').value / 100;
+    const disc    = +document.getElementById('k_disc').value / 100;
+    const kmJih   = +document.getElementById('k_km_jih').value;
+    const kmBrno  = +document.getElementById('k_km_brno').value;
+    const kmPra   = +document.getElementById('k_km_pra').value;
+
+    // Update display values
+    document.getElementById('kv_km_jih').textContent = kmJih + ' km';
+    document.getElementById('kv_km_brno').textContent = kmBrno + ' km';
+    document.getElementById('kv_km_pra').textContent = kmPra + ' km';
+    document.getElementById('kv_jih_total').textContent = (kmJih*2) + ' km';
+    document.getElementById('kv_brno_total').textContent = (kmBrno*2) + ' km';
+    document.getElementById('kv_pra_total').textContent = (kmPra*2) + ' km';
+    document.getElementById('kv_machine').textContent = Math.round(machine).toLocaleString('cs-CZ') + ' Kč';
+    document.getElementById('kv_mlife').textContent = mlife + ' let';
+    document.getElementById('kv_service').textContent = Math.round(service).toLocaleString('cs-CZ') + ' Kč';
+    document.getElementById('kv_car').textContent = Math.round(car).toLocaleString('cs-CZ') + ' Kč';
+    document.getElementById('kv_clife').textContent = clife + ' let';
+    document.getElementById('kv_oldcar').textContent = Math.round(oldcar).toLocaleString('cs-CZ') + ' Kč';
+    document.getElementById('kv_fuel').textContent = fuel.toFixed(1).replace('.',',') + ' Kč';
+    document.getElementById('kv_chem').textContent = Math.round(chem).toLocaleString('cs-CZ') + ' Kč';
+    document.getElementById('kv_wage').textContent = Math.round(wage).toLocaleString('cs-CZ') + ' Kč';
+    document.getElementById('kv_time').textContent = time + ' hod';
+    document.getElementById('kv_overhead').textContent = Math.round(overhead).toLocaleString('cs-CZ') + ' Kč';
+    document.getElementById('kv_cust').textContent = Math.round(cust) + ' zákazníků';
+    document.getElementById('kv_margin').textContent = Math.round(margin*100) + ' %';
+    document.getElementById('kv_disc').textContent = Math.round(disc*100) + ' %';
+
+    const cleanings = 3;
+    const mA  = machine / mlife / (cust * cleanings || 1);
+    const cA  = (car - oldcar) / clife / (cust * cleanings || 1);
+    const svc = service / (cust * cleanings || 1);
+    const labor = wage * time;
+    const ovhd = (overhead * 12) / (cust * cleanings || 1);
+
+    function cityData(km) {
+      const transport = km * 2 * fuel;
+      const total = (transport + mA + cA + svc + chem + labor + ovhd) * kSvcMult;
+      const price = total / (1 - margin);
+      return { transport, total, price };
+    }
+
+    const jih  = cityData(kmJih);
+    const brno = cityData(kmBrno);
+    const pra  = cityData(kmPra);
+
+    // Render cost cards + tables
+    document.getElementById('kcc_jih').innerHTML  = kCostCards('jih',  jih.transport,  mA, cA, chem, labor, ovhd, jih.total,  jih.price);
+    document.getElementById('kcc_brno').innerHTML = kCostCards('brno', brno.transport, mA, cA, chem, labor, ovhd, brno.total, brno.price);
+    document.getElementById('kcc_pra').innerHTML  = kCostCards('pra',  pra.transport,  mA, cA, chem, labor, ovhd, pra.total,  pra.price);
+
+    const jihR  = kTableRows(jih.price,  disc);
+    const brnoR = kTableRows(brno.price, disc);
+    const praR  = kTableRows(pra.price,  disc);
+    const tbJih = document.querySelector('#kcc_jih #ktbody_jih');
+    const tbBrno = document.querySelector('#kcc_brno #ktbody_brno');
+    const tbPra = document.querySelector('#kcc_pra #ktbody_pra');
+    if(tbJih) tbJih.innerHTML = jihR.rows;
+    if(tbBrno) tbBrno.innerHTML = brnoR.rows;
+    if(tbPra) tbPra.innerHTML = praR.rows;
+
+    // Reapply city visibility
+    ['jih','brno','pra'].forEach(c => {
+      document.getElementById('kcc_'+c).style.display = c===kActiveCity ? '' : 'none';
+    });
+
+    document.getElementById('k_discNote').innerHTML =
+      `💡 Sleva <strong style="color:var(--pink)">${Math.round(disc*100)} %</strong> platí pro prvních 100 zákazníků napříč všemi městy. ` +
+      `Aktuálně: <strong style="color:var(--white)">${Math.round(cust)} zákazníků</strong> — ` +
+      (cust <= 100 ? 'promo stále aktivní, všichni zákazníci mají slevu.' : 'promo naplněno, noví zákazníci platí plnou cenu.');
+
+    document.getElementById('k_amortNote').innerHTML =
+      `🚗 Doprava na čištění: Jihlava ${kfmt(jih.transport)}, Brno ${kfmt(brno.transport)}, Praha ${kfmt(pra.transport)}. ` +
+      `Amortizace stroje ${kfmt(mA)} + auta ${kfmt(cA)} je rozložena na všechny zákazníky — čím více zákazníků, tím nižší náklad na čištění.`;
+  }
+
+  kcalc();
+  // ===== END KALKULAČKA =====
+
+  // ===== SPLASH =====
+  const spMessages = [
+    "Ahoj! Vítám vás na stránkách <strong style='color:#ff4d8d'>Bestfive Clean</strong>. 👋",
+    "Níže si vyberte <strong style='color:#ff4d8d'>předplatné</strong> nebo <strong style='color:#ff4d8d'>jednorázovou objednávku</strong> — máme plány pro auto, pohovku, koberec i matraci. 🛋️🚗",
+    "Platit můžete <strong style='color:#ff4d8d'>hotově i kartou</strong>, jak vám to lépe vyhovuje. 💳💵",
+    "A kdybyste si nevěděli rady, určitě neváhejte <strong style='color:#ff4d8d'>zavolat</strong> — rádi poradíme! 📞",
+  ];
+
+  function splashSkip() { spShowAll(); }
+  function splashEnter() {
+    document.getElementById('splash').classList.add('hiding');
+    setTimeout(() => document.getElementById('splash').style.display='none', 650);
+  }
+
+  function spShowSecond() {
+    const el = document.getElementById('spText');
+    const btns = document.getElementById('spBtns');
+    document.getElementById('spFace').classList.add('speaking');
+    document.getElementById('spWave').classList.remove('hidden');
+    el.innerHTML = `
+      <span style="display:block;margin-bottom:0.6rem">Vyberte si <strong style="color:var(--pink)">předplatné</strong> nebo <strong style="color:var(--pink)">jednorázovou objednávku</strong>. 🧹</span>
+      <span style="display:block;margin-bottom:0.6rem">Pokud si vyberete předplatné, platíte až po prvním čištění. Zvolíte si sami — ročně nebo pololetně. Přijedeme 2× ročně. 💳</span>
+      <span style="display:block">Měsíc před plánovaným čištěním vám přijde na <strong style="color:var(--pink)">e-mail i SMS</strong> odkaz na kalendář, kde si vyberete den i čas. 📅</span>
+    `;
+    btns.innerHTML = `<button class="sp-btn sp-btn-primary" onclick="splashEnter()">Vstoupit na web →</button>`;
+    setTimeout(() => {
+      document.getElementById('spFace').classList.remove('speaking');
+      document.getElementById('spWave').classList.add('hidden');
+    }, 2000);
+  }
+
+  function spShowAll() {
+    const el = document.getElementById('spText');
+    const dots = document.getElementById('spDots');
+    const face = document.getElementById('spFace');
+    const wave = document.getElementById('spWave');
+    dots.style.display = 'none';
+    el.style.display = 'inline';
+    el.innerHTML = '';
+    face.classList.add('speaking');
+    wave.classList.remove('hidden');
+
+    // Build full text with all messages
+    const fullHtml = spMessages.map(m => `<span style="display:block;margin-bottom:0.6rem">${m}</span>`).join('');
+    // Type out plain text but preserve HTML
+    let i = 0;
+    const chars = fullHtml;
+    function typeNext() {
+      if (i < chars.length) {
+        // Skip through HTML tags instantly
+        if (chars[i] === '<') {
+          const end = chars.indexOf('>', i);
+          el.innerHTML = chars.slice(0, end + 1);
+          i = end + 1;
+        } else {
+          i++;
+          el.innerHTML = chars.slice(0, i);
+        }
+        setTimeout(typeNext, i < chars.length && chars[i] !== '<' ? 18 : 0);
+      } else {
+        face.classList.remove('speaking');
+        wave.classList.add('hidden');
+        document.getElementById('spBtns').innerHTML =
+          `<button class="sp-btn sp-btn-primary" onclick="spShowSecond()">Vstoupit na web →</button>`;
+      }
+    }
+    typeNext();
+  }
+  document.getElementById('spDotNav').innerHTML = '';
+  setTimeout(() => spShowAll(), 500);
+  // ===== END SPLASH =====
+
+  function submitForm() {
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const city = document.getElementById('city').value;
+    const service = document.getElementById('service').value;
+    if (!name || !phone || !email || !city || !service) {
+      alert('Vyplňte prosím alespoň jméno, telefon, e-mail, město a co chcete vyčistit.'); return;
+    }
+    document.getElementById('form-content').style.display = 'none';
+    document.getElementById('success').style.display = 'block';
+  }
+</script>
+</body>
+</html>
