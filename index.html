@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bestfive Clean – Profesionální čištění</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- SPLASH SCREEN -->
+<div id="splash">
+  <div class="splash-logo">Bestfive<span> Clean</span></div>
+  <div class="splash-inner">
+    <div class="splash-avatar" id="spFace">👩</div>
+    <div class="soundwave" id="spWave">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="splash-speech" id="spSpeech">
+      <div class="typing-dots" id="spDots"><span></span><span></span><span></span></div>
+      <span id="spText" style="display:none"></span>
+    </div>
+    <div class="splash-dots" id="spDotNav"></div>
+    <div class="splash-btns" id="spBtns">
+      <button class="sp-btn sp-btn-skip" onclick="splashSkip()">Přeskočit →</button>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Bestfive<span> Clean</span></div>
+  <ul>
+    <li><a href="#sluzby">Služby</a></li>
+    <li><a href="#segment">Domácnosti & Firmy</a></li>
+    <li><a href="#predplatne">Předplatné</a></li>
+    <li><a href="#voucher">Voucher</a></li>
+    <li><a href="#objednavka">Objednávka</a></li>
+  </ul>
+  <button class="nav-btn" onclick="document.getElementById('objednavka').scrollIntoView({behavior:'smooth'})">Objednat</button>
+  <a href="tel:+420724232423" style="color:var(--pink);font-size:0.875rem;font-weight:600;text-decoration:none;margin-left:1rem">📞 +420 724 232 423</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Dceřiná společnost Bestfive s.r.o.</div>
+  <h1>Čistota, která<br><span class="pink">mluví za sebe</span></h1>
+  <p>Profesionální tepování, dezinfekce a čištění pro váš domov i vůz. Jednorázově nebo výhodně v předplatném.</p>
+  <div class="hero-btns">
+    <a href="#predplatne" class="btn-primary">Zobrazit předplatné</a>
+    <a href="#predplatne" class="btn-outline" onclick="setTimeout(()=>{document.querySelectorAll('#typeTabs .price-tab')[0].click();selectBilling('jed',document.querySelector('.billing-card:last-child'))},300)">Jednorázová objednávka</a>
+    <a href="tel:+420724232423" class="btn-outline" style="display:flex;align-items:center;gap:0.5rem">📞 Zavolejte nám</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num" id="happyCount">95+</div><div class="stat-label">Spokojených zákazníků</div></div>
+    <div class="stat"><div class="stat-num">5★</div><div class="stat-label">Průměrné hodnocení</div></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="sluzby">
+  <p class="section-label">Co nabízíme</p>
+  <h2 class="section-title">Naše služby</h2>
+  <p class="section-sub">Od tepování aut po dezinfekci ozonem — postaráme se o dokonalou čistotu.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🚗</div>
+      <h3>Tepování aut</h3>
+      <p>Hloubkové čištění sedaček, koberečků a kufru.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛋️</div>
+      <h3>Tepování pohovek</h3>
+      <p>Profesionální čištění čalouněného nábytku všech velikostí.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💧</div>
+      <h3>Tepování koberců</h3>
+      <p>Odstranění skvrn, prachu a alergenů z koberců a podlahových krytin.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛏️</div>
+      <h3>Tepování matrací</h3>
+      <p>Hygienické čištění matrací s likvidací roztočů a bakterií.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💨</div>
+      <h3>Dezinfekce ozonem</h3>
+      <p>Ekologická dezinfekce ozonem — eliminace bakterií, plísní i zápachu bez chemie.<br><strong style="color:var(--pink)">U předplatného tepování čištění ozonem zdarma.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO SEKCE -->
+<section style="background:var(--dark);padding:4rem">
+  <p class="section-label">Podívejte se sami</p>
+  <h2 class="section-title">Jak to u nás <span style="color:var(--pink)">funguje</span></h2>
+  <p class="section-sub">Nevěříte? Podívejte se na videa jak tepování a dezinfekce ozonem vypadá v praxi.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem">
+
+    <!-- Video 1 - Tepování -->
+    <div style="background:var(--dark2);border:1px solid rgba(255,255,255,0.06);border-radius:20px;overflow:hidden;transition:transform 0.2s" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+      <a href="https://www.youtube.com/watch?v=DOPLNIT_LINK" target="_blank" style="text-decoration:none;display:block">
+        <div style="background:linear-gradient(135deg,#1a0010,#2d0020);height:180px;display:flex;align-items:center;justify-content:center;position:relative">
+          <div style="width:64px;height:64px;border-radius:50%;background:var(--pink);display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(255,77,141,0.5)">
+            <span style="font-size:1.5rem;margin-left:4px">▶</span>
+          </div>
+          <div style="position:absolute;top:1rem;left:1rem;background:rgba(255,77,141,0.2);border:1px solid rgba(255,77,141,0.3);color:var(--pink);font-size:0.7rem;font-weight:600;padding:0.2rem 0.7rem;border-radius:50px">🚗 TEPOVÁNÍ</div>
+        </div>
+        <div style="padding:1.2rem">
+          <div style="font-size:1rem;font-weight:600;color:var(--white);margin-bottom:0.4rem">Chcete vidět jak tepování probíhá?</div>
+          <div style="font-size:0.82rem;color:var(--gray);line-height:1.6">Podívejte se jak vypadá hloubkové čištění sedaček, koberečků a kufru přímo u zákazníka.</div>
+          <div style="margin-top:0.8rem;color:var(--pink);font-size:0.82rem;font-weight:600">Přehrát video →</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Video 2 - Ozon -->
+    <div style="background:var(--dark2);border:1px solid rgba(255,255,255,0.06);border-radius:20px;overflow:hidden;transition:transform 0.2s" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+      <a href="https://www.youtube.com/watch?v=DOPLNIT_LINK" target="_blank" style="text-decoration:none;display:block">
+        <div style="background:linear-gradient(135deg,#001a0d,#002d1a);height:180px;display:flex;align-items:center;justify-content:center;position:relative">
+          <div style="width:64px;height:64px;border-radius:50%;background:var(--pink);display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(255,77,141,0.5)">
+            <span style="font-size:1.5rem;margin-left:4px">▶</span>
+          </div>
+          <div style="position:absolute;top:1rem;left:1rem;background:rgba(255,77,141,0.2);border:1px solid rgba(255,77,141,0.3);color:var(--pink);font-size:0.7rem;font-weight:600;padding:0.2rem 0.7rem;border-radius:50px">💨 OZON</div>
+        </div>
+        <div style="padding:1.2rem">
+          <div style="font-size:1rem;font-weight:600;color:var(--white);margin-bottom:0.4rem">Co je dezinfekce ozonem a jak funguje?</div>
+          <div style="font-size:0.82rem;color:var(--gray);line-height:1.6">Vysvětlím vám co ozon dělá, proč je bezpečný a jak probíhá dezinfekce bez chemie.</div>
+          <div style="margin-top:0.8rem;color:var(--pink);font-size:0.82rem;font-weight:600">Přehrát video →</div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- SEGMENT SWITCHER -->
+<section id="segment" style="background:var(--dark);padding-bottom:0">
+  <p class="section-label">Pro koho jsme tu</p>
+  <h2 class="section-title">Vyberte si váš typ</h2>
+  <p class="section-sub">Nabízíme řešení jak pro domácnosti, tak pro firmy a podnikatele. Každý má jiné potřeby.</p>
+  <div style="display:flex;gap:1rem;flex-wrap:wrap">
+    <button class="segment-btn active" id="seg-dom" onclick="switchSegment('domacnost',this)">🏠 Pro domácnosti</button>
+    <button class="segment-btn" id="seg-fir" onclick="switchSegment('firmy',this)">🏢 Pro firmy</button>
+  </div>
+</section>
+
+<!-- DOMÁCNOSTI -->
+<section id="panel-domacnost" class="segment-panel">
+  <div style="display:flex;align-items:flex-start;gap:3rem;flex-wrap:wrap;margin-bottom:3rem">
+    <div style="flex:1;min-width:280px">
+      <p class="section-label">Domácnosti</p>
+      <h2 class="section-title">Čisto doma,<br><span style="color:var(--pink)">bez starostí</span></h2>
+      <p style="color:var(--gray);line-height:1.7;margin-bottom:1.5rem">Postaráme se o vaše pohovky, koberce, matrace i auto. Pravidelně, spolehlivě a za výhodnou cenu s předplatným. Platíte až po první návštěvě.</p>
+      <div style="display:flex;flex-direction:column;gap:0.7rem">
+        <div class="seg-feature"><span>✓</span> Tepování pohovek, koberců a matrací</div>
+        <div class="seg-feature"><span>✓</span> Dezinfekce ozonem — bez chemie</div>
+        <div class="seg-feature"><span>✓</span> Předplatné — přijdeme automaticky každých 6 měsíců</div>
+        <div class="seg-feature"><span>✓</span> Platba hotově i kartou</div>
+        <div class="seg-feature"><span>✓</span> Platíte až po první návštěvě</div>
+        <div class="seg-feature"><span>✓</span> Objednání online bez telefonátů</div>
+      </div>
+    </div>
+    <div style="flex:1;min-width:280px">
+      <div class="seg-highlight-card">
+        <div class="seg-hl-icon">🏠</div>
+        <div class="seg-hl-title">Ideální pro</div>
+        <div class="seg-hl-items">
+          <div class="seg-hl-item">👨‍👩‍👧 Rodiny s dětmi</div>
+          <div class="seg-hl-item">🐾 Majitelé domácích zvířat</div>
+          <div class="seg-hl-item">🌿 Alergici a citliví jedinci</div>
+          <div class="seg-hl-item">🏡 Majitelé bytů a domů</div>
+          <div class="seg-hl-item">🚗 Majitelé aut</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIRMY -->
+<section id="panel-firmy" class="segment-panel" style="display:none">
+  <div style="display:flex;align-items:flex-start;gap:3rem;flex-wrap:wrap;margin-bottom:3rem">
+    <div style="flex:1;min-width:280px">
+      <p class="section-label">Firmy & podnikatelé</p>
+      <h2 class="section-title">Profesionální čistota<br><span style="color:var(--pink)">pro vaši firmu</span></h2>
+      <p style="color:var(--gray);line-height:1.7;margin-bottom:1.5rem">Nabízíme pravidelnou péči o firemní prostory, vozový park i kancelářské vybavení. Uzavřeme smlouvu na míru.</p>
+      <div style="display:flex;flex-direction:column;gap:0.7rem">
+        <div class="seg-feature"><span>✓</span> Čištění firemních vozidel</div>
+        <div class="seg-feature"><span>✓</span> Dezinfekce kanceláří, čekáren a provozoven</div>
+        <div class="seg-feature"><span>✓</span> Tepování sedacího nábytku v prostorách firmy</div>
+        <div class="seg-feature"><span>✓</span> Dezinfekce ozonem — hotely, penziony, Airbnb</div>
+        <div class="seg-feature"><span>✓</span> Individuální ceník pro větší objemy</div>
+        <div class="seg-feature"><span>✓</span> Pravidelný harmonogram dle vašich potřeb</div>
+      </div>
+    </div>
+    <div style="flex:1;min-width:280px">
+      <div class="seg-highlight-card" style="border-color:rgba(255,77,141,0.3)">
+        <div class="seg-hl-icon">🏢</div>
+        <div class="seg-hl-title">Ideální pro</div>
+        <div class="seg-hl-items">
+          <div class="seg-hl-item">🚐 Firmy s vozovým parkem</div>
+          <div class="seg-hl-item">🏨 Hotely a penziony</div>
+          <div class="seg-hl-item">🏥 Lékaři a ordinace</div>
+          <div class="seg-hl-item">🛍️ Obchody a provozovny</div>
+          <div class="seg-hl-item">🏗️ Stavební firmy</div>
+          <div class="seg-hl-item">💼 Kanceláře a coworkingy</div>
+        </div>
+        <div style="margin-top:1.2rem;padding-top:1rem;border-top:1px solid rgba(255,77,141,0.15)">
+          <div style="font-size:0.78rem;color:var(--gray);margin-bottom:0.8rem">Máte zájem o firemní spolupráci?</div>
+          <button class="plan-btn plan-btn-primary" style="width:100%" onclick="document.getElementById('objednavka').scrollIntoView({behavior:'smooth'})">Nezávazná poptávka →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firemní výhody -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:2rem">
+    <div class="service-card">
+      <div class="service-icon">📅</div>
+      <h3>Pravidelný harmonogram</h3>
+      <p>Přijdeme v dohodnuté dny tak, aby to co nejméně narušilo váš provoz.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📞</div>
+      <h3>Dedikovaný kontakt</h3>
+      <p>Firemní zákazníci mají přímý kontakt — bez čekání.</p>
+    </div>
+  </div>
+
+  <!-- Firemní předplatné -->
+  <div style="background:rgba(255,77,141,0.06);border:1px solid rgba(255,77,141,0.2);border-radius:20px;padding:1.5rem 2rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+    <span style="font-size:1.5rem">💡</span>
+    <div>
+      <div style="font-size:0.95rem;font-weight:600;color:var(--white);margin-bottom:0.3rem">Máte více než 5 předplatných?</div>
+      <div style="font-size:0.85rem;color:var(--gray)">Připravíme vám <strong style="color:var(--pink)">individuální nabídku na míru</strong>. Zavolejte nám a vše domluvíme.</div>
+    </div>
+    <a href="tel:+420724232423" class="btn-primary" style="margin-left:auto;white-space:nowrap;font-size:0.85rem;padding:0.7rem 1.5rem">📞 Zavolat</a>
+  </div>
+
+  <!-- Odkaz na předplatné -->
+  <div style="text-align:center;margin-bottom:1rem">
+    <a href="#predplatne" class="btn-primary" onclick="switchSegment('domacnost', document.getElementById('seg-dom'))">Zobrazit předplatné →</a>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="predplatne" class="city-section">
+  <p class="section-label">Výhodné předplatné</p>
+  <h2 class="section-title">Vyberte předplatné</h2>
+  <p class="section-sub">Vyberte město, typ čištění, velikost a způsob platby. Ceny přímo z ceníku.</p>
+
+  <!-- Počítadlo prvních 100 -->
+  <div class="counter-box">
+    <div class="counter-left">
+      <div class="counter-label">🔥 Akce pro prvních 100 zákazníků</div>
+      <div class="counter-bar-wrap">
+        <div class="counter-bar" id="counterBar" style="width:48%"></div>
+      </div>
+      <div class="counter-text">Již <strong id="counterNum">48</strong> z 100 lidí využilo slevu 25 % — zbývá jen <strong id="counterLeft">52</strong> míst!</div>
+    </div>
+    <div class="counter-badge">-25%</div>
+  </div>
+
+  <!-- KROK 1: Město -->
+  <div class="step-section">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <div class="step-title">Vyberte město</div>
+      <div class="price-tabs" id="cityTabs">
+        <button class="price-tab active" onclick="selectCity('praha',this)">Praha a okolí <span style="font-size:0.72rem;opacity:0.7">do 30 km</span></button>
+        <button class="price-tab" onclick="selectCity('brno',this)">Brno a okolí <span style="font-size:0.72rem;opacity:0.7">do 20 km</span></button>
+        <button class="price-tab" onclick="selectCity('jihlava',this)">Jihlava a okolí <span style="font-size:0.72rem;opacity:0.7">do 15 km</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- KROK 2: Typ -->
+  <div class="step-section">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <div class="step-title">Vyberte typ čištění</div>
+      <div class="price-tabs" id="typeTabs">
+        <button class="price-tab active" onclick="selectType('auto',this)">🚗 Auto</button>
+        <button class="price-tab" onclick="selectType('pohovka',this)">🛋️ Pohovka</button>
+        <button class="price-tab" onclick="selectType('koberec',this)">💧 Koberec</button>
+        <button class="price-tab" onclick="selectType('matrace',this)">🛏️ Matrace</button>
+        <button class="price-tab" onclick="selectType('ozon',this)">💨 Ozon</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- KROK 3: Varianta (dynamicky) -->
+  <div class="step-section" id="variantStep">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <div class="step-title" id="variantTitle">Vyberte velikost / počet</div>
+      <div class="price-tabs" id="variantTabs"></div>
+      <div id="sofaIllustrations" style="display:none;gap:1rem;margin-top:1rem;flex-wrap:wrap"></div>
+    </div>
+  </div>
+
+  <!-- KROK 4: Platba -->
+  <div class="step-section">
+    <div class="step-num">4</div>
+    <div class="step-content">
+      <div class="step-title">Vyberte způsob platby</div>
+      <div class="billing-cards" id="billingCards"></div>
+    </div>
+  </div>
+
+  <!-- Mix sleva -->
+  <div class="mix-box" id="mixBox">
+    <div class="mix-title">💡 Kupujete více předplatných? Ušetříte!</div>
+    <div class="mix-items">
+      <div class="mix-item" id="mix2" onclick="setMix(2)"><div class="mix-num">2</div><div class="mix-label">předplatná</div><div class="mix-disc">sleva 15 %</div></div>
+      <div class="mix-item" id="mix3" onclick="setMix(3)"><div class="mix-num">3</div><div class="mix-label">předplatná</div><div class="mix-disc">sleva 30 %</div></div>
+      <div class="mix-item" id="mix4" onclick="setMix(4)"><div class="mix-num">4+</div><div class="mix-label">předplatná</div><div class="mix-disc">sleva 45 %</div></div>
+      <div class="mix-item mix-clear" onclick="setMix(1)">✕ zrušit slevu</div>
+    </div>
+  </div>
+
+  <!-- Výsledná cena -->
+  <div class="result-box" id="resultBox">
+    <div class="result-left">
+      <div class="result-plan" id="resultPlan">—</div>
+      <div class="result-features" id="resultFeatures"></div>
+    </div>
+    <div class="result-right">
+      <div class="result-orig" id="resultOrig"></div>
+      <div class="result-price" id="resultPrice">—</div>
+      <div class="result-sub" id="resultSub"></div>
+      <div id="resultDisclaimer" style="display:none;margin-top:0.8rem;padding:0.8rem 1rem;background:rgba(255,200,0,0.08);border:1px solid rgba(255,200,0,0.25);border-radius:10px;font-size:0.78rem;color:#f5c842;line-height:1.6">
+        ⚠️ <strong>Čištění u vás doma:</strong> Zákazník musí zajistit prostor vhodný k tepování — se střechou, přístupem k vodě a elektřině.
+      </div>
+      <button class="btn-primary" style="margin-top:1rem;width:100%" onclick="orderCurrent()">Objednat →</button>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="objednavka" class="booking-section">
+  <div class="booking-grid">
+    <div class="booking-info">
+      <p class="section-label">Objednat online</p>
+      <h2 class="section-title">Rezervujte termín</h2>
+      <p>Vyplňte formulář a my se vám ozveme do 24 hodin s potvrzením termínu. Bez zbytečného volání.</p>
+      <div class="contact-item"><span class="icon">📞</span><a href="tel:+420724232423">+420 724 232 423</a></div>
+      <div class="contact-item"><span class="icon">📧</span><a href="mailto:info@bestfiveclean.cz">info@bestfiveclean.cz</a></div>
+      <div class="contact-item"><span class="icon">📍</span><span>Praha a okolí (do 30 km) · Brno a okolí (do 20 km) · Jihlava a okolí (do 15 km)</span></div>
+    </div>
+    <div class="booking-form">
+      <h3>Nová objednávka</h3>
+      <div id="form-content">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Jméno *</label>
+            <input type="text" id="name" placeholder="Jan">
+          </div>
+          <div class="form-group">
+            <label>Příjmení *</label>
+            <input type="text" id="surname" placeholder="Novák">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Telefon *</label>
+            <input type="tel" id="phone" placeholder="+420 724 232 423">
+          </div>
+          <div class="form-group">
+            <label>E-mail *</label>
+            <input type="email" id="email" placeholder="vas@email.cz">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>IČO <span style="color:var(--gray);font-size:0.78rem;font-weight:400">(nepovinné)</span></label>
+            <input type="text" id="ico" placeholder="12345678" maxlength="8">
+          </div>
+          <div class="form-group">
+            <label style="display:flex;align-items:center;gap:0.5rem">
+              SPZ vozidla <span style="color:var(--gray);font-size:0.78rem;font-weight:400">(nepovinné)</span>
+              <span style="position:relative;display:inline-block" id="spzTooltipWrap">
+                <span onclick="toggleTooltip()" style="width:18px;height:18px;border-radius:50%;background:rgba(255,77,141,0.2);border:1px solid rgba(255,77,141,0.4);color:var(--pink);font-size:0.7rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0">?</span>
+                <div id="spzTooltip" style="display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--dark2);border:1px solid rgba(255,77,141,0.3);border-radius:12px;padding:0.8rem 1rem;width:240px;font-size:0.78rem;color:var(--gray-light,#aaa);line-height:1.6;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,0.4)">
+                  <strong style="color:var(--white);display:block;margin-bottom:0.3rem">Proč SPZ?</strong>
+                  SPZ nám pomáhá identifikovat vaše vozidlo při opakovaných návštěvách a evidovat historii čištění. Usnadňuje fakturaci a zajišťuje, že vždy víme, o které auto se staráme.
+                </div>
+              </span>
+            </label>
+            <input type="text" id="spz" placeholder="1AB2345" maxlength="10" style="text-transform:uppercase" oninput="this.value=this.value.toUpperCase()">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Město *</label>
+            <select id="city">
+              <option value="">Vyberte město</option>
+              <option>Praha a okolí (do 30 km)</option>
+              <option>Brno a okolí (do 20 km)</option>
+              <option>Jihlava a okolí (do 15 km)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Kolikáté patro</label>
+            <select id="floor">
+              <option value="">Vyberte patro</option>
+              <option>Přízemí</option>
+              <option>1. patro</option>
+              <option>2. patro</option>
+              <option>3. patro</option>
+              <option>4. patro a výše</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Výtah</label>
+            <select id="lift">
+              <option value="">Vyberte</option>
+              <option>Ano, je výtah</option>
+              <option>Ne, pouze schody</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Parkování u objektu</label>
+            <select id="parking">
+              <option value="">Vyberte možnost</option>
+              <option>Volné parkování před domem</option>
+              <option>Placené / modrá zóna</option>
+              <option>Pouze na dvoře (nutno zavolat)</option>
+              <option>Garážové stání</option>
+              <option>Není parkování</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Preferované dny</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;margin-top:0.3rem">
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="day" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Pondělí</label>
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="day" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Úterý</label>
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="day" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Středa</label>
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="day" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Čtvrtek</label>
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="day" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Pátek</label>
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="day" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Sobota</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Preferovaný čas</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;margin-top:0.3rem">
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="time" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Ráno (8–10 h)</label>
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="time" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Dopoledne (10–12 h)</label>
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="time" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Odpoledne (12–15 h)</label>
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="time" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Je mi to jedno <span style="color:var(--pink);font-size:0.72rem;margin-left:0.3rem">→ sleva 200 Kč</span></label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Co chcete vyčistit *</label>
+          <textarea id="service" placeholder="Napište co chcete vyčistit — koberec (přibližně m²), pohovku (malá / střední / velká), auto (počet sedaček), matrace apod." style="min-height:90px"></textarea>
+        </div>
+        <button class="form-submit" onclick="submitForm()">Odeslat objednávku →</button>
+      </div>
+      <div class="success-msg" id="success">
+        <div class="check">✅</div>
+        <h4>Objednávka odeslána!</h4>
+        <p>Ozveme se vám do 24 hodin s potvrzením termínu.</p>
+        <div style="margin-top:1.5rem;padding:1.2rem;background:rgba(255,77,141,0.08);border:1px solid rgba(255,77,141,0.2);border-radius:14px;text-align:left">
+          <div style="font-size:0.85rem;font-weight:600;color:var(--white);margin-bottom:0.5rem">📅 Výběr termínu</div>
+          <div style="font-size:0.82rem;color:var(--gray);line-height:1.7">Po potvrzení vám zašleme odkaz na kalendář, kde si vyberete přesný den a čas. Měsíc před každým dalším čištěním vám přijde připomínka s novým odkazem na výběr termínu.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KALKULAČKA - pouze interní, skryto před zákazníky -->
+<section id="kalkulacka" style="background:var(--dark);display:none">
+  <p class="section-label">Spočítejte si sami</p>
+  <h2 class="section-title">Kalkulačka předplatného</h2>
+  <p class="section-sub">Zadejte své náklady a kalkulačka spočítá optimální ceny pro každé město zvlášť — včetně amortizace stroje, auta a dopravy.</p>
+
+  <div style="background:var(--dark2);border:1px solid rgba(255,255,255,0.06);border-radius:24px;padding:2.5rem;max-width:900px">
+
+    <!-- VZDÁLENOSTI -->
+    <div class="kc-section">
+      <div class="kc-title">Vzdálenosti měst (jedna cesta — počítá se tam i zpět)</div>
+      <div class="kc-city-grid">
+        <div class="kc-city-card">
+          <div class="kc-city-name">🌿 Jihlava</div>
+          <div class="kc-row"><label>km (1 cesta)</label><input type="range" min="5" max="80" step="1" value="30" id="k_km_jih" oninput="kcalc()"><span class="kc-val" id="kv_km_jih">30 km</span></div>
+          <div style="font-size:12px;color:var(--gray);margin-top:4px">Tam + zpět: <strong id="kv_jih_total" style="color:var(--white)">60 km</strong></div>
+        </div>
+        <div class="kc-city-card">
+          <div class="kc-city-name">🏛️ Brno</div>
+          <div class="kc-row"><label>km (1 cesta)</label><input type="range" min="30" max="200" step="5" value="100" id="k_km_brno" oninput="kcalc()"><span class="kc-val" id="kv_km_brno">100 km</span></div>
+          <div style="font-size:12px;color:var(--gray);margin-top:4px">Tam + zpět: <strong id="kv_brno_total" style="color:var(--white)">200 km</strong></div>
+        </div>
+        <div class="kc-city-card">
+          <div class="kc-city-name">🏙️ Praha</div>
+          <div class="kc-row"><label>km (1 cesta)</label><input type="range" min="50" max="300" step="5" value="150" id="k_km_pra" oninput="kcalc()"><span class="kc-val" id="kv_km_pra">150 km</span></div>
+          <div style="font-size:12px;color:var(--gray);margin-top:4px">Tam + zpět: <strong id="kv_pra_total" style="color:var(--white)">300 km</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STROJE -->
+    <div class="kc-section">
+      <div class="kc-title">Stroje a amortizace</div>
+      <div class="kc-row"><label>Cena Santo Emma Sabrina</label><input type="range" min="50000" max="200000" step="1000" value="80000" id="k_machine" oninput="kcalc()"><span class="kc-val" id="kv_machine">80 000 Kč</span></div>
+      <div class="kc-row"><label>Životnost stroje (roky)</label><input type="range" min="3" max="10" step="1" value="5" id="k_mlife" oninput="kcalc()"><span class="kc-val" id="kv_mlife">5 let</span></div>
+      <div class="kc-row"><label>Servis stroje / rok</label><input type="range" min="0" max="15000" step="500" value="3000" id="k_service" oninput="kcalc()"><span class="kc-val" id="kv_service">3 000 Kč</span></div>
+      <div class="kc-row"><label>Nové auto (plánovaná cena)</label><input type="range" min="100000" max="600000" step="5000" value="250000" id="k_car" oninput="kcalc()"><span class="kc-val" id="kv_car">250 000 Kč</span></div>
+      <div class="kc-row"><label>Životnost auta (roky)</label><input type="range" min="3" max="10" step="1" value="6" id="k_clife" oninput="kcalc()"><span class="kc-val" id="kv_clife">6 let</span></div>
+      <div class="kc-row"><label>Stávající auto — zůstatková hodnota</label><input type="range" min="0" max="100000" step="1000" value="20000" id="k_oldcar" oninput="kcalc()"><span class="kc-val" id="kv_oldcar">20 000 Kč</span></div>
+    </div>
+
+    <!-- PROVOZ -->
+    <div class="kc-section">
+      <div class="kc-title">Provozní náklady</div>
+      <div class="kc-row"><label>Cena paliva / km</label><input type="range" min="2" max="8" step="0.1" value="3.5" id="k_fuel" oninput="kcalc()"><span class="kc-val" id="kv_fuel">3,5 Kč</span></div>
+      <div class="kc-row"><label>Prostředky na jedno čištění</label><input type="range" min="50" max="500" step="10" value="150" id="k_chem" oninput="kcalc()"><span class="kc-val" id="kv_chem">150 Kč</span></div>
+      <div class="kc-row"><label>Mzdové náklady / hodina</label><input type="range" min="150" max="500" step="10" value="250" id="k_wage" oninput="kcalc()"><span class="kc-val" id="kv_wage">250 Kč</span></div>
+      <div class="kc-row"><label>Čas jednoho čištění (hod)</label><input type="range" min="0.5" max="4" step="0.5" value="2" id="k_time" oninput="kcalc()"><span class="kc-val" id="kv_time">2 hod</span></div>
+      <div class="kc-row"><label>Režie / měsíc</label><input type="range" min="0" max="15000" step="500" value="2000" id="k_overhead" oninput="kcalc()"><span class="kc-val" id="kv_overhead">2 000 Kč</span></div>
+    </div>
+
+    <!-- OBCHOD -->
+    <div class="kc-section">
+      <div class="kc-title">Obchodní nastavení</div>
+      <div class="kc-row"><label>Zákazníci celkem</label><input type="range" min="5" max="300" step="5" value="50" id="k_cust" oninput="kcalc()"><span class="kc-val" id="kv_cust">50</span></div>
+      <div class="kc-row"><label>Zisková marže (%)</label><input type="range" min="10" max="60" step="1" value="30" id="k_margin" oninput="kcalc()"><span class="kc-val" id="kv_margin">30 %</span></div>
+      <div class="kc-row"><label>Sleva pro prvních 100 zákazníků (%)</label><input type="range" min="0" max="30" step="1" value="15" id="k_disc" oninput="kcalc()"><span class="kc-val" id="kv_disc">15 %</span></div>
+      <div style="margin-top:0.5rem">
+        <div style="font-size:0.8rem;color:var(--gray);margin-bottom:0.6rem">Typ služby</div>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap" id="k_svcType">
+          <button class="kc-svc active" onclick="kSetSvc('pohovka',this)">Pohovka</button>
+          <button class="kc-svc" onclick="kSetSvc('auto',this)">Auto</button>
+          <button class="kc-svc" onclick="kSetSvc('koberec',this)">Koberec</button>
+          <button class="kc-svc" onclick="kSetSvc('matrace',this)">Matrace</button>
+          <button class="kc-svc" onclick="kSetSvc('ozon',this)">Ozon</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- VÝSLEDKY -->
+    <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:2rem;margin-top:0.5rem">
+      <div class="kc-title">Doporučené ceny předplatného dle města</div>
+      <div style="display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap">
+        <button class="kc-ctab active" onclick="kShowCity('jih',this)">🌿 Jihlava</button>
+        <button class="kc-ctab" onclick="kShowCity('brno',this)">🏛️ Brno</button>
+        <button class="kc-ctab" onclick="kShowCity('pra',this)">🏙️ Praha</button>
+      </div>
+      <div id="kcc_jih"></div>
+      <div id="kcc_brno" style="display:none"></div>
+      <div id="kcc_pra" style="display:none"></div>
+      <div id="k_discNote" style="margin-top:1rem;padding:1rem;background:rgba(255,77,141,0.06);border:1px solid rgba(255,77,141,0.15);border-radius:12px;font-size:0.82rem;color:var(--gray);line-height:1.7"></div>
+      <div id="k_amortNote" style="margin-top:0.8rem;padding:1rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;font-size:0.82rem;color:var(--gray);line-height:1.7"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VOUCHER SEKCE -->
+<section id="voucher" style="background:var(--dark)">
+  <p class="section-label">Dárkový poukaz</p>
+  <h2 class="section-title">Voucher <span style="color:var(--pink)">jako dárek</span></h2>
+  <p class="section-sub">Darujte čistotu někomu blízkému. Vyberte předplatné, přidejte věnování a stáhněte krásný PDF voucher.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;max-width:900px" class="voucher-grid">
+
+    <!-- FORMULÁŘ -->
+    <div style="background:var(--dark2);border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:2rem">
+      <div class="kc-section">
+        <div class="kc-title">Vyberte předplatné</div>
+        <select id="voucherType" onchange="updateVoucher()" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:0.85rem 1rem;color:var(--white);font-size:0.9rem;font-family:'DM Sans',sans-serif;appearance:none;outline:none;margin-bottom:0.8rem">
+          <option value="auto_rok">🚗 Tepování auta — Roční (5 sedaček)</option>
+          <option value="auto_pol">🚗 Tepování auta — Pololetní (5 sedaček)</option>
+          <option value="pohovka_mala_rok">🛋️ Tepování pohovky malá — Roční</option>
+          <option value="pohovka_mala_pol">🛋️ Tepování pohovky malá — Pololetní</option>
+          <option value="pohovka_stredni_rok">🛋️ Tepování pohovky střední — Roční</option>
+          <option value="pohovka_velka_rok">🛋️ Tepování pohovky velká — Roční</option>
+          <option value="koberec_rok">💧 Tepování koberce do 20m² — Roční</option>
+          <option value="matrace_m2_rok">🛏️ Tepování matrace do 2 ks — Roční</option>
+          <option value="ozon_auto">💨 Dezinfekce ozonem — Auto</option>
+          <option value="ozon_m50">💨 Dezinfekce ozonem — Do 50 m²</option>
+          <option value="ozon_m100">💨 Dezinfekce ozonem — Do 100 m²</option>
+        </select>
+        <select id="voucherCity" onchange="updateVoucher()" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:0.85rem 1rem;color:var(--white);font-size:0.9rem;font-family:'DM Sans',sans-serif;appearance:none;outline:none">
+          <option value="praha">Praha a okolí</option>
+          <option value="brno">Brno a okolí</option>
+          <option value="jihlava">Jihlava a okolí</option>
+        </select>
+      </div>
+      <div class="kc-section">
+        <div class="kc-title">Věnování</div>
+        <div class="fg" style="margin-bottom:0.8rem">
+          <label style="font-size:0.78rem;color:var(--gray);display:block;margin-bottom:0.4rem">Pro koho</label>
+          <input type="text" id="voucherTo" placeholder="Mamince, Honzovi..." oninput="updateVoucher()" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:0.75rem 1rem;color:var(--white);font-size:0.9rem;font-family:'DM Sans',sans-serif;outline:none">
+        </div>
+        <div class="fg" style="margin-bottom:0.8rem">
+          <label style="font-size:0.78rem;color:var(--gray);display:block;margin-bottom:0.4rem">Od koho</label>
+          <input type="text" id="voucherFrom" placeholder="Jana, Rodina..." oninput="updateVoucher()" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:0.75rem 1rem;color:var(--white);font-size:0.9rem;font-family:'DM Sans',sans-serif;outline:none">
+        </div>
+        <div class="fg">
+          <label style="font-size:0.78rem;color:var(--gray);display:block;margin-bottom:0.4rem">Věnování</label>
+          <textarea id="voucherMsg" placeholder="Přeji ti krásný zážitek..." oninput="updateVoucher()" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:0.75rem 1rem;color:var(--white);font-size:0.9rem;font-family:'DM Sans',sans-serif;resize:none;min-height:70px;outline:none"></textarea>
+        </div>
+      </div>
+      <div style="background:rgba(255,77,141,0.06);border:1px solid rgba(255,77,141,0.15);border-radius:12px;padding:0.9rem 1rem;margin-bottom:1rem;font-size:0.82rem;color:var(--gray);line-height:1.6">
+        📅 Platnost voucheru: <strong style="color:var(--white)">1 rok od zakoupení</strong><br>
+        🔒 Každý voucher má unikátní QR kód — po použití se deaktivuje
+      </div>
+      <button class="btn-primary" style="width:100%" onclick="generateVoucher()">Stáhnout voucher PDF →</button>
+    </div>
+
+    <!-- NÁHLED VOUCHERU -->
+    <div>
+      <p style="font-size:0.75rem;color:var(--gray);margin-bottom:0.8rem;letter-spacing:0.1em;text-transform:uppercase">Náhled voucheru</p>
+      <canvas id="voucherCanvas" width="600" height="340" style="width:100%;border-radius:16px;border:1px solid rgba(255,77,141,0.2)"></canvas>
+      <p style="font-size:0.75rem;color:var(--gray);margin-top:0.6rem;text-align:center">QR kód bude vygenerován při stažení</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Bestfive Clean</div>
+  <div class="footer-note">Dceřiná společnost Bestfive s.r.o.</div>
+  <div style="display:flex;align-items:center;gap:0.8rem">
+    <a href="https://www.instagram.com/bestfiveclean" target="_blank" title="Instagram" style="width:38px;height:38px;border-radius:50%;background:rgba(255,77,141,0.1);border:1px solid rgba(255,77,141,0.3);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all 0.2s;font-size:1.1rem" onmouseover="this.style.background='rgba(255,77,141,0.25)'" onmouseout="this.style.background='rgba(255,77,141,0.1)'">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="6" stroke="#ff4d8d" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="#ff4d8d" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1" fill="#ff4d8d"/></svg>
+    </a>
+    <a href="https://www.facebook.com/bestfiveclean" target="_blank" title="Facebook" style="width:38px;height:38px;border-radius:50%;background:rgba(255,77,141,0.1);border:1px solid rgba(255,77,141,0.3);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all 0.2s;font-size:1.1rem" onmouseover="this.style.background='rgba(255,77,141,0.25)'" onmouseout="this.style.background='rgba(255,77,141,0.1)'">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="#ff4d8d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+  <a href="tel:+420724232423" style="color:var(--pink);font-size:0.9rem;font-weight:600;text-decoration:none">📞 +420 724 232 423</a>
+  <div class="footer-sub">© 2025 Bestfive Clean. Všechna práva vyhrazena.</div>
+</footer>
+
+<!-- FEEDBACK OVERLAY -->
+<div id="feedbackOverlay" style="display:none;position:fixed;inset:0;z-index:900;background:rgba(10,10,10,0.95);backdrop-filter:blur(16px);align-items:center;justify-content:center">
+  <div style="background:var(--dark2);border:1px solid rgba(255,77,141,0.25);border-radius:24px;padding:2.5rem;max-width:440px;width:90%;text-align:center;animation:splashFadeIn 0.4s ease">
+    <div style="font-size:2.5rem;margin-bottom:1rem">🌸</div>
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:0.5rem">Jak jsme dopadli?</h3>
+    <p style="color:var(--gray);font-size:0.9rem;line-height:1.6;margin-bottom:1.8rem">Vaše zpětná vazba nám pomáhá být lepší. Ohodnoťte prosím naši službu.</p>
+
+    <!-- Hvězdičky -->
+    <div style="display:flex;justify-content:center;gap:0.5rem;margin-bottom:1.5rem" id="starsRow">
+      <span class="fb-star" data-val="1" onclick="rateStar(1)" style="font-size:2.2rem;cursor:pointer;transition:transform 0.15s;opacity:0.3">★</span>
+      <span class="fb-star" data-val="2" onclick="rateStar(2)" style="font-size:2.2rem;cursor:pointer;transition:transform 0.15s;opacity:0.3">★</span>
+      <span class="fb-star" data-val="3" onclick="rateStar(3)" style="font-size:2.2rem;cursor:pointer;transition:transform 0.15s;opacity:0.3">★</span>
+      <span class="fb-star" data-val="4" onclick="rateStar(4)" style="font-size:2.2rem;cursor:pointer;transition:transform 0.15s;opacity:0.3">★</span>
+      <span class="fb-star" data-val="5" onclick="rateStar(5)" style="font-size:2.2rem;cursor:pointer;transition:transform 0.15s;opacity:0.3">★</span>
+    </div>
+    <div id="fbRatingText" style="font-size:0.82rem;color:var(--pink);min-height:1.2rem;margin-bottom:1rem"></div>
+
+    <!-- Komentář -->
+    <div id="fbCommentWrap" style="display:none;margin-bottom:1.2rem">
+      <textarea id="fbComment" placeholder="Chcete nám něco vzkázat? (nepovinné)" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:0.85rem 1rem;color:var(--white);font-size:0.88rem;font-family:'DM Sans',sans-serif;resize:none;min-height:80px;outline:none" onfocus="this.style.borderColor='var(--pink)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
+    </div>
+
+    <div style="display:flex;gap:0.8rem">
+      <button id="fbSubmitBtn" onclick="submitFeedback()" style="display:none;flex:1;padding:0.9rem;background:var(--pink);color:white;border:none;border-radius:50px;font-size:0.95rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s" onmouseover="this.style.background='var(--pink-light)'" onmouseout="this.style.background='var(--pink)'">Odeslat hodnocení →</button>
+      <button onclick="closeFeedback()" style="padding:0.9rem 1.2rem;background:transparent;color:var(--gray);border:1px solid rgba(255,255,255,0.1);border-radius:50px;font-size:0.9rem;cursor:pointer;font-family:'DM Sans',sans-serif">Přeskočit</button>
+    </div>
+
+    <!-- Success -->
+    <div id="fbSuccess" style="display:none;padding:1rem 0">
+      <div style="font-size:2.5rem;margin-bottom:0.8rem">🎉</div>
+      <div style="font-size:1rem;font-weight:600;color:var(--white);margin-bottom:0.4rem">Děkujeme za hodnocení!</div>
+      <div style="font-size:0.85rem;color:var(--gray)">Vaše zpětná vazba nám moc pomáhá.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3 id="modal-title">Objednat předplatné</h3>
+    <div class="plan-info">
+      <p id="modal-plan"></p>
+      <p id="modal-price" style="font-weight:600;color:var(--pink);margin-top:0.3rem;font-size:1rem;"></p>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Jméno *</label>
+        <input type="text" id="m-name" placeholder="Jan Novák">
+      </div>
+      <div class="form-group">
+        <label>Telefon *</label>
+        <input type="tel" id="m-phone" placeholder="+420...">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>E-mail *</label>
+      <input type="email" id="m-email" placeholder="vas@email.cz">
+    </div>
+    <div class="form-group">
+      <label>Poznámka</label>
+      <input type="text" id="m-note" placeholder="Adresa, preferovaný termín...">
+    </div>
+    <button class="form-submit" onclick="submitModal()">Potvrdit objednávku →</button>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
