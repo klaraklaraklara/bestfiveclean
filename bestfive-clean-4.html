@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bestfive Clean – Profesionální čištění</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<script src="//widget.simplybook.it/v2/widget/widget.js" type="text/javascript"></script>
+
 <style>
   :root {
     --pink: #ff4d8d;
@@ -404,14 +407,20 @@
 
   /* Big avatar circle */
   .splash-avatar {
-    width: 110px; height: 110px; border-radius: 50%;
-    background: linear-gradient(135deg, #ff4d8d 0%, #c4005c 60%, #8b0040 100%);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 3.5rem; margin-bottom: 1.5rem;
-    position: relative;
-    box-shadow: 0 0 40px rgba(255,77,141,0.4), 0 0 80px rgba(255,77,141,0.15);
-    border: 3px solid rgba(255,77,141,0.35);
-  }
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff4d8d 0%, #c4005c 100%);
+  display: flex; /* Pridať */
+  align-items: center; /* Pridať */
+  justify-content: center; /* Pridať */
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  border: 4px solid rgba(255,77,141,0.35);
+  box-shadow: 0 15px 35px rgba(255,77,141,0.3);
+  line-height: 1; /* Pridať pre stabilitu */
+}
+
   .splash-avatar.speaking::before {
     content: '';
     position: absolute; inset: -8px; border-radius: 50%;
@@ -861,7 +870,7 @@
 <section id="predplatne" class="city-section">
   <p class="section-label">Výhodné předplatné</p>
   <h2 class="section-title">Vyberte předplatné</h2>
-  <p class="section-sub">Vyberte město, typ čištění, velikost a způsob platby. Ceny přímo z ceníku.</p>
+  <p class="section-sub">Vyberte město, typ čištění, velikost a termín.</p>
 
   <!-- Počítadlo prvních 100 -->
   <div class="counter-box">
@@ -922,7 +931,7 @@
     </div>
   </div>
 
-  <!-- Mix sleva -->
+  <!--
   <div class="mix-box" id="mixBox">
     <div class="mix-title">💡 Kupujete více předplatných? Ušetříte!</div>
     <div class="mix-items">
@@ -932,6 +941,7 @@
       <div class="mix-item mix-clear" onclick="setMix(1)">✕ zrušit slevu</div>
     </div>
   </div>
+  -->
 
   <!-- Výsledná cena -->
   <div class="result-box" id="resultBox">
@@ -952,142 +962,7 @@
 
 </section>
 
-<!-- BOOKING -->
-<section id="objednavka" class="booking-section">
-  <div class="booking-grid">
-    <div class="booking-info">
-      <p class="section-label">Objednat online</p>
-      <h2 class="section-title">Rezervujte termín</h2>
-      <p>Vyplňte formulář a my se vám ozveme do 24 hodin s potvrzením termínu. Bez zbytečného volání.</p>
-      <div class="contact-item"><span class="icon">📞</span><a href="tel:+420724232423">+420 724 232 423</a></div>
-      <div class="contact-item"><span class="icon">📧</span><a href="/cdn-cgi/l/email-protection#61080f070e210304121507081704020d04000f4f021b"><span class="__cf_email__" data-cfemail="e1888f878ea18384929587889784828d84808fcf829b">[email&#160;protected]</span></a></div>
-      <div class="contact-item"><span class="icon">📍</span><span>Praha a okolí (do 30 km) · Brno a okolí (do 20 km) · Jihlava a okolí (do 15 km)</span></div>
-    </div>
-    <div class="booking-form">
-      <h3>Nová objednávka</h3>
-      <div id="form-content">
-        <div class="form-row">
-          <div class="form-group">
-            <label>Jméno *</label>
-            <input type="text" id="name" placeholder="Jan">
-          </div>
-          <div class="form-group">
-            <label>Příjmení *</label>
-            <input type="text" id="surname" placeholder="Novák">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Telefon *</label>
-            <input type="tel" id="phone" placeholder="+420 724 232 423">
-          </div>
-          <div class="form-group">
-            <label>E-mail *</label>
-            <input type="email" id="email" placeholder="vas@email.cz">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>IČO <span style="color:var(--gray);font-size:0.78rem;font-weight:400">(nepovinné)</span></label>
-            <input type="text" id="ico" placeholder="12345678" maxlength="8">
-          </div>
-          <div class="form-group">
-            <label style="display:flex;align-items:center;gap:0.5rem">
-              SPZ vozidla <span style="color:var(--gray);font-size:0.78rem;font-weight:400">(nepovinné)</span>
-              <span style="position:relative;display:inline-block" id="spzTooltipWrap">
-                <span onclick="toggleTooltip()" style="width:18px;height:18px;border-radius:50%;background:rgba(255,77,141,0.2);border:1px solid rgba(255,77,141,0.4);color:var(--pink);font-size:0.7rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0">?</span>
-                <div id="spzTooltip" style="display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--dark2);border:1px solid rgba(255,77,141,0.3);border-radius:12px;padding:0.8rem 1rem;width:240px;font-size:0.78rem;color:var(--gray-light,#aaa);line-height:1.6;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,0.4)">
-                  <strong style="color:var(--white);display:block;margin-bottom:0.3rem">Proč SPZ?</strong>
-                  SPZ nám pomáhá identifikovat vaše vozidlo při opakovaných návštěvách a evidovat historii čištění. Usnadňuje fakturaci a zajišťuje, že vždy víme, o které auto se staráme.
-                </div>
-              </span>
-            </label>
-            <input type="text" id="spz" placeholder="1AB2345" maxlength="10" style="text-transform:uppercase" oninput="this.value=this.value.toUpperCase()">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Město *</label>
-            <select id="city">
-              <option value="">Vyberte město</option>
-              <option>Praha a okolí (do 30 km)</option>
-              <option>Brno a okolí (do 20 km)</option>
-              <option>Jihlava a okolí (do 15 km)</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Kolikáté patro</label>
-            <select id="floor">
-              <option value="">Vyberte patro</option>
-              <option>Přízemí</option>
-              <option>1. patro</option>
-              <option>2. patro</option>
-              <option>3. patro</option>
-              <option>4. patro a výše</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Výtah</label>
-            <select id="lift">
-              <option value="">Vyberte</option>
-              <option>Ano, je výtah</option>
-              <option>Ne, pouze schody</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Parkování u objektu</label>
-            <select id="parking">
-              <option value="">Vyberte možnost</option>
-              <option>Volné parkování před domem</option>
-              <option>Placené / modrá zóna</option>
-              <option>Pouze na dvoře (nutno zavolat)</option>
-              <option>Garážové stání</option>
-              <option>Není parkování</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Preferované dny</label>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;margin-top:0.3rem">
-            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="day" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Pondělí</label>
-            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="day" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Úterý</label>
-            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="day" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Středa</label>
-            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="day" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Čtvrtek</label>
-            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="day" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Pátek</label>
-            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="day" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Sobota</label>
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Preferovaný čas</label>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;margin-top:0.3rem">
-            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="time" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Ráno (8–10 h)</label>
-            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="time" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Dopoledne (10–12 h)</label>
-            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="time" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Odpoledne (12–15 h)</label>
-            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray);cursor:pointer"><input type="checkbox" name="time" style="accent-color:var(--pink);width:16px;height:16px;cursor:pointer"> Je mi to jedno <span style="color:var(--pink);font-size:0.72rem;margin-left:0.3rem">→ sleva 200 Kč</span></label>
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Co chcete vyčistit *</label>
-          <textarea id="service" placeholder="Napište co chcete vyčistit — koberec (přibližně m²), pohovku (malá / střední / velká), auto (počet sedaček), matrace apod." style="min-height:90px"></textarea>
-        </div>
-        <button class="form-submit" onclick="submitForm()">Odeslat objednávku →</button>
-      </div>
-      <div class="success-msg" id="success">
-        <div class="check">✅</div>
-        <h4>Objednávka odeslána!</h4>
-        <p>Ozveme se vám do 24 hodin s potvrzením termínu.</p>
-        <div style="margin-top:1.5rem;padding:1.2rem;background:rgba(255,77,141,0.08);border:1px solid rgba(255,77,141,0.2);border-radius:14px;text-align:left">
-          <div style="font-size:0.85rem;font-weight:600;color:var(--white);margin-bottom:0.5rem">📅 Výběr termínu</div>
-          <div style="font-size:0.82rem;color:var(--gray);line-height:1.7">Po potvrzení vám zašleme odkaz na kalendář, kde si vyberete přesný den a čas. Měsíc před každým dalším čištěním vám přijde připomínka s novým odkazem na výběr termínu.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- KALKULAČKA - pouze interní, skryto před zákazníky -->
 <section id="kalkulacka" style="background:var(--dark);display:none">
   <p class="section-label">Spočítejte si sami</p>
   <h2 class="section-title">Kalkulačka předplatného</h2>
@@ -1931,6 +1806,25 @@
   function renderBilling() {
     const cfg = PRICES[pType];
     const d = cfg.data[pVariant]?.[pCity] || cfg.data[cfg.variants[0].key][pCity];
+
+    // --- SEM VLOŽ TÚTO OPRAVU ---
+    if (pType === 'ozon' && pVariant === 'velke') {
+        document.getElementById('billingCards').innerHTML = `
+            <div style="grid-column: 1 / -1; background: rgba(255,77,141,0.1); border: 1px dashed var(--pink); padding: 2rem; border-radius: 16px; text-align: center;">
+                <p style="color: var(--pink); font-weight: 700; font-size: 1.1rem;">
+                    Cena nad 100 m² sa dohaduje individuálne na základe obhliadky.
+                </p>
+                <p style="color: var(--gray); font-size: 0.9rem; margin-top: 0.5rem;">
+                    Kontaktujte nás na +420 724 232 423 pre cenovú ponuku.
+                </p>
+            </div>`;
+        document.getElementById('resultPrice').innerText = "Dohodou";
+        document.getElementById('resultOrig').innerText = "";
+        document.getElementById('resultSub').innerText = "Individuální kalkulace";
+        return; // Dôležité: zastaví zvyšok funkcie, aby nepočítala nuly
+    }
+    // --- KONIEC OPRAVY ---
+
     const isPromo = pSold < PROMO_TOTAL;
     const promoDisc = isPromo ? 0.75 : 1;
     const mixDisc = pMix === 2 ? 0.85 : pMix === 3 ? 0.70 : pMix >= 4 ? 0.55 : 1;
@@ -2035,83 +1929,67 @@
   }
 
 function orderCurrent() {
-    // 1. Logika tvojho počítadla (ponecháme, aby sa odpočítavali miesta)
+    // 1. Logika počítadla voľných miest
     pSold = Math.min(pSold + 1, PROMO_TOTAL);
     updateCounter();
 
-    // 2. Mapa služieb (prepojenie tvojho webu a SimplyBook ID)
+    // 2. Mapa IDčiek (tvoje presné ID zo SimplyBooku)
     const serviceMap = {
-        // Jihlava
-        "jihlava_auto_s4": 2,
-        "jihlava_auto_s6": 14,
-        "jihlava_pohovka_mala": 3,
-        "jihlava_pohovka_stredni": 9,
-        "jihlava_pohovka_velka": 10,
-        "jihlava_koberec_do20": 4,
-        "jihlava_matrace_m2": 5,
-        "jihlava_matrace_m4": 11,
-        "jihlava_matrace_m6": 12,
-        "jihlava_ozon_auto": 31,
-        "jihlava_ozon_m50": 32,
-        "jihlava_ozon_m80": 33,
-        "jihlava_ozon_m100": 34,
-
-        // Praha
-        "praha_auto_s4": 13,
-        "praha_auto_s6": 15,
-        "praha_pohovka_mala": 16,
-        "praha_pohovka_stredni": 17,
-        "praha_pohovka_velka": 18,
-        "praha_koberec_do20": 19,
-        "praha_matrace_m2": 20,
-        "praha_matrace_m4": 21,
-        "praha_matrace_m6": 22,
-        "praha_ozon_auto": 35,
-        "praha_ozon_m50": 36,
-        "praha_ozon_m80": 37,
-        "praha_ozon_m100": 38,
-
-        // Brno
-        "brno_auto_s4": 23,
-        "brno_auto_s6": 8,
-        "brno_pohovka_mala": 24,
-        "brno_pohovka_stredni": 25,
-        "brno_pohovka_velka": 26,
-        "brno_koberec_do20": 27,
-        "brno_matrace_m2": 28,
-        "brno_matrace_m4": 29,
-        "brno_matrace_m6": 30,
-        "brno_ozon_auto": 39,
-        "brno_ozon_m50": 40,
-        "brno_ozon_m80": 41,
-        "brno_ozon_m100": 42
+        "jihlava_auto_s4": 2, "jihlava_auto_s6": 14,
+        "praha_auto_s4": 13, "praha_auto_s6": 15,
+        "brno_auto_s4": 23, "brno_auto_s6": 8,
+        "praha_pohovka_mala": 16, "praha_pohovka_stredni": 17, "praha_pohovka_velka": 18,
+        "jihlava_pohovka_mala": 3, "jihlava_pohovka_stredni": 9, "jihlava_pohovka_velka": 10,
+        "brno_pohovka_mala": 24, "brno_pohovka_stredni": 25, "brno_pohovka_velka": 26,
+        "praha_koberec_do20": 19, "brno_koberec_do20": 27, "jihlava_koberec_do20": 4,
+        "praha_matrace_m2": 20, "praha_matrace_m4": 21, "praha_matrace_m6": 22,
+        "brno_matrace_m2": 28, "brno_matrace_m4": 29, "brno_matrace_m6": 30,
+        "jihlava_matrace_m2": 5, "jihlava_matrace_m4": 11, "jihlava_matrace_m6": 12,
+        "praha_ozon_auto": 35, "praha_ozon_m50": 36, "praha_ozon_m80": 37, "praha_ozon_m100": 38,
+        "brno_ozon_auto": 39, "brno_ozon_m50": 40, "brno_ozon_m80": 41, "brno_ozon_m100": 42,
+        "jihlava_ozon_auto": 31, "jihlava_ozon_m50": 32, "jihlava_ozon_m80": 33, "jihlava_ozon_m100": 34
     };
 
-    // 3. Získanie dát z aktuálneho výberu v kalkulačke
-    // Tieto premenné (pCity, pType, pVariant) už tvoj kód má globálne definované
     let key = `${pCity}_${pType}_${pVariant}`;
     let sId = serviceMap[key];
 
+
     if (!sId) {
-        alert("Služba sa nenašla. Skontrolujte prosím výber alebo nás kontaktujte telefonicky.");
+        alert("Služba sa nenašla. Skontrolujte výber.");
         return;
     }
 
-    // 4. Príprava informácie o predplatnom pre Intake Field (field_1)
-    // pBilling má hodnoty 'rok', 'pol' alebo 'jed' podľa tvojho kódu
-    let billingLabel = "";
-    if (pBilling === 'rok') billingLabel = "Roční";
-    else if (pBilling === 'pol') billingLabel = "Pololetní";
-    else billingLabel = "Jednorázové";
+    // 3. Typ platby pre Intake Field
+    let billingLabel = pBilling === 'rok' ? "Roční" : (pBilling === 'pol' ? "Pololetní" : "Jednorázové");
 
-    // 5. Poskladanie "Deep Link" URL adresy
-    let baseUrl = "https://bestfiveclean.simplybook.it/v2/#book";
-    
-    // Vytvoríme finálny odkaz, ktorý prenesie ID služby a typ platby do poľa field_1
-    let finalUrl = `${baseUrl}/service/${sId}/count/1/field_1/${encodeURIComponent(billingLabel)}`;
+    // 4. Zobrazenie kontajnera a inicializácia widgetu
+    const container = document.getElementById('simplybook-container');
+    container.style.display = 'block';
+    container.innerHTML = ''; // Vyčistiť starý widget ak tam bol
+    container.scrollIntoView({ behavior: 'smooth' });
 
-    // 6. Presmerovanie zákazníka priamo na výber termínu v kalendári
-    window.location.href = finalUrl;
+    // 5. Spustenie SimplyBook widgetu priamo do stránky
+    if (typeof SimplybookWidget !== 'undefined') {
+        new SimplybookWidget({
+            "widget_type": "iframe",
+            "url": "https://bestfiveclean.simplybook.it",
+            "theme": "minimal",
+            "theme_settings": {
+                "sb_base_color": "#ff4d8d",
+                "body_bg_color": "#ffffff",
+                "dark_font_color": "#403733",
+                "display_item_mode": "block"
+            },
+            "timeline": "modern",
+            "container_id": "simplybook-container",
+            "app_config": {
+                "predefined": {
+                    "service": sId.toString(),
+                    "field_1": billingLabel // Toto pošle informáciu o platbe do SimplyBooku
+                }
+            }
+        });
+    }
 }
 
   // Init
