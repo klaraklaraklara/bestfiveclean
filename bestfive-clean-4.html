@@ -1294,29 +1294,68 @@
 </div>
 
 <!-- SPLASH SCREEN -->
-<div id="splash">
-  <div class="splash-logo">Bestfive<span> Clean</span></div>
-  <div class="splash-inner">
+<!-- OPRAVENÝ SPLASH SCREEN S POSTUPNÝM TEXTOM -->
+<div id="splash" style="position: fixed; inset: 0; z-index: 9999; background: #0a0a0a; display: flex; align-items: center; justify-content: center; flex-direction: column; opacity: 1; transition: opacity 0.5s ease;">
+  
+  <div class="splash-logo" style="position: absolute; top: 1.5rem; left: 50%; transform: translateX(-50%); font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 900; color: #ff4d8d; letter-spacing: -0.3px; white-space: nowrap;">
+    Bestfive<span> Clean</span>
+  </div>
 
-    <div class="splash-avatar" id="spFace">👩</div>
-
-    <div class="soundwave" id="spWave">
-      <span></span><span></span><span></span><span></span><span></span><span></span>
+  <div class="splash-inner" style="display: flex; flex-direction: column; align-items: center; max-width: 520px; width: 90%; text-align: center;">
+    
+    <div class="splash-avatar" id="spFace" style="width: 110px; height: 110px; border-radius: 50%; background: linear-gradient(135deg, #ff4d8d 0%, #c4005c 60%, #8b0040 100%); display: flex; align-items: center; justify-content: center; font-size: 3.5rem; margin-bottom: 1.5rem; border: 3px solid rgba(255,77,141,0.35); position: relative;">
+      👩
     </div>
 
-    <div class="splash-speech" id="spSpeech">
-      <div class="typing-dots" id="spDots"><span></span><span></span><span></span></div>
-      <span id="spText" style="display:none"></span>
+    <div class="splash-speech" style="background: #1a1a1a; border: 1px solid rgba(255,77,141,0.3); border-radius: 20px; padding: 1.4rem 1.6rem; min-height: 120px; width: 100%; color: white; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 1rem; line-height: 1.6; position: relative; box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
+      <span id="spText"></span>
     </div>
 
-    <div class="splash-dots" id="spDotNav"></div>
-
-    <div class="splash-btns" id="spBtns">
-      <button class="sp-btn sp-btn-skip" onclick="splashSkip()">Přeskočit →</button>
+    <div class="splash-btns" style="width: 100%;">
+      <!-- TOTO TLAČIDLO FUNGUJE OKAMŽITE -->
+      <button onclick="vstupNaWeb()" style="width: 100%; padding: 1rem; border-radius: 50px; background: #ff4d8d; color: white; border: none; font-size: 1rem; font-weight: 700; cursor: pointer; box-shadow: 0 8px 20px rgba(255,77,141,0.3);">
+        VSTOUPIT NA WEB →
+      </button>
     </div>
-
   </div>
 </div>
+
+<script>
+  // Celý text, ktorý sa má vypísať
+  const celyText = "Ahoj! Vítám vás na stránkách Bestfive Clean. 👋 Níže si vyberte předplatné nebo jednorázovou objednávku — máme plány pro auto, pohovku, koberec i matraci. 🛋️🚗 Platit můžete hotově i kartou. A kdybyste si nevěděli rady, určitě neváhejte zavolat — rádi poradíme! 📞";
+  
+  let i = 0;
+  const rychlost = 35; // Rýchlosť písania v milisekundách
+  const textElement = document.getElementById('spText');
+  const face = document.getElementById('spFace');
+
+  function pisText() {
+    if (i < celyText.length) {
+      textElement.innerHTML += celyText.charAt(i);
+      i++;
+      setTimeout(pisText, rychlost);
+    } else {
+      // Keď dopíše, prestane "hovoriť" (ak by ste mali animáciu na tvári)
+      face.style.animation = "none";
+    }
+  }
+
+  // Hlavná funkcia na zatvorenie splashu
+  function vstupNaWeb() {
+    const splash = document.getElementById('splash');
+    splash.style.opacity = '0';
+    setTimeout(() => {
+      splash.style.display = 'none';
+      document.body.style.overflow = 'auto'; // Povoliť scrollovanie
+    }, 500);
+  }
+
+  // Spustenie písania hneď po načítaní
+  window.addEventListener('load', () => {
+    document.body.style.overflow = 'hidden'; // Zákaz scrollu počas splashu
+    pisText();
+  });
+</script>
 
 <!-- MODAL -->
 <div class="modal-overlay" id="modal">
@@ -1995,11 +2034,85 @@
     }
   }
 
-  function orderCurrent() {
+function orderCurrent() {
+    // 1. Logika tvojho počítadla (ponecháme, aby sa odpočítavali miesta)
     pSold = Math.min(pSold + 1, PROMO_TOTAL);
     updateCounter();
-    document.getElementById('objednavka').scrollIntoView({ behavior: 'smooth' });
-  }
+
+    // 2. Mapa služieb (prepojenie tvojho webu a SimplyBook ID)
+    const serviceMap = {
+        // Jihlava
+        "jihlava_auto_s4": 2,
+        "jihlava_auto_s6": 14,
+        "jihlava_pohovka_mala": 3,
+        "jihlava_pohovka_stredni": 9,
+        "jihlava_pohovka_velka": 10,
+        "jihlava_koberec_do20": 4,
+        "jihlava_matrace_m2": 5,
+        "jihlava_matrace_m4": 11,
+        "jihlava_matrace_m6": 12,
+        "jihlava_ozon_auto": 31,
+        "jihlava_ozon_m50": 32,
+        "jihlava_ozon_m80": 33,
+        "jihlava_ozon_m100": 34,
+
+        // Praha
+        "praha_auto_s4": 13,
+        "praha_auto_s6": 15,
+        "praha_pohovka_mala": 16,
+        "praha_pohovka_stredni": 17,
+        "praha_pohovka_velka": 18,
+        "praha_koberec_do20": 19,
+        "praha_matrace_m2": 20,
+        "praha_matrace_m4": 21,
+        "praha_matrace_m6": 22,
+        "praha_ozon_auto": 35,
+        "praha_ozon_m50": 36,
+        "praha_ozon_m80": 37,
+        "praha_ozon_m100": 38,
+
+        // Brno
+        "brno_auto_s4": 23,
+        "brno_auto_s6": 8,
+        "brno_pohovka_mala": 24,
+        "brno_pohovka_stredni": 25,
+        "brno_pohovka_velka": 26,
+        "brno_koberec_do20": 27,
+        "brno_matrace_m2": 28,
+        "brno_matrace_m4": 29,
+        "brno_matrace_m6": 30,
+        "brno_ozon_auto": 39,
+        "brno_ozon_m50": 40,
+        "brno_ozon_m80": 41,
+        "brno_ozon_m100": 42
+    };
+
+    // 3. Získanie dát z aktuálneho výberu v kalkulačke
+    // Tieto premenné (pCity, pType, pVariant) už tvoj kód má globálne definované
+    let key = `${pCity}_${pType}_${pVariant}`;
+    let sId = serviceMap[key];
+
+    if (!sId) {
+        alert("Služba sa nenašla. Skontrolujte prosím výber alebo nás kontaktujte telefonicky.");
+        return;
+    }
+
+    // 4. Príprava informácie o predplatnom pre Intake Field (field_1)
+    // pBilling má hodnoty 'rok', 'pol' alebo 'jed' podľa tvojho kódu
+    let billingLabel = "";
+    if (pBilling === 'rok') billingLabel = "Roční";
+    else if (pBilling === 'pol') billingLabel = "Pololetní";
+    else billingLabel = "Jednorázové";
+
+    // 5. Poskladanie "Deep Link" URL adresy
+    let baseUrl = "https://bestfiveclean.simplybook.it/v2/#book";
+    
+    // Vytvoríme finálny odkaz, ktorý prenesie ID služby a typ platby do poľa field_1
+    let finalUrl = `${baseUrl}/service/${sId}/count/1/field_1/${encodeURIComponent(billingLabel)}`;
+
+    // 6. Presmerovanie zákazníka priamo na výber termínu v kalendári
+    window.location.href = finalUrl;
+}
 
   // Init
   updateCounter();
