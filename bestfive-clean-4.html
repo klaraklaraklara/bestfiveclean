@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bestfive Clean – Profesionální čištění</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-
 <script src="//widget.simplybook.it/v2/widget/widget.js" type="text/javascript"></script>
 
 <style>
@@ -30,6 +29,43 @@
     color: var(--white);
     font-family: 'DM Sans', sans-serif;
     overflow-x: hidden;
+  }
+
+  /* Pozadie za oknom (rozmazanie) */
+  #booking-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      align-items: center;
+      justify-content: center;
+  }
+
+  /* Samotné okno s kalendárom */
+  .booking-modal-content {
+      position: relative;
+      width: 90%;
+      max-width: 1000px; /* 2/3 šírky na veľkých obrazovkách */
+      height: 85vh;
+      background: #fff;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+  }
+
+  /* Tlačidlo zavrieť (krížik) */
+  .booking-modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 30px;
+      color: #333;
+      cursor: pointer;
+      z-index: 10001;
+      font-weight: bold;
+      line-height: 1;
   }
 
   /* NAV */
@@ -1929,46 +1965,35 @@
   }
 
 function orderCurrent() {
-    // 1. Logika počítadla voľných miest
+    // 1. Aktualizácia tvojho počítadla
     pSold = Math.min(pSold + 1, PROMO_TOTAL);
     updateCounter();
 
-    // 2. Mapa IDčiek (tvoje presné ID zo SimplyBooku)
+    // 2. Mapa služieb
     const serviceMap = {
-        "jihlava_auto_s4": 2, "jihlava_auto_s6": 14,
-        "praha_auto_s4": 13, "praha_auto_s6": 15,
-        "brno_auto_s4": 23, "brno_auto_s6": 8,
-        "praha_pohovka_mala": 16, "praha_pohovka_stredni": 17, "praha_pohovka_velka": 18,
-        "jihlava_pohovka_mala": 3, "jihlava_pohovka_stredni": 9, "jihlava_pohovka_velka": 10,
-        "brno_pohovka_mala": 24, "brno_pohovka_stredni": 25, "brno_pohovka_velka": 26,
-        "praha_koberec_do20": 19, "brno_koberec_do20": 27, "jihlava_koberec_do20": 4,
-        "praha_matrace_m2": 20, "praha_matrace_m4": 21, "praha_matrace_m6": 22,
-        "brno_matrace_m2": 28, "brno_matrace_m4": 29, "brno_matrace_m6": 30,
-        "jihlava_matrace_m2": 5, "jihlava_matrace_m4": 11, "jihlava_matrace_m6": 12,
-        "praha_ozon_auto": 35, "praha_ozon_m50": 36, "praha_ozon_m80": 37, "praha_ozon_m100": 38,
-        "brno_ozon_auto": 39, "brno_ozon_m50": 40, "brno_ozon_m80": 41, "brno_ozon_m100": 42,
-        "jihlava_ozon_auto": 31, "jihlava_ozon_m50": 32, "jihlava_ozon_m80": 33, "jihlava_ozon_m100": 34
+        "praha_auto_s4": 13, "praha_auto_s6": 15, "praha_pohovka_mala": 16, "praha_pohovka_stredni": 17, "praha_pohovka_velka": 18,
+        "praha_koberec_do20": 19, "praha_matrace_m2": 20, "praha_matrace_m4": 21, "praha_matrace_m6": 22, "praha_ozon_auto": 35,
+        "brno_auto_s4": 23, "brno_auto_s6": 8, "brno_pohovka_mala": 24, "brno_pohovka_stredni": 25, "brno_pohovka_velka": 26,
+        "brno_koberec_do20": 27, "brno_matrace_m2": 28, "brno_matrace_m4": 29, "brno_matrace_m6": 30, "brno_ozon_auto": 39,
+        "jihlava_auto_s4": 2, "jihlava_auto_s6": 14, "jihlava_pohovka_mala": 3, "jihlava_pohovka_stredni": 9, "jihlava_pohovka_velka": 10,
+        "jihlava_koberec_do20": 4, "jihlava_matrace_m2": 5, "jihlava_matrace_m4": 11, "jihlava_matrace_m6": 12, "jihlava_ozon_auto": 31
     };
 
     let key = `${pCity}_${pType}_${pVariant}`;
     let sId = serviceMap[key];
 
-
     if (!sId) {
-        alert("Služba sa nenašla. Skontrolujte výber.");
+        alert("Služba nenalezena.");
         return;
     }
 
-    // 3. Typ platby pre Intake Field
     let billingLabel = pBilling === 'rok' ? "Roční" : (pBilling === 'pol' ? "Pololetní" : "Jednorázové");
 
-    // 4. Zobrazenie kontajnera a inicializácia widgetu
-    const container = document.getElementById('simplybook-container');
-    container.style.display = 'block';
-    container.innerHTML = ''; // Vyčistiť starý widget ak tam bol
-    container.scrollIntoView({ behavior: 'smooth' });
+    // 3. Zobrazenie Overlayu
+    document.getElementById('booking-modal-overlay').style.display = 'flex';
+    document.getElementById('sb-widget-container').innerHTML = ''; // Vyčistiť starý obsah
 
-    // 5. Spustenie SimplyBook widgetu priamo do stránky
+    // 4. Inicializácia Widgetu priamo do Modal okna
     if (typeof SimplybookWidget !== 'undefined') {
         new SimplybookWidget({
             "widget_type": "iframe",
@@ -1981,15 +2006,21 @@ function orderCurrent() {
                 "display_item_mode": "block"
             },
             "timeline": "modern",
-            "container_id": "simplybook-container",
+            "container_id": "sb-widget-container",
             "app_config": {
                 "predefined": {
                     "service": sId.toString(),
-                    "field_1": billingLabel // Toto pošle informáciu o platbe do SimplyBooku
+                    "field_1": billingLabel
                 }
             }
         });
     }
+}
+
+// Funkcia na zavretie okna
+function closeBooking() {
+    document.getElementById('booking-modal-overlay').style.display = 'none';
+    document.getElementById('sb-widget-container').innerHTML = ''; // Zastaví widget na pozadí
 }
 
   // Init
@@ -2229,5 +2260,13 @@ function orderCurrent() {
     document.getElementById('success').style.display = 'block';
   }
 </script>
+
+<div id="booking-modal-overlay">
+    <div class="booking-modal-content">
+        <span class="booking-modal-close" onclick="closeBooking()">&times;</span>
+        <div id="sb-widget-container" style="width:100%; height:100%;"></div>
+    </div>
+</div>
+
 </body>
 </html>
