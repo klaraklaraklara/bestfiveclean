@@ -31,42 +31,59 @@
     overflow-x: hidden;
   }
 
-  /* Pozadie za oknom (rozmazanie) */
-  #booking-modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(10px);
-      align-items: center;
-      justify-content: center;
-  }
+  /* Pozadie za oknom */
+#booking-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.85); /* Trochu tmavšie pre lepší kontrast */
+    backdrop-filter: blur(10px);
+    align-items: center;
+    justify-content: center;
+    padding: 20px; /* Aby na mobiloch nebolo okno úplne po okraje */
+}
 
-  /* Samotné okno s kalendárom */
-  .booking-modal-content {
-      position: relative;
-      width: 90%;
-      max-width: 1000px; /* 2/3 šírky na veľkých obrazovkách */
-      height: 85vh;
-      background: #fff;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-  }
+/* Okno s kalendárom */
+.booking-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: 90vh; /* Zvýšime výšku na 90% obrazovky */
+    background: #fff;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    overflow: hidden; /* Kontajner ostane čistý */
+}
 
-  /* Tlačidlo zavrieť (krížik) */
-  .booking-modal-close {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 30px;
-      color: #333;
-      cursor: pointer;
-      z-index: 10001;
-      font-weight: bold;
-      line-height: 1;
-  }
+/* Samotný obal pre iframe */
+#sb-widget-container {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto; /* Tu zapneme skrolovanie pre vnútro kalendára */
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Úprava krížika, aby nezavadzal */
+.booking-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 32px;
+    color: #000;
+    cursor: pointer;
+    z-index: 10002;
+    background: rgba(255,255,255,0.8);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
 
   /* NAV */
   nav {
@@ -1986,14 +2003,16 @@ function orderCurrent() {
         alert("Služba nenalezena.");
         return;
     }
+      let billingLabel = "";
+    if (pBilling === 'rok') billingLabel = "Roční";
+    else if (pBilling === 'pol') billingLabel = "Pololetní";
+    else billingLabel = "Jednorázové";
 
-    let billingLabel = pBilling === 'rok' ? "Roční" : (pBilling === 'pol' ? "Pololetní" : "Jednorázové");
-
-    // 3. Zobrazenie Overlayu
+    // 4. AKTIVACE MODÁLU (Tvé vyskakovací okno)
     document.getElementById('booking-modal-overlay').style.display = 'flex';
-    document.getElementById('sb-widget-container').innerHTML = ''; // Vyčistiť starý obsah
+    document.getElementById('sb-widget-container').innerHTML = ''; 
 
-    // 4. Inicializácia Widgetu priamo do Modal okna
+    // 5. PROPOJENÍ S WIDGETEM
     if (typeof SimplybookWidget !== 'undefined') {
         new SimplybookWidget({
             "widget_type": "iframe",
@@ -2001,8 +2020,6 @@ function orderCurrent() {
             "theme": "minimal",
             "theme_settings": {
                 "sb_base_color": "#ff4d8d",
-                "body_bg_color": "#ffffff",
-                "dark_font_color": "#403733",
                 "display_item_mode": "block"
             },
             "timeline": "modern",
@@ -2010,7 +2027,7 @@ function orderCurrent() {
             "app_config": {
                 "predefined": {
                     "service": sId.toString(),
-                    "field_1": billingLabel
+                    "field_1": billingLabel // TOTO JE TO PROPOJENÍ na Intake Form
                 }
             }
         });
