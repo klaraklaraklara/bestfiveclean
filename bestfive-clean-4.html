@@ -711,7 +711,6 @@
     <li><a href="#segment">Domácnosti & Firmy</a></li>
     <li><a href="#predplatne">Předplatné</a></li>
     <li><a href="#voucher">Voucher</a></li>
-    <li><a href="#objednavka">Objednávka</a></li>
   </ul>
   <button class="nav-btn" onclick="document.getElementById('objednavka').scrollIntoView({behavior:'smooth'})">Objednat</button>
   <a href="tel:+420724232423" style="color:var(--pink);font-size:0.875rem;font-weight:600;text-decoration:none;margin-left:1rem">📞 +420 724 232 423</a>
@@ -767,48 +766,89 @@
   </div>
 </section>
 
-<!-- VIDEO SEKCE -->
+<!-- VIDEO SEKCE - VERTIKÁLNÍ REÁLNÁ VIDEA -->
+<!-- VIDEO SEKCE - NÁHLEDY PŘÍMO Z VIDEÍ -->
 <section style="background:var(--dark);padding:4rem">
   <p class="section-label">Podívejte se sami</p>
   <h2 class="section-title">Jak to u nás <span style="color:var(--pink)">funguje</span></h2>
-  <p class="section-sub">Nevěříte? Podívejte se na videa jak tepování a dezinfekce ozonem vypadá v praxi.</p>
+  <p class="section-sub">Klikněte na video pro zobrazení detailu na celou obrazovku.</p>
+  
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem">
 
-    <!-- Video 1 - Tepování -->
-    <div style="background:var(--dark2);border:1px solid rgba(255,255,255,0.06);border-radius:20px;overflow:hidden;transition:transform 0.2s" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
-      <a href="https://www.youtube.com/watch?v=DOPLNIT_LINK" target="_blank" style="text-decoration:none;display:block">
-        <div style="background:linear-gradient(135deg,#1a0010,#2d0020);height:180px;display:flex;align-items:center;justify-content:center;position:relative">
-          <div style="width:64px;height:64px;border-radius:50%;background:var(--pink);display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(255,77,141,0.5)">
-            <span style="font-size:1.5rem;margin-left:4px">▶</span>
-          </div>
-          <div style="position:absolute;top:1rem;left:1rem;background:rgba(255,77,141,0.2);border:1px solid rgba(255,77,141,0.3);color:var(--pink);font-size:0.7rem;font-weight:600;padding:0.2rem 0.7rem;border-radius:50px">🚗 TEPOVÁNÍ</div>
+    <!-- Karta 1 - Auto -->
+    <div class="video-card-trigger" style="background:var(--dark2);border:1px solid rgba(255,255,255,0.06);border-radius:20px;overflow:hidden;transition:transform 0.2s;cursor:pointer" 
+         onclick="openVerticalVideo('tepovanieAuto.mp4')">
+      
+      <div style="height:250px; display:flex; align-items:center; justify-content:center; position:relative; background:#000;">
+        <!-- Video v pozadí karty - nastavené na čas 5s (přibližně půlka) -->
+        <video muted playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.6;">
+          <source src="tepovanieAuto.mp4#t=23" type="video/mp4">
+        </video>
+
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--pink);display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(255,77,141,0.5);z-index:2">
+          <span style="font-size:1.5rem;margin-left:4px">▶</span>
         </div>
-        <div style="padding:1.2rem">
-          <div style="font-size:1rem;font-weight:600;color:var(--white);margin-bottom:0.4rem">Chcete vidět jak tepování probíhá?</div>
-          <div style="font-size:0.82rem;color:var(--gray);line-height:1.6">Podívejte se jak vypadá hloubkové čištění sedaček, koberečků a kufru přímo u zákazníka.</div>
-          <div style="margin-top:0.8rem;color:var(--pink);font-size:0.82rem;font-weight:600">Přehrát video →</div>
-        </div>
-      </a>
+        <div style="position:absolute;top:1rem;left:1rem;background:rgba(0,0,0,0.5);border:1px solid rgba(255,77,141,0.3);color:var(--pink);font-size:0.7rem;font-weight:600;padding:0.2rem 0.7rem;border-radius:50px;z-index:2">🚗 TEPOVÁNÍ AUTA</div>
+      </div>
+
+      <div style="padding:1.2rem">
+        <div style="font-size:1rem;font-weight:600;color:var(--white);margin-bottom:0.4rem">Detailní čištění interiéru</div>
+        <div style="font-size:0.82rem;color:var(--gray);line-height:1.6">Sledujte proces hloubkového tepování sedaček a koberečků.</div>
+      </div>
     </div>
 
-    <!-- Video 2 - Ozon -->
-    <div style="background:var(--dark2);border:1px solid rgba(255,255,255,0.06);border-radius:20px;overflow:hidden;transition:transform 0.2s" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
-      <a href="https://www.youtube.com/watch?v=DOPLNIT_LINK" target="_blank" style="text-decoration:none;display:block">
-        <div style="background:linear-gradient(135deg,#001a0d,#002d1a);height:180px;display:flex;align-items:center;justify-content:center;position:relative">
-          <div style="width:64px;height:64px;border-radius:50%;background:var(--pink);display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(255,77,141,0.5)">
-            <span style="font-size:1.5rem;margin-left:4px">▶</span>
-          </div>
-          <div style="position:absolute;top:1rem;left:1rem;background:rgba(255,77,141,0.2);border:1px solid rgba(255,77,141,0.3);color:var(--pink);font-size:0.7rem;font-weight:600;padding:0.2rem 0.7rem;border-radius:50px">💨 OZON</div>
+    <!-- Karta 2 - Sedačka -->
+    <div class="video-card-trigger" style="background:var(--dark2);border:1px solid rgba(255,255,255,0.06);border-radius:20px;overflow:hidden;transition:transform 0.2s;cursor:pointer" 
+         onclick="openVerticalVideo('tepovanieSedacka.mp4')">
+      
+      <div style="height:250px; display:flex; align-items:center; justify-content:center; position:relative; background:#000;">
+        <!-- Video v pozadí karty - nastavené na čas 5s -->
+        <video muted playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.6;">
+          <source src="tepovanieSedacka.mp4#t=23" type="video/mp4">
+        </video>
+
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--pink);display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(255,77,141,0.5);z-index:2">
+          <span style="font-size:1.5rem;margin-left:4px">▶</span>
         </div>
-        <div style="padding:1.2rem">
-          <div style="font-size:1rem;font-weight:600;color:var(--white);margin-bottom:0.4rem">Co je dezinfekce ozonem a jak funguje?</div>
-          <div style="font-size:0.82rem;color:var(--gray);line-height:1.6">Vysvětlím vám co ozon dělá, proč je bezpečný a jak probíhá dezinfekce bez chemie.</div>
-          <div style="margin-top:0.8rem;color:var(--pink);font-size:0.82rem;font-weight:600">Přehrát video →</div>
-        </div>
-      </a>
+        <div style="position:absolute;top:1rem;left:1rem;background:rgba(0,0,0,0.5);border:1px solid rgba(255,77,141,0.3);color:var(--pink);font-size:0.7rem;font-weight:600;padding:0.2rem 0.7rem;border-radius:50px;z-index:2">      🛋️ TEPOVÁNÍ SEDAČKY</div>
+      </div>
+
+      <div style="padding:1.2rem">
+        <div style="font-size:1rem;font-weight:600;color:var(--white);margin-bottom:0.4rem">Oživení vaší pohovky</div>
+        <div style="font-size:0.82rem;color:var(--gray);line-height:1.6">Jak vypadá profesionální odstranění skvrn a nečistot z čalounění.</div>
+      </div>
     </div>
 
   </div>
+</section>
+<script>
+  const overlay = document.getElementById('videoOverlay');
+  const video = document.getElementById('mainVideo');
+
+  function openVideo(src) {
+    video.src = src;
+    overlay.style.display = 'flex';
+    video.play();
+    // Zabránění skrolování stránky pod videem
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeVideo() {
+    overlay.style.display = 'none';
+    video.pause();
+    video.src = "";
+    document.body.style.overflow = 'auto';
+  }
+
+  // Kliknutí na pozadí zavře video
+  overlay.onclick = function(e) {
+    if (e.target === overlay) closeVideo();
+  };
+
+  // Prepojenie s tvojimi kartami (pre istotu, ak by si menil názvy funkcií)
+  window.openVideoModal = openVideo;
+</script>
+
 </section>
 <section id="segment" style="background:var(--dark);padding-bottom:0">
   <p class="section-label">Pro koho jsme tu</p>
@@ -922,7 +962,7 @@
 <!-- PRICING -->
 <section id="predplatne" class="city-section">
   <p class="section-label">Výhodné předplatné</p>
-  <h2 class="section-title">Vyberte předplatné</h2>
+  <h2 class="section-title">Objednat službu</h2>
   <p class="section-sub">Vyberte město, typ čištění, velikost a termín.</p>
 
   <!-- Počítadlo prvních 100 -->
@@ -2003,31 +2043,42 @@ function orderCurrent() {
         alert("Služba nenalezena.");
         return;
     }
-      let billingLabel = "";
-    if (pBilling === 'rok') billingLabel = "Roční";
-    else if (pBilling === 'pol') billingLabel = "Pololetní";
-    else billingLabel = "Jednorázové";
+    // Prevod na text pre Intake Form (field_1)
+    let billingLabel = pBilling === 'rok' ? "Roční" : (pBilling === 'pol' ? "Pololetní" : "Jednorázové");
 
-    // 4. AKTIVACE MODÁLU (Tvé vyskakovací okno)
+    // 3. Zobrazenie tvojho Modalu
     document.getElementById('booking-modal-overlay').style.display = 'flex';
     document.getElementById('sb-widget-container').innerHTML = ''; 
 
-    // 5. PROPOJENÍ S WIDGETEM
+    // 4. Inicializácia widgetu s tvojím NOVÝM DIZAJNOM
     if (typeof SimplybookWidget !== 'undefined') {
         new SimplybookWidget({
             "widget_type": "iframe",
             "url": "https://bestfiveclean.simplybook.it",
             "theme": "minimal",
             "theme_settings": {
-                "sb_base_color": "#ff4d8d",
-                "display_item_mode": "block"
+                "timeline_show_end_time": "1",
+                "timeline_modern_display": "as_table",
+                "hide_company_label": "0",
+                "timeline_hide_unavailable": "1",
+                "hide_past_days": "0",
+                "sb_base_color": "#000000",
+                "btn_color_1": "#ff4d8d,#ff4d8d,#ff4d8d",
+                "link_color": "#ff80b0",
+                "display_item_mode": "list",
+                "body_bg_color": "#e3e3e3",
+                "dark_font_color": "#1a1a1a",
+                "light_font_color": "#ff4d8d",
+                "sb_company_label_color": "#e3e3e3"
             },
             "timeline": "modern",
-            "container_id": "sb-widget-container",
+            "datepicker": "top_calendar",
+            "container_id": "sb-widget-container", // Aby sa otvoril v tvojom okne, nie v novom
             "app_config": {
+                "clear_session": 1,
                 "predefined": {
                     "service": sId.toString(),
-                    "field_1": billingLabel // TOTO JE TO PROPOJENÍ na Intake Form
+                    "field_1": billingLabel // Toto prepojí kalkulačku s tvojím Intake Form
                 }
             }
         });
@@ -2284,6 +2335,48 @@ function closeBooking() {
         <div id="sb-widget-container" style="width:100%; height:100%;"></div>
     </div>
 </div>
+
+<div id="vertVideoOverlay" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.8); backdrop-filter:blur(5px); -webkit-backdrop-filter:blur(5px); align-items:center; justify-content:center; padding:20px;">
+  
+  <button onclick="closeVerticalVideo()" style="position:absolute; top:20px; right:30px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:white; width:50px; height:50px; border-radius:50%; font-size:30px; cursor:pointer; z-index:10001; display:flex; align-items:center; justify-content:center;">&times;</button>
+  
+  <div style="height:85vh; aspect-ratio: 9/16; max-width:100%; position:relative; background:#000; border-radius:15px; overflow:hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(255,77,141,0.3);">
+    <video id="vertPlayer" controls style="width:100%; height:100%; object-fit: contain;">
+      Váš prohlížeč nepodporuje přehrávání videa.
+    </video>
+  </div>
+</div>
+
+<script>
+  // (Skript zostáva rovnaký, len ho tu pre istotu nechávam kompletný)
+  const vOverlay = document.getElementById('vertVideoOverlay');
+  const vPlayer = document.getElementById('vertPlayer');
+
+  function openVerticalVideo(file) {
+    vPlayer.src = file;
+    vOverlay.style.display = 'flex';
+    vPlayer.play();
+    document.body.style.overflow = 'hidden'; 
+  }
+
+  function closeVerticalVideo() {
+    vOverlay.style.display = 'none';
+    vPlayer.pause();
+    vPlayer.src = "";
+    document.body.style.overflow = 'auto'; 
+  }
+
+  vOverlay.onclick = function(e) {
+    if (e.target === vOverlay) closeVerticalVideo();
+  };
+</script>
+
+<style>
+  /* (CSS pre hover efekt kariet zostáva rovnaký) */
+  .video-card-trigger:hover {
+    border-color: var(--pink) !important;
+  }
+</style>
 
 </body>
 </html>
