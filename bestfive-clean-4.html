@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bestfive Clean – Profesionální čištění</title>
+<title>BESTFIVE Clean – Profesionální čištění</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="//widget.simplybook.it/v2/widget/widget.js" type="text/javascript"></script>
 
@@ -11,7 +11,7 @@
   :root {
     --pink: #ff4d8d;
     --pink-light: #ff80b0;
-    --pink-pale: #ffe0ed;
+    --pink-pale: #230914;
     --black: #0a0a0a;
     --dark: #111111;
     --dark2: #1a1a1a;
@@ -704,13 +704,12 @@
 <body>
 
 <!-- NAV -->
-<!-- NAV -->
 <nav>
   <div class="logo">Bestfive<span> Clean</span></div>
   <ul>
     <li><a href="#sluzby">Služby</a></li>
     <li><a href="#segment">Domácnosti & Firmy</a></li>
-    <li><a href="#predplatne">Předplatné</a></li> <!-- Tento odkaz zostáva nezmenený -->
+    <li><a href="#predplatne">Předplatné</a></li> 
     <li><a href="#voucher">Voucher</a></li>
   </ul>
   <button class="nav-btn" onclick="document.getElementById('predplatne').scrollIntoView({behavior:'smooth'})">Objednat</button>
@@ -1283,7 +1282,7 @@
     <div class="splash-btns" style="width: 100%;">
       <!-- TOTO TLAČIDLO FUNGUJE OKAMŽITE -->
       <button onclick="vstupNaWeb()" style="width: 100%; padding: 1rem; border-radius: 50px; background: #ff4d8d; color: white; border: none; font-size: 1rem; font-weight: 700; cursor: pointer; box-shadow: 0 8px 20px rgba(255,77,141,0.3);">
-        VSTOUPIT NA WEB →
+        POKRAČOVAŤ →
       </button>
     </div>
   </div>
@@ -2059,18 +2058,26 @@ function orderCurrent() {
             "theme": "minimal",
             "theme_settings": {
                 "timeline_show_end_time": "1",
-                "timeline_modern_display": "as_table",
-                "hide_company_label": "0",
+                "timeline_modern_display": "as_slots",
+                "hide_company_label": "1",
                 "timeline_hide_unavailable": "1",
-                "hide_past_days": "0",
-                "sb_base_color": "#000000",
+                "hide_past_days": "1",
+
+                "sb_base_color": "#ff4d8d",
                 "btn_color_1": "#ff4d8d,#ff4d8d,#ff4d8d",
                 "link_color": "#ff80b0",
-                "display_item_mode": "list",
-                "body_bg_color": "#e3e3e3",
+
+                "body_bg_color": "#ffffff",
+
                 "dark_font_color": "#1a1a1a",
-                "light_font_color": "#ff4d8d",
-                "sb_company_label_color": "#e3e3e3"
+                "light_font_color": "#ffffff",
+
+                "sb_company_label_color": "#ffffff",
+
+                "sb_busy": "#ffd6e5",
+                "sb_available": "#1a1a1a",
+
+                "display_item_mode": "list"
             },
             "timeline": "modern",
             "datepicker": "top_calendar",
