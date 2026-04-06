@@ -2021,76 +2021,106 @@
     }
   }
 
-function orderCurrent() {
-    // 1. Aktualizácia tvojho počítadla
-    pSold = Math.min(pSold + 1, PROMO_TOTAL);
-    updateCounter();
+  function orderCurrent() {
+  // 1. Logika tvojho počítadla (ponechané z originálu)
+  pSold = Math.min(pSold + 1, PROMO_TOTAL);
+  updateCounter();
 
-    // 2. Mapa služieb
-    const serviceMap = {
-        "praha_auto_s4": 13, "praha_auto_s6": 15, "praha_pohovka_mala": 16, "praha_pohovka_stredni": 17, "praha_pohovka_velka": 18,
-        "praha_koberec_do20": 19, "praha_matrace_m2": 20, "praha_matrace_m4": 21, "praha_matrace_m6": 22, "praha_ozon_auto": 35,
-        "brno_auto_s4": 23, "brno_auto_s6": 8, "brno_pohovka_mala": 24, "brno_pohovka_stredni": 25, "brno_pohovka_velka": 26,
-        "brno_koberec_do20": 27, "brno_matrace_m2": 28, "brno_matrace_m4": 29, "brno_matrace_m6": 30, "brno_ozon_auto": 39,
-        "jihlava_auto_s4": 2, "jihlava_auto_s6": 14, "jihlava_pohovka_mala": 3, "jihlava_pohovka_stredni": 9, "jihlava_pohovka_velka": 10,
-        "jihlava_koberec_do20": 4, "jihlava_matrace_m2": 5, "jihlava_matrace_m4": 11, "jihlava_matrace_m6": 12, "jihlava_ozon_auto": 31
-    };
+  // 2. Kompletná mapa 117 služieb podľa tvojho poradia
+  const serviceMap = {
+    "jihlava_auto_s4_jed": 2, "jihlava_auto_s4_pol": 43, "jihlava_auto_s4_rok": 44,
+    "praha_auto_s4_jed": 46, "praha_auto_s4_pol": 45, "praha_auto_s4_rok": 13,
+    "jihlava_pohovka_mala_jed": 3, "jihlava_pohovka_mala_pol": 48, "jihlava_pohovka_mala_rok": 47,
+    "jihlava_koberec_do20_jed": 50, "jihlava_koberec_do20_pol": 49, "jihlava_koberec_do20_rok": 4,
+    "jihlava_matrace_m2_jed": 52, "jihlava_matrace_m2_pol": 51, "jihlava_matrace_m2_rok": 5,
+    "brno_auto_s6_jed": 53, "brno_auto_s6_pol": 54, "brno_auto_s6_rok": 8,
+    "jihlava_auto_s6_jed": 55, "jihlava_auto_s6_pol": 14, "jihlava_auto_s6_rok": 56,
+    "praha_auto_s6_jed": 57, "praha_auto_s6_pol": 15, "praha_auto_s6_rok": 58,
+    "brno_auto_s4_jed": 23, "brno_auto_s4_pol": 59, "brno_auto_s4_rok": 60,
+    "jihlava_pohovka_stredni_jed": 62, "jihlava_pohovka_stredni_pol": 61, "jihlava_pohovka_stredni_rok": 9,
+    "jihlava_pohovka_velka_jed": 64, "jihlava_pohovka_velka_pol": 63, "jihlava_pohovka_velka_rok": 10,
+    "jihlava_matrace_m4_jed": 11, "jihlava_matrace_m4_pol": 65, "jihlava_matrace_m4_rok": 66,
+    "jihlava_matrace_m6_jed": 12, "jihlava_matrace_m6_pol": 67, "jihlava_matrace_m6_rok": 68,
+    "praha_pohovka_mala_jed": 16, "praha_pohovka_mala_pol": 70, "praha_pohovka_mala_rok": 69,
+    "praha_pohovka_stredni_jed": 17, "praha_pohovka_stredni_pol": 71, "praha_pohovka_stredni_rok": 72,
+    "praha_pohovka_velka_jed": 73, "praha_pohovka_velka_pol": 74, "praha_pohovka_velka_rok": 18,
+    "praha_koberec_do20_jed": 76, "praha_koberec_do20_pol": 75, "praha_koberec_do20_rok": 19,
+    "praha_matrace_m2_jed": 78, "praha_matrace_m2_pol": 77, "praha_matrace_m2_rok": 20,
+    "praha_matrace_m4_jed": 80, "praha_matrace_m4_pol": 79, "praha_matrace_m4_rok": 21,
+    "praha_matrace_m6_jed": 82, "praha_matrace_m6_pol": 81, "praha_matrace_m6_rok": 22,
+    "brno_pohovka_mala_jed": 84, "brno_pohovka_mala_pol": 83, "brno_pohovka_mala_rok": 24,
+    "brno_pohovka_stredni_jed": 86, "brno_pohovka_stredni_pol": 85, "brno_pohovka_stredni_rok": 25,
+    "brno_pohovka_velka_jed": 88, "brno_pohovka_velka_pol": 87, "brno_pohovka_velka_rok": 26,
+    "brno_koberec_do20_jed": 90, "brno_koberec_do20_pol": 89, "brno_koberec_do20_rok": 27,
+    "brno_matrace_m2_jed": 92, "brno_matrace_m2_pol": 91, "brno_matrace_m2_rok": 28,
+    "brno_matrace_m4_jed": 94, "brno_matrace_m4_pol": 93, "brno_matrace_m4_rok": 29,
+    "brno_matrace_m6_jed": 96, "brno_matrace_m6_pol": 95, "brno_matrace_m6_rok": 30,
+    "jihlava_ozon_auto_jed": 98, "jihlava_ozon_auto_pol": 97, "jihlava_ozon_auto_rok": 31,
+    "jihlava_ozon_m50_jed": 100, "jihlava_ozon_m50_pol": 99, "jihlava_ozon_m50_rok": 32,
+    "jihlava_ozon_m80_jed": 102, "jihlava_ozon_m80_pol": 101, "jihlava_ozon_m80_rok": 33,
+    "jihlava_ozon_m100_jed": 104, "jihlava_ozon_m100_pol": 103, "jihlava_ozon_m100_rok": 34,
+    "praha_ozon_auto_jed": 106, "praha_ozon_auto_pol": 105, "praha_ozon_auto_rok": 35,
+    "praha_ozon_m50_jed": 108, "praha_ozon_m50_pol": 107, "praha_ozon_m50_rok": 36,
+    "praha_ozon_m80_jed": 110, "praha_ozon_m80_pol": 109, "praha_ozon_m80_rok": 37,
+    "praha_ozon_m100_jed": 112, "praha_ozon_m100_pol": 111, "praha_ozon_m100_rok": 38,
+    "brno_ozon_auto_jed": 114, "brno_ozon_auto_pol": 113, "brno_ozon_auto_rok": 39,
+    "brno_ozon_m50_jed": 116, "brno_ozon_m50_pol": 115, "brno_ozon_m50_rok": 40,
+    "brno_ozon_m80_jed": 118, "brno_ozon_m80_pol": 117, "brno_ozon_m80_rok": 41,
+    "brno_ozon_m100_jed": 120, "brno_ozon_m100_pol": 119, "brno_ozon_m100_rok": 42
+  };
 
-    let key = `${pCity}_${pType}_${pVariant}`;
-    let sId = serviceMap[key];
+  // Získanie ID podľa výberu v kalkulačke
+  let key = `${pCity}_${pType}_${pVariant}_${pBilling}`;
+  let sId = serviceMap[key];
 
-    if (!sId) {
-        alert("Služba nenalezena.");
-        return;
-    }
-    // Prevod na text pre Intake Form (field_1)
-    let billingLabel = pBilling === 'rok' ? "Roční" : (pBilling === 'pol' ? "Pololetní" : "Jednorázové");
+  // Špeciálny prípad pre Ozon nad 100m2 (nerobí booking, len scroll na kontakt/telefón)
+  if (pType === 'ozon' && pVariant === 'velke') {
+    alert("Pro prostory nad 100m2 nás prosím kontaktujte telefonicky pro individuální kalkulaci.");
+    window.location.href = "tel:+420724232423";
+    return;
+  }
 
-    // 3. Zobrazenie tvojho Modalu
-    document.getElementById('booking-modal-overlay').style.display = 'flex';
-    document.getElementById('sb-widget-container').innerHTML = ''; 
+  if (!sId) {
+    alert("Služba nenalezena. Prosím zkontrolujte výběr.");
+    return;
+  }
 
-    // 4. Inicializácia widgetu s tvojím NOVÝM DIZAJNOM
-    if (typeof SimplybookWidget !== 'undefined') {
-        new SimplybookWidget({
-            "widget_type": "iframe",
-            "url": "https://bestfiveclean.simplybook.it",
-            "theme": "minimal",
-            "theme_settings": {
-                "timeline_show_end_time": "1",
-                "timeline_modern_display": "as_slots",
-                "hide_company_label": "1",
-                "timeline_hide_unavailable": "1",
-                "hide_past_days": "1",
+  // Zobrazenie modalného okna
+  document.getElementById('booking-modal-overlay').style.display = 'flex';
+  document.getElementById('sb-widget-container').innerHTML = ''; // Vyčistenie predošlého widgetu
 
-                "sb_base_color": "#ff4d8d",
-                "btn_color_1": "#ff4d8d,#ff4d8d,#ff4d8d",
-                "link_color": "#ff80b0",
-
-                "body_bg_color": "#ffffff",
-
-                "dark_font_color": "#1a1a1a",
-                "light_font_color": "#ffffff",
-
-                "sb_company_label_color": "#ffffff",
-
-                "sb_busy": "#ffd6e5",
-                "sb_available": "#1a1a1a",
-
-                "display_item_mode": "list"
-            },
-            "timeline": "modern",
-            "datepicker": "top_calendar",
-            "container_id": "sb-widget-container", // Aby sa otvoril v tvojom okne, nie v novom
-            "app_config": {
-                "clear_session": 1,
-                "predefined": {
-                    "service": sId.toString(),
-                    "field_1": billingLabel // Toto prepojí kalkulačku s tvojím Intake Form
-                }
-            }
-        });
-    }
+  // Inicializácia SimplyBook Widgetu priamo do modalu
+  if (typeof SimplybookWidget !== 'undefined') {
+    new SimplybookWidget({
+      "widget_type": "iframe",
+      "url": "https://bestfiveclean.simplybook.it",
+      "theme": "minimal",
+      "theme_settings": {
+        "timeline_show_end_time": "1",
+        "timeline_modern_display": "as_table",
+        "hide_company_label": "0",
+        "timeline_hide_unavailable": "1",
+        "hide_past_days": "0",
+        "sb_base_color": "#000000",
+        "btn_color_1": "#ff4d8d,#ff4d8d,#ff4d8d",
+        "link_color": "#ff80b0",
+        "display_item_mode": "list",
+        "body_bg_color": "#e3e3e3",
+        "dark_font_color": "#1a1a1a",
+        "light_font_color": "#ff4d8d",
+        "sb_company_label_color": "#e3e3e3"
+      },
+      "timeline": "modern",
+      "datepicker": "top_calendar",
+      "container_id": "sb-widget-container",
+      "app_config": {
+        "clear_session": 1,
+        "predefined": {
+          "service": sId.toString()
+        }
+      }
+    });
+  }
 }
 
 // Funkcia na zavretie okna
