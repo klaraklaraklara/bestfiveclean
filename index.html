@@ -2280,7 +2280,7 @@
   document.getElementById('booking-modal-overlay').style.display = 'flex';
   document.getElementById('sb-widget-container').innerHTML = ''; // Vyčistenie predošlého widgetu
 
-  // Inicializácia SimplyBook Widgetu priamo do modalu
+// Inicializácia SimplyBook Widgetu s novým dizajnom (šedá + ružová)
   if (typeof SimplybookWidget !== 'undefined') {
     new SimplybookWidget({
       "widget_type": "iframe",
@@ -2288,24 +2288,29 @@
       "theme": "minimal",
       "theme_settings": {
         "timeline_show_end_time": "1",
-        "timeline_modern_display": "as_table",
+        "timeline_modern_display": "as_slots",
         "hide_company_label": "0",
         "timeline_hide_unavailable": "1",
         "hide_past_days": "0",
-        "sb_base_color": "#000000",
+        "sb_base_color": "#808080",
         "btn_color_1": "#ff4d8d,#ff4d8d,#ff4d8d",
-        "link_color": "#ff80b0",
+        "link_color": "#ffc7db",
         "display_item_mode": "list",
         "body_bg_color": "#e3e3e3",
-        "dark_font_color": "#1a1a1a",
-        "light_font_color": "#ff4d8d",
-        "sb_company_label_color": "#e3e3e3"
+        "sb_review_image": "",
+        "dark_font_color": "#808080",
+        "light_font_color": "#ffc7db",
+        "sb_company_label_color": "#e3e3e3",
+        "hide_img_mode": "0",
+        "sb_busy": "#ff80b0",
+        "sb_available": "#6b6b6b"
       },
       "timeline": "modern",
       "datepicker": "top_calendar",
       "container_id": "sb-widget-container",
       "app_config": {
         "clear_session": 1,
+        "allow_switch_to_ada": 0,
         "predefined": {
           "service": sId.toString()
         }
@@ -2313,6 +2318,7 @@
     });
   }
 }
+
 
 // Funkcia na zavretie okna
 function closeBooking() {
