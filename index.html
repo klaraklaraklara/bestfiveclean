@@ -530,159 +530,6 @@
     .hero-stats { gap: 1.5rem; }
   }
 
-  /* ===== SPLASH SCREEN ===== */
-  #splash {
-    position: fixed; inset: 0; z-index: 1000;
-    background: var(--black);
-    display: flex; align-items: center; justify-content: center;
-    flex-direction: column;
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  #splash.hiding {
-    opacity: 0; pointer-events: none; transform: scale(1.03);
-  }
-
-  /* Subtle bg glow */
-  #splash::before {
-    content: '';
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-60%);
-    width: 600px; height: 600px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,77,141,0.12) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .splash-inner {
-    display: flex; flex-direction: column; align-items: center;
-    max-width: 520px; width: 90%; text-align: center;
-    position: relative; z-index: 1;
-    animation: splashFadeIn 0.5s ease both;
-  }
-  @keyframes splashFadeIn {
-    from { opacity:0; transform: translateY(16px); }
-    to   { opacity:1; transform: translateY(0); }
-  }
-
-  /* Big avatar circle */
-  .splash-avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #ff4d8d 0%, #c4005c 100%);
-  display: flex; /* Pridať */
-  align-items: center; /* Pridať */
-  justify-content: center; /* Pridať */
-  font-size: 4rem;
-  margin-bottom: 1.5rem;
-  border: 4px solid rgba(255,77,141,0.35);
-  box-shadow: 0 15px 35px rgba(255,77,141,0.3);
-  line-height: 1; /* Pridať pre stabilitu */
-}
-
-  .splash-avatar.speaking::before {
-    content: '';
-    position: absolute; inset: -8px; border-radius: 50%;
-    border: 2px solid rgba(255,77,141,0.45);
-    animation: speakRing 1.1s ease-in-out infinite;
-  }
-  .splash-avatar.speaking::after {
-    content: '';
-    position: absolute; inset: -18px; border-radius: 50%;
-    border: 1px solid rgba(255,77,141,0.18);
-    animation: speakRing 1.1s 0.35s ease-in-out infinite;
-  }
-  @keyframes speakRing {
-    0%   { transform: scale(1); opacity: 0.9; }
-    100% { transform: scale(1.25); opacity: 0; }
-  }
-
-  .splash-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem; font-weight: 700; margin-bottom: 0.2rem;
-  }
-  .splash-role {
-    font-size: 0.78rem; color: var(--pink);
-    letter-spacing: 0.1em; text-transform: uppercase;
-    margin-bottom: 1.8rem;
-  }
-
-  /* Speech box */
-  .splash-speech {
-    background: var(--dark2);
-    border: 1px solid rgba(255,77,141,0.2);
-    border-radius: 20px; padding: 1.4rem 1.6rem;
-    min-height: 90px; width: 100%;
-    font-size: 1rem; line-height: 1.7; color: var(--white);
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 1.5rem; position: relative;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-  }
-  /* little triangle pointing up to avatar */
-  .splash-speech::before {
-    content: '';
-    position: absolute; top: -8px; left: 50%; transform: translateX(-50%);
-    width: 0; height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 8px solid rgba(255,77,141,0.2);
-  }
-
-  /* Typing dots */
-  .typing-dots { display: flex; gap: 5px; align-items: center; }
-  .typing-dots span {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--pink); display: inline-block;
-    animation: typingBounce 1.2s ease-in-out infinite;
-  }
-  .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
-  .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
-  @keyframes typingBounce {
-    0%,60%,100% { transform: translateY(0); opacity: 0.35; }
-    30%          { transform: translateY(-7px); opacity: 1; }
-  }
-
-  /* Progress dots */
-  .splash-dots {
-    display: flex; gap: 6px; margin-bottom: 1.5rem;
-  }
-  .sp-dot {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: rgba(255,255,255,0.15); transition: all 0.3s; cursor: pointer;
-  }
-  .sp-dot.active { background: var(--pink); width: 22px; border-radius: 4px; }
-  .sp-dot.done   { background: rgba(255,77,141,0.4); }
-
-  /* Buttons */
-  .splash-btns { display: flex; gap: 0.8rem; width: 100%; }
-  .sp-btn {
-    flex: 1; padding: 0.85rem 1rem;
-    border-radius: 50px; font-size: 0.9rem; font-weight: 600;
-    cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.25s;
-    border: none;
-  }
-  .sp-btn-primary { background: var(--pink); color: white; }
-  .sp-btn-primary:hover { background: var(--pink-light); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(255,77,141,0.35); }
-  .sp-btn-skip { background: transparent; color: var(--gray); border: 1px solid rgba(255,255,255,0.1); }
-  .sp-btn-skip:hover { color: white; border-color: rgba(255,255,255,0.3); }
-
-  /* Soundwave under name */
-  .soundwave {
-    display: flex; align-items: center; gap: 3px; height: 16px; margin-bottom: 1.5rem;
-  }
-  .soundwave span {
-    width: 3px; border-radius: 3px; background: var(--pink);
-    animation: wave 0.8s ease-in-out infinite;
-  }
-  .soundwave span:nth-child(1) { height: 5px;  animation-delay: 0s; }
-  .soundwave span:nth-child(2) { height: 12px; animation-delay: 0.1s; }
-  .soundwave span:nth-child(3) { height: 16px; animation-delay: 0.2s; }
-  .soundwave span:nth-child(4) { height: 9px;  animation-delay: 0.3s; }
-  .soundwave span:nth-child(5) { height: 14px; animation-delay: 0.15s; }
-  .soundwave span:nth-child(6) { height: 7px;  animation-delay: 0.25s; }
-  @keyframes wave {
-    0%,100% { transform: scaleY(0.4); opacity: 0.4; }
-    50%      { transform: scaleY(1);   opacity: 1; }
-  }
-  .soundwave.hidden span { animation: none; opacity: 0.2; transform: scaleY(0.3); }
 
   /* SEGMENT */
   .segment-btn {
@@ -1404,7 +1251,7 @@
 <footer>
   <div style="font-family: 'Playfair Display', serif; font-weight: 800; font-size: 1.5rem; color: #ff4d8d; margin-bottom: 0.5rem; letter-spacing: -1px;">BESTFIVE <span style="color: #ffffff;">CLEAN</span></div>  <div class="footer-note">Dceřiná společnost BESTFIVE s.r.o.</div>
   <div style="display:flex;align-items:center;gap:0.8rem">
-    <a href="https://www.instagram.com/best5.cz" target="_blank" title="Instagram" style="width:38px;height:38px;border-radius:50%;background:rgba(255,77,141,0.1);border:1px solid rgba(255,77,141,0.3);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all 0.2s;font-size:1.1rem" onmouseover="this.style.background='rgba(255,77,141,0.25)'" onmouseout="this.style.background='rgba(255,77,141,0.1)'">
+    <a href="https://www.instagram.com/best5.clean" target="_blank" title="Instagram" style="width:38px;height:38px;border-radius:50%;background:rgba(255,77,141,0.1);border:1px solid rgba(255,77,141,0.3);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all 0.2s;font-size:1.1rem" onmouseover="this.style.background='rgba(255,77,141,0.25)'" onmouseout="this.style.background='rgba(255,77,141,0.1)'">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="6" stroke="#ff4d8d" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="#ff4d8d" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1" fill="#ff4d8d"/></svg>
     </a>
     <a href="https://www.facebook.com/people/BESTFIVE-stavební-a-úklidová-firma/61588155299886/" target="_blank" title="Facebook" style="width:38px;height:38px;border-radius:50%;background:rgba(255,77,141,0.1);border:1px solid rgba(255,77,141,0.3);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all 0.2s;font-size:1.1rem" onmouseover="this.style.background='rgba(255,77,141,0.25)'" onmouseout="this.style.background='rgba(255,77,141,0.1)'">
@@ -1451,28 +1298,28 @@
   </div>
 </div>
 
-<!-- SPLASH SCREEN -->
-<!-- OPRAVENÝ SPLASH SCREEN S POSTUPNÝM TEXTOM -->
-<div id="splash" style="position: fixed; inset: 0; z-index: 9999; background: #0a0a0a; display: flex; align-items: center; justify-content: center; flex-direction: column; opacity: 1; transition: opacity 0.5s ease;">
-  
-  <div class="splash-logo" style="position: absolute; top: 1.5rem; left: 50%; transform: translateX(-50%); font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 900; color: #ff4d8d; letter-spacing: -0.3px; white-space: nowrap;">
-    BESTFIVE<span> CLEAN</span>
-  </div>
 
+<div id="splash" style="position: fixed; inset: 0; z-index: 10000; background: #0a0a0a; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+  
   <div class="splash-inner" style="display: flex; flex-direction: column; align-items: center; max-width: 520px; width: 90%; text-align: center;">
     
-    <div class="splash-avatar" id="spFace" style="width: 110px; height: 110px; border-radius: 50%; background: linear-gradient(135deg, #ff4d8d 0%, #c4005c 60%, #8b0040 100%); display: flex; align-items: center; justify-content: center; font-size: 3.5rem; margin-bottom: 1.5rem; border: 3px solid rgba(255,77,141,0.35); position: relative;">
-      👩
+    <div style="font-family: 'Playfair Display', serif; font-weight: 900; font-size: 2.5rem; color: #ff4d8d; margin-bottom: 1.5rem; letter-spacing: -1px;">
+      BESTFIVE <span style="color: #ffffff;">CLEAN</span>
     </div>
 
-    <div class="splash-speech" style="background: #1a1a1a; border: 1px solid rgba(255,77,141,0.3); border-radius: 20px; padding: 1.4rem 1.6rem; min-height: 120px; width: 100%; color: white; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 1rem; line-height: 1.6; position: relative; box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
-      <span id="spText"></span>
+    <div class="splash-speech" style="background: #1a1a1a; border: 1px solid rgba(255,77,141,0.3); border-radius: 20px; padding: 1.5rem; width: 100%; color: white; margin-bottom: 1.5rem; position: relative; box-shadow: 0 8px 30px rgba(0,0,0,0.5); font-size: 1rem; line-height: 1.6; text-align: left;">
+      
+      <div style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid rgba(255,77,141,0.3);"></div>
+
+      <p style="margin-bottom:12px;">Ahoj! Vítám vás na stránkách <strong style='color:#ff4d8d'>BESTFIVE CLEAN</strong>. 👋</p>
+      <p style="margin-bottom:12px;">Níže si vyberte <strong style='color:#ff4d8d'>předplatné</strong> nebo <strong style='color:#ff4d8d'>jednorázovou objednávku</strong> — máme plány pro auto, pohovku, koberec i matraci. 🛋️🚗</p>
+      <p style="margin-bottom:12px;">Platit můžete <strong style='color:#ff4d8d'>hotově i kartou</strong>, jak vám to lépe vyhovuje. 💳💵</p>
+      <p>A kdybyste si nevěděli rady, určitě neváhejte <strong style='color:#ff4d8d'>zavolat</strong> — rádi poradíme! 📞</p>
     </div>
 
-    <div class="splash-btns" style="width: 100%;">
-      <!-- TOTO TLAČIDLO FUNGUJE OKAMŽITE -->
-      <button onclick="vstupNaWeb()" style="width: 100%; padding: 1rem; border-radius: 50px; background: #ff4d8d; color: white; border: none; font-size: 1rem; font-weight: 700; cursor: pointer; box-shadow: 0 8px 20px rgba(255,77,141,0.3);">
-        POKRAČOVAT →
+    <div style="width: 100%;">
+      <button class="btn-primary" onclick="vstupNaWeb()" style="width: 100%; padding: 1rem; border-radius: 50px; background: #ff4d8d; color: white; border: none; font-size: 1rem; font-weight: 700; cursor: pointer;">
+        Pokračovat →
       </button>
     </div>
   </div>
@@ -1487,17 +1334,6 @@
   const textElement = document.getElementById('spText');
   const face = document.getElementById('spFace');
 
-  function pisText() {
-    if (i < celyText.length) {
-      textElement.innerHTML += celyText.charAt(i);
-      i++;
-      setTimeout(pisText, rychlost);
-    } else {
-      // Keď dopíše, prestane "hovoriť" (ak by ste mali animáciu na tvári)
-      face.style.animation = "none";
-    }
-  }
-
   // Hlavná funkcia na zatvorenie splashu
   function vstupNaWeb() {
     const splash = document.getElementById('splash');
@@ -1511,7 +1347,6 @@
   // Spustenie písania hneď po načítaní
   window.addEventListener('load', () => {
     document.body.style.overflow = 'hidden'; // Zákaz scrollu počas splashu
-    pisText();
   });
 </script>
 
@@ -2477,77 +2312,26 @@ function closeBooking() {
   kcalc();
   // ===== END KALKULAČKA =====
 
-  // ===== SPLASH =====
-  const spMessages = [
-    "Ahoj! Vítám vás na stránkách <strong style='color:#ff4d8d'>BESTFIVE CLEAN</strong>. 👋",
-    "Níže si vyberte <strong style='color:#ff4d8d'>předplatné</strong> nebo <strong style='color:#ff4d8d'>jednorázovou objednávku</strong> — máme plány pro auto, pohovku, koberec i matraci. 🛋️🚗",
-    "Platit můžete <strong style='color:#ff4d8d'>hotově i kartou</strong>, jak vám to lépe vyhovuje. 💳💵",
-    "A kdybyste si nevěděli rady, určitě neváhejte <strong style='color:#ff4d8d'>zavolat</strong> — rádi poradíme! 📞",
-  ];
+// FINÁLNY SKRIPT PRE SPLASH
+document.body.style.overflow = 'hidden'; // Zákaz scrollovania pri štarte
 
-  function splashSkip() { spShowAll(); }
-  function splashEnter() {
-    document.getElementById('splash').classList.add('hiding');
-    setTimeout(() => document.getElementById('splash').style.display='none', 650);
-  }
-
-  function spShowSecond() {
-    const el = document.getElementById('spText');
-    const btns = document.getElementById('spBtns');
-    document.getElementById('spFace').classList.add('speaking');
-    document.getElementById('spWave').classList.remove('hidden');
-    el.innerHTML = `
-      <span style="display:block;margin-bottom:0.6rem">Vyberte si <strong style="color:var(--pink)">předplatné</strong> nebo <strong style="color:var(--pink)">jednorázovou objednávku</strong>. 🧹</span>
-      <span style="display:block;margin-bottom:0.6rem">Pokud si vyberete předplatné, platíte až po prvním čištění. Zvolíte si sami — ročně nebo pololetně. Přijedeme 2× ročně. 💳</span>
-      <span style="display:block">Měsíc před plánovaným čištěním vám přijde na <strong style="color:var(--pink)">e-mail i SMS</strong> odkaz na kalendář, kde si vyberete den i čas. 📅</span>
-    `;
-    btns.innerHTML = `<button class="sp-btn sp-btn-primary" onclick="splashEnter()">Vstoupit na web →</button>`;
+// Odomknutie scrollovania a zavretie splashu
+function vstupNaWeb() {
+  const splash = document.getElementById('splash');
+  if (splash) {
+    splash.style.transition = 'opacity 0.5s ease';
+    splash.style.opacity = '0';
     setTimeout(() => {
-      document.getElementById('spFace').classList.remove('speaking');
-      document.getElementById('spWave').classList.add('hidden');
-    }, 2000);
+      splash.style.display = 'none';
+      document.body.style.overflow = 'auto'; 
+    }, 500);
   }
+}
 
-  function spShowAll() {
-    const el = document.getElementById('spText');
-    const dots = document.getElementById('spDots');
-    const face = document.getElementById('spFace');
-    const wave = document.getElementById('spWave');
-    dots.style.display = 'none';
-    el.style.display = 'inline';
-    el.innerHTML = '';
-    face.classList.add('speaking');
-    wave.classList.remove('hidden');
-
-    // Build full text with all messages
-    const fullHtml = spMessages.map(m => `<span style="display:block;margin-bottom:0.6rem">${m}</span>`).join('');
-    // Type out plain text but preserve HTML
-    let i = 0;
-    const chars = fullHtml;
-    function typeNext() {
-      if (i < chars.length) {
-        // Skip through HTML tags instantly
-        if (chars[i] === '<') {
-          const end = chars.indexOf('>', i);
-          el.innerHTML = chars.slice(0, end + 1);
-          i = end + 1;
-        } else {
-          i++;
-          el.innerHTML = chars.slice(0, i);
-        }
-        setTimeout(typeNext, i < chars.length && chars[i] !== '<' ? 18 : 0);
-      } else {
-        face.classList.remove('speaking');
-        wave.classList.add('hidden');
-        document.getElementById('spBtns').innerHTML =
-          `<button class="sp-btn sp-btn-primary" onclick="spShowSecond()">Vstoupit na web →</button>`;
-      }
-    }
-    typeNext();
-  }
-  document.getElementById('spDotNav').innerHTML = '';
-  setTimeout(() => spShowAll(), 500);
-  // ===== END SPLASH =====
+// Spustenie pri načítaní (zabezpečí, že sa nič nebude hýbať)
+window.addEventListener('load', () => {
+  document.body.style.overflow = 'hidden'; // Počas splashu sa nescrolluje
+});
 
   function submitForm() {
     const name = document.getElementById('name').value;
