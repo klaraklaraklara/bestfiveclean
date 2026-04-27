@@ -662,7 +662,6 @@
     <li><a href="#segment">Domácnosti & Firmy</a></li>
     <li><a href="#predplatne">Předplatné</a></li> 
     <li><a href="#galerie">Videogalerie</a></li> 
-    <li><a href="#voucher">Voucher</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
   <button class="nav-btn" onclick="document.getElementById('predplatne').scrollIntoView({behavior:'smooth'})">Objednat</button>
@@ -1124,67 +1123,7 @@
 </section>
 
 <!-- VOUCHER SEKCE -->
-<section id="voucher" style="background:var(--dark)">
-  <p class="section-label">Dárkový poukaz</p>
-  <h2 class="section-title">Voucher <span style="color:var(--pink)">jako dárek</span></h2>
-  <p class="section-sub">Darujte čistotu někomu blízkému. Vyberte předplatné, přidejte věnování a stáhněte krásný PDF voucher.</p>
 
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;max-width:900px" class="voucher-grid">
-
-    <!-- FORMULÁŘ -->
-    <div style="background:var(--dark2);border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:2rem">
-      <div class="kc-section">
-        <div class="kc-title">Vyberte předplatné</div>
-        <select id="voucherType" onchange="updateVoucher()" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:0.85rem 1rem;color:var(--white);font-size:0.9rem;font-family:'DM Sans',sans-serif;appearance:none;outline:none;margin-bottom:0.8rem">
-          <option value="auto_rok">🚗 Tepování auta — Roční (5 sedaček)</option>
-          <option value="auto_pol">🚗 Tepování auta — Pololetní (5 sedaček)</option>
-          <option value="pohovka_mala_rok">🛋️ Tepování pohovky malá — Roční</option>
-          <option value="pohovka_mala_pol">🛋️ Tepování pohovky malá — Pololetní</option>
-          <option value="pohovka_stredni_rok">🛋️ Tepování pohovky střední — Roční</option>
-          <option value="pohovka_velka_rok">🛋️ Tepování pohovky velká — Roční</option>
-          <option value="koberec_rok">💧 Tepování koberce do 20m² — Roční</option>
-          <option value="matrace_m2_rok">🛏️ Tepování matrace do 2 ks — Roční</option>
-          <option value="ozon_auto">💨 Dezinfekce ozonem — Auto</option>
-          <option value="ozon_m50">💨 Dezinfekce ozonem — Do 50 m²</option>
-          <option value="ozon_m100">💨 Dezinfekce ozonem — Do 100 m²</option>
-        </select>
-        <select id="voucherCity" onchange="updateVoucher()" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:0.85rem 1rem;color:var(--white);font-size:0.9rem;font-family:'DM Sans',sans-serif;appearance:none;outline:none">
-          <option value="praha">Praha a okolí</option>
-          <option value="brno">Brno a okolí</option>
-          <option value="jihlava">Jihlava a okolí</option>
-        </select>
-      </div>
-      <div class="kc-section">
-        <div class="kc-title">Věnování</div>
-        <div class="fg" style="margin-bottom:0.8rem">
-          <label style="font-size:0.78rem;color:var(--gray);display:block;margin-bottom:0.4rem">Pro koho</label>
-          <input type="text" id="voucherTo" placeholder="Mamince, Honzovi..." oninput="updateVoucher()" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:0.75rem 1rem;color:var(--white);font-size:0.9rem;font-family:'DM Sans',sans-serif;outline:none">
-        </div>
-        <div class="fg" style="margin-bottom:0.8rem">
-          <label style="font-size:0.78rem;color:var(--gray);display:block;margin-bottom:0.4rem">Od koho</label>
-          <input type="text" id="voucherFrom" placeholder="Jana, Rodina..." oninput="updateVoucher()" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:0.75rem 1rem;color:var(--white);font-size:0.9rem;font-family:'DM Sans',sans-serif;outline:none">
-        </div>
-        <div class="fg">
-          <label style="font-size:0.78rem;color:var(--gray);display:block;margin-bottom:0.4rem">Věnování</label>
-          <textarea id="voucherMsg" placeholder="Přeji ti krásný zážitek..." oninput="updateVoucher()" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:0.75rem 1rem;color:var(--white);font-size:0.9rem;font-family:'DM Sans',sans-serif;resize:none;min-height:70px;outline:none"></textarea>
-        </div>
-      </div>
-      <div style="background:rgba(255,77,141,0.06);border:1px solid rgba(255,77,141,0.15);border-radius:12px;padding:0.9rem 1rem;margin-bottom:1rem;font-size:0.82rem;color:var(--gray);line-height:1.6">
-        📅 Platnost voucheru: <strong style="color:var(--white)">1 rok od zakoupení</strong><br>
-        🔒 Každý voucher má unikátní QR kód — po použití se deaktivuje
-      </div>
-      <button class="btn-primary" style="width:100%" onclick="generateVoucher()">Stáhnout voucher PDF →</button>
-    </div>
-
-    <!-- NÁHLED VOUCHERU -->
-    <div>
-      <p style="font-size:0.75rem;color:var(--gray);margin-bottom:0.8rem;letter-spacing:0.1em;text-transform:uppercase">Náhled voucheru</p>
-      <canvas id="voucherCanvas" width="600" height="340" style="width:100%;border-radius:16px;border:1px solid rgba(255,77,141,0.2)"></canvas>
-      <p style="font-size:0.75rem;color:var(--gray);margin-top:0.6rem;text-align:center">QR kód bude vygenerován při stažení</p>
-    </div>
-
-  </div>
-</section>
 
 <section class="faq-section" id="faq">
   <h2 class="faq-title">Často kladené otázky</h2>
